@@ -36,8 +36,16 @@ public class EventController {
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public void createNewEvent(@RequestBody Event event, Principal principal) {
         int userID = getLoggedInUserID(principal);
+
+
+
+
         int DjID = djDao.findDjIDByUserID(userID);
         eventDao.createNewEvent(event, DjID);
+
+
+
+
     }
 
 }
