@@ -57,6 +57,12 @@ public class AuthenticationController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User Already Exists.");
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
+
+            if(newUser.getRole().equals("DJ")){
+                User user = userDao.findByUsername((newUser.getUsername()));
+                userDao.createDj(user.getId());
+            }
+
         }
     }
 
