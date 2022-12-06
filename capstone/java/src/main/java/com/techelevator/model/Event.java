@@ -6,6 +6,7 @@ public class Event {
 
     private int eventID;
     private int djID;
+    private int hostID;
     private String eventName;
     private String eventInformation;
     private String genres;
@@ -26,7 +27,13 @@ public class Event {
     public void setDjID(int djID) {
         this.djID = djID;
     }
+    public int getHostID() {
+        return hostID;
+    }
 
+    public void setHostID(int hostID) {
+        this.hostID = hostID;
+    }
     public String getEventName() {
         return eventName;
     }
