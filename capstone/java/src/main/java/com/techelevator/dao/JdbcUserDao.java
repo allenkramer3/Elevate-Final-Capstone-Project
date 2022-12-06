@@ -100,6 +100,12 @@ public class JdbcUserDao implements UserDao {
         jdbcTemplate.update(sql, UserId);
     }
 
+    @Override
+    public void createHost(int UserId){
+        String sql = "INSERT INTO host (user_id) VALUES (?)";
+        jdbcTemplate.update(sql, UserId);
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));

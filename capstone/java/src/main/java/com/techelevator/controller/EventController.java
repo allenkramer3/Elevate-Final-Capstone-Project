@@ -31,7 +31,7 @@ public class EventController {
         return loggedInUserID;
     }
 
-    @PreAuthorize("hasRole(DJ)")
+    @PreAuthorize("hasRole('DJ')")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public void createNewEvent(@RequestBody Event event, Principal principal) {
