@@ -1,13 +1,13 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS dj;
-DROP TABLE IF EXISTS playlist;
-DROP TABLE IF EXISTS host;
-DROP TABLE IF EXISTS event;
-DROP TABLE IF EXISTS genre;
-DROP TABLE IF EXISTS song;
-DROP TABLE IF EXISTS playlist_song;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS dj CASCADE;
+DROP TABLE IF EXISTS playlist CASCADE;
+DROP TABLE IF EXISTS host CASCADE;
+DROP TABLE IF EXISTS event CASCADE;
+DROP TABLE IF EXISTS genre CASCADE;
+DROP TABLE IF EXISTS song CASCADE;
+DROP TABLE IF EXISTS playlist_song CASCADE;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -76,4 +76,35 @@ CREATE TABLE playlist_song (
     CONSTRAINT FK_song_id FOREIGN KEY (song_id) REFERENCES song (song_id)
 );
 
+DROP USER IF EXISTS final_capstone_owner;
+DROP USER IF EXISTS final_capstone_appuser;
+
+CREATE USER final_capstone_owner
+WITH PASSWORD 'finalcapstone';
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+CREATE USER final_capstone_appuser
+WITH PASSWORD 'finalcapstone';
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
+
+
 COMMIT TRANSACTION;
+
+rollback;
+
+
+
