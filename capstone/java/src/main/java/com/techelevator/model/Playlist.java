@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Playlist {
 
     private int playlistID;
-    private int genreID;
+    private String playlistName;
     private int djID;
 
     public int getPlaylistID() {
@@ -16,12 +16,12 @@ public class Playlist {
         this.playlistID = playlistID;
     }
 
-    public int getGenreID() {
-        return genreID;
+    public String getPlaylistName() {
+        return playlistName;
     }
 
-    public void setGenreID(int genreID) {
-        this.genreID = genreID;
+    public void setPlaylistName(String playlistName) {
+        this.playlistName = playlistName;
     }
 
     public int getDjID() {
@@ -37,20 +37,21 @@ public class Playlist {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Playlist playlist = (Playlist) o;
-        return playlistID == playlist.playlistID && genreID == playlist.genreID && djID == playlist.djID;
+        return playlistID == playlist.playlistID && djID == playlist.djID && Objects.equals(playlistName, playlist.playlistName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(playlistID, genreID, djID);
+        return Objects.hash(playlistID, playlistName, djID);
     }
 
     @Override
     public String toString() {
         return "Playlist{" +
                 "playlistID=" + playlistID +
-                ", genreID=" + genreID +
+                ", playlistName='" + playlistName + '\'' +
                 ", djID=" + djID +
                 '}';
     }
 }
+
