@@ -8,7 +8,7 @@ public class Event {
     private int djID;
     private String eventName;
     private String eventInformation;
-    private int genreID;
+    private String genres;
     private String eventPicture;
 
     public int getEventID() {
@@ -43,12 +43,12 @@ public class Event {
         this.eventInformation = eventInformation;
     }
 
-    public int getGenreID() {
-        return genreID;
+    public String getGenres() {
+        return genres;
     }
 
-    public void setGenreID(int genreID) {
-        this.genreID = genreID;
+    public void setGenres(String genres) {
+        this.genres = genres;
     }
 
     public String getEventPicture() {
@@ -64,12 +64,12 @@ public class Event {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Event event = (Event) o;
-        return eventID == event.eventID && djID == event.djID && genreID == event.genreID && Objects.equals(eventName, event.eventName) && Objects.equals(eventInformation, event.eventInformation) && Objects.equals(eventPicture, event.eventPicture);
+        return eventID == event.eventID && djID == event.djID && Objects.equals(eventName, event.eventName) && Objects.equals(eventInformation, event.eventInformation) && Objects.equals(genres, event.genres) && Objects.equals(eventPicture, event.eventPicture);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eventID, djID, eventName, eventInformation, genreID, eventPicture);
+        return Objects.hash(eventID, djID, eventName, eventInformation, genres, eventPicture);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Event {
                 ", djID=" + djID +
                 ", eventName='" + eventName + '\'' +
                 ", eventInformation='" + eventInformation + '\'' +
-                ", genreID=" + genreID +
+                ", genres='" + genres + '\'' +
                 ", eventPicture='" + eventPicture + '\'' +
                 '}';
     }
