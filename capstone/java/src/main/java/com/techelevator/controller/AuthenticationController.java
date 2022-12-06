@@ -62,8 +62,10 @@ public class AuthenticationController {
             if(newUser.getRole().equals("DJ")){
                 User user = userDao.findByUsername((newUser.getUsername()));
                 userDao.createDj(user.getId());
+            } else if(newUser.getRole().equals("HOST")) {
+                User user = userDao.findByUsername((newUser.getUsername()));
+                userDao.createHost(user.getId());
             }
-
         }
     }
 

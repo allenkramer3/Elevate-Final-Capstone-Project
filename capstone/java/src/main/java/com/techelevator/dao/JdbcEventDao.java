@@ -16,10 +16,9 @@ public class JdbcEventDao implements EventDao {
 
     @Override
     public void createNewEvent(Event newEvent, int dJID) {
-        Event createdEvent = new Event();
         String sql = "INSERT INTO event (host_id, dj_id, event_name, event_information, genres, event_picture) " +
                      "VALUES (?, ?, ?, ?, ?, ?) ";
-        jdbcTemplate.update(sql,  createdEvent.getHostID(), dJID, "test", "test", "test", "test");
+        jdbcTemplate.update(sql,  newEvent.getHostID(), dJID, "test", "test", "test", "test");
     }
 
 }
