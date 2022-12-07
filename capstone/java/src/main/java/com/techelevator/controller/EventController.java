@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.DJDao;
 import com.techelevator.dao.EventDao;
+import com.techelevator.dao.HostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Event;
 import org.springframework.http.HttpStatus;
@@ -18,11 +19,13 @@ public class EventController {
     private EventDao eventDao;
     private UserDao userDao;
     private DJDao djDao;
+    private HostDao hostDao;
 
-    public EventController (EventDao eventDao, UserDao userDao, DJDao djDao) {
+    public EventController (EventDao eventDao, UserDao userDao, DJDao djDao, HostDao hostDao) {
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.djDao = djDao;
+        this.hostDao = hostDao;
     }
 
     private int getLoggedInUserID (Principal principal) {
@@ -38,5 +41,15 @@ public class EventController {
         int DjID = djDao.findDjIDByUserID(userID);
         eventDao.createNewEvent(event, DjID);
     }
+
+    @PreAuthorize("hasAnyRole('HOST','DJ')")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
+    public void updateEvent(@RequestBody Event event, Principal principal){
+        int userId = getLoggedInUserID(principal);
+        int hostID = hostDao.findHostIDByUserID(userId);
+        eventDao.updateEvent(event, hostID);
+    }
+
 
 }
