@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Elevate logo" src="./images/Elevate.png" />'
+  
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
@@ -11,20 +11,30 @@
 
 
 <style scoped>
+
+
 #app {
    background-color: #000000;
    height: 100vh;
 }
 #nav{
-  background-color: #4A007B;
-  font-family: "Audiowide", sans-serif;
+  background-color: #4098FF;
+  font-family: "Gill Sans", sans-serif;
    
 }
 a{
-  color: #090531;
+  color: #ffffff;
 }
 
-main {
-  background-image: url(./Images);
+div {
+background-image: url("./images/Elevate.png");
+background-size: 80%;
+background-size: contain;
+background-repeat: no-repeat
+
+
 }
+  
+
 </style>
+
