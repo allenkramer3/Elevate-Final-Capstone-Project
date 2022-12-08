@@ -136,10 +136,12 @@
   color: white;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-/* #app {
+.app {
    background-color: #000000;
-   height: 100vh; */
-/* }
+   height: 100vh; 
+ }
+
+/* 
 #nav{
   background-color: #4098FF;
   font-family: "Gill Sans", sans-serif;
@@ -147,7 +149,7 @@
 }
 a{
   color: #ffffff;
-} */
+} */ 
 
 /* div {
 background-image: url("./images/Elevate.png");

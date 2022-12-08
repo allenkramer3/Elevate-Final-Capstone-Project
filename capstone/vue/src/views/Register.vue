@@ -1,5 +1,5 @@
 <template>
-  <div id="register" class="text-center">
+  <!-- <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -37,7 +37,41 @@
         Create Account
       </button>
     </form>
+  </div> -->
+
+  <div id="login">
+    <form>
+          <h1>Create an Account</h1>
+  
+          <label for="email2">Username</label>
+          <input type="text" placeholder="Create Username" id="email2">
+  
+          <label for="password2">Password</label>
+          <input
+            type="password"
+            placeholder="Create Password"
+            id="password2"
+          >
+  
+          <label for="password3">Confirm Password</label>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            id="password3"
+          >
+  
+          <div class="form-actions">
+            <button class="btn">Sign Up</button>
+            <div class="extras">
+              <a>Back to Login</a>
+            </div>
+          </div>
+          <div class="guest-actions">
+            <button class="btn">Continue as Guest</button>
+          </div>
+        </form>
   </div>
+
 </template>
 
 <script>
@@ -90,4 +124,91 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+  
+  #login {
+       display: flex;
+       height: 100vh;
+       flex-direction: column;
+       height: 35rem;
+       justify-content: center;
+       margin: 4rem auto;
+      }
+      .logo {
+       height: 200px;
+       width: auto;
+       padding-bottom: 10px;
+       filter: grayscale(100%);
+       padding-top: 20px;
+      }
+      #content {
+       background-color: #496bcb;
+       color: #fff;
+      }
+      #login {
+       padding-top: 0px;
+      }
+      #login {
+       background-color: #fcfcfc;
+      }
+      #content,
+      #login {
+       padding: 5vh 1rem 1rem 1rem;
+      }
+      #content h1,
+      #login h1 {
+       margin-bottom: 2rem;
+       font-family: sans-serif;
+      }
+      #content h1 {
+       font-size: 3rem;
+      }
+      form h1 {
+       margin-left: 0;
+      }
+      form label {
+       font-size: 1rem;
+       margin-bottom: 0.5rem;
+      }
+      form input {
+       width: 100%;
+       margin-bottom: 1rem;
+       padding: 10px;
+       border: 1px solid #e6ecf0;
+       border-radius: 3px;
+      }
+      form label,
+      form input {
+       display: block;
+      }
+      form button {
+       padding: 0.8rem 1rem;
+       color: #000;
+       border-radius: 3px;
+      }
+      .form-actions {
+       display: flex;
+      }
+      .form-actions .extras {
+       flex: 2;
+      }
+      .form-actions .extras {
+       text-align: right;
+       align-self: center;
+      }
+     
+       #content > *,
+       #login-signup form {
+       max-width: 80%;
+       margin: 0 auto;
+       }
+      a {
+       cursor: pointer;
+      }
+      .btn {
+        cursor: pointer;
+      }
+
+</style>
+  
+

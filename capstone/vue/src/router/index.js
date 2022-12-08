@@ -4,11 +4,9 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-<<<<<<< HEAD
-// import SpotifyWebAPI from '../views/SpotifyWebAPI'
-=======
->>>>>>> 8bd88891de206b6747a00c4ea8e453a862cfa482
+
 import store from '../store/index'
+
 
 Vue.use(Router)
 
@@ -56,19 +54,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-<<<<<<< HEAD
     },
-    // {
-    //   path: "/callback",
-    //   name: "spotify-web-api",
-    //   component: SpotifyWebAPI,
-    //   meta: {
-    //     requiresAuth: false
-    //   }
-    // }
-=======
-    }
->>>>>>> 8bd88891de206b6747a00c4ea8e453a862cfa482
   ]
 })
 
