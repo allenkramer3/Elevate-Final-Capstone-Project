@@ -1,17 +1,15 @@
 <template>
   <div class="app">
   
-    <div class="logo">
-      <img class="logo" src="./assets/Elevate_Logo.png"/>
-    </div>
     <div class="header">
-      <button class="btn" role="button">
+      <img class="logo" src="./assets/Elevate_Logo.png"/>
+      <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'home' }">Home</router-link>
       </button>
-      <button class="btn" role="button">
+      <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'login'}">Login</router-link>
       </button>
-      <button class="btn" role="button">
+      <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'register'}">Register</router-link>
       </button>
       <router-link class="btn-header" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
@@ -32,12 +30,6 @@
 
 <style scoped>
 
-.logo {
-  grid-area: logo;
-  background: black;
-  object-fit: fill;
-}
-
 .header {
   grid-area: header;
   background: black;
@@ -56,22 +48,25 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    "logo header header"
+    "header header header"
     "main-body main-body main-body"
     "footer footer footer";
   height: 100vh;
-  gap: none;
+  gap: 0px;
 }
 
 .logo {
+  margin-bottom: 0px;
   height: 200px;
-  width: 250px;
+  width: auto;
 }
 
 .btn {
   padding: 0.6em 2em;
   border: none;
-  margin: 100px;
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-bottom: 75px;
   outline: none;
   color: rgb(255, 255, 255);
   background: #111;
@@ -82,8 +77,6 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  align-items: center;
-  justify-content: center;
 }
 
 .btn:before {
@@ -109,12 +102,12 @@
   -webkit-filter: blur(5px);
   width: calc(100% + 4px);
   height: calc(100% + 4px);
-  animation: glowing-button-85 20s linear infinite;
+  animation: glowing-button 20s linear infinite;
   transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
 
-@keyframes glowing-button-85 {
+@keyframes glowing-button {
   0% {
     background-position: 0 0;
   }
