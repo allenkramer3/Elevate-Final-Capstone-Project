@@ -7,6 +7,7 @@ import Register from '../views/Register.vue';
 import Events from '../views/Events.vue';
 import Dj from '../views/Dj.vue';
 import AddEvent from '../views/AddEvent.vue';
+import EditEvent from '../views/EditEvent.vue';
 import store from '../store/index';
 
 
@@ -77,6 +78,14 @@ const router = new Router({
       path: "/dj/addevent",
       name: "add-event",
       component: AddEvent,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/events/edit",
+      name: "edit-event",
+      component: EditEvent,
       meta: {
         requiresAuth: false
       }

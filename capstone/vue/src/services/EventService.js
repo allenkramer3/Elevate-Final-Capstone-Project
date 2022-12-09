@@ -16,6 +16,10 @@ export default {
 
     getEvent(eventID) {
         return http.get(`/events/${eventID}`)
+    },
+
+    deleteEvent(eventID) {
+        return http.delete(`/events/${eventID}`);
     }
 
 }
