@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Genre;
+import com.techelevator.controller.model.Genre;
 
 public interface GenreDao {
 

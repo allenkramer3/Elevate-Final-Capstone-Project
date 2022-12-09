@@ -1,11 +1,13 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
-import Events from '../views/Events.vue'
-import store from '../store/index'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
+import Logout from '../views/Logout.vue';
+import Register from '../views/Register.vue';
+import Events from '../views/Events.vue';
+import Dj from '../views/Dj.vue';
+import AddEvent from '../views/AddEvent.vue';
+import store from '../store/index';
 
 
 Vue.use(Router)
@@ -59,6 +61,22 @@ const router = new Router({
       path: "/events",
       name: "events",
       component: Events,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/dj",
+      name: "dj",
+      component: Dj,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/dj/addevent",
+      name: "add-event",
+      component: AddEvent,
       meta: {
         requiresAuth: false
       }

@@ -15,7 +15,9 @@
       <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'events'}">Events</router-link>
       </button>
-
+      <button class="btn">
+        <router-link class="btn-header" v-bind:to="{ name: 'dj'}">Dj</router-link>
+      </button>
       <router-link class="btn-header" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
 
@@ -139,29 +141,9 @@
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .app {
-   background-color: #000000;
+   background-color: white;
    height: 100vh; 
  }
-
-/* 
-#nav{
-  background-color: #4098FF;
-  font-family: "Gill Sans", sans-serif;
-   
-}
-a{
-  color: #ffffff;
-} */ 
-
-/* div {
-background-image: url("./images/Elevate.png");
-background-size: 80%;
-background-size: contain;
-background-repeat: no-repeat
-
-
-} */
   
-
 </style>
 

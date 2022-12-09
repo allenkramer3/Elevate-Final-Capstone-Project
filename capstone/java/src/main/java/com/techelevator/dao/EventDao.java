@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Event;
+import com.techelevator.controller.model.Event;
 
 public interface EventDao {
 
