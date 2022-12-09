@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Event;
+import com.techelevator.controller.model.Event;
 
 import java.util.List;
 

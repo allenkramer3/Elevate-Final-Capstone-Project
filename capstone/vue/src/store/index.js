@@ -19,7 +19,18 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    events: [
+      {
+        eventID: 1,
+        hostID: 2001,
+        djID: 3001,
+        eventName: "Eat & BE UGLY",
+        eventInformation: "Come get your jingle on and compete for prizes in your ugliest christmas sweater!",
+        genres: "Hip-Hop / Rap, Pop",
+        eventPicture: ""
+      }
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +48,12 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    CREATE_EVENT(state, event) {
+      state.events.push(event);
+    },
+    SET_CURRENT_EVENT(state, data) {
+      state.events = data;
     }
   }
 })

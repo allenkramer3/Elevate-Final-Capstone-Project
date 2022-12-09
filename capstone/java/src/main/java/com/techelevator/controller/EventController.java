@@ -1,31 +1,20 @@
 package com.techelevator.controller;
 
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 import com.techelevator.dao.DJDao;
 import com.techelevator.dao.EventDao;
 import com.techelevator.dao.HostDao;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.Event;
-import com.techelevator.model.Song;
-import com.techelevator.model.SongResult;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
+import com.techelevator.controller.model.Event;
+import com.techelevator.controller.model.SongResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.security.Principal;
 import java.util.List;
 
