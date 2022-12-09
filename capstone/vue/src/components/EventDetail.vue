@@ -5,11 +5,15 @@
     </div>
     <div v-else>
         <h1>{{ event.eventName }}</h1>
-        <p> {{ event.hostName }}</p>
+        <p>test</p>
+        <!-- <p> {{ event.hostName }}</p> -->
+        <h3>{{event.eventInformation}}</h3>
+        <h3>{{event.eventGenre}}</h3>
         <router-link v-bind:to="{ name: 'edit-event', params: {eventID: $route.params.eventID} }" class="btn edit-event">Edit Event</router-link>
         <button class="btn delete-event" v-on:click="deleteEvent">Delete Event</button>
         <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}</div>
     </div>
+    
   </div>
 </template>
 
@@ -23,7 +27,7 @@ export default {
     },
     data() {
         return {
-            isLoading: true,
+            isLoading: false,
             errorMsg: "",
         };
     },

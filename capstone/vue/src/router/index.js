@@ -4,11 +4,12 @@ import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Logout from '../views/Logout.vue';
 import Register from '../views/Register.vue';
-import Events from '../views/Events.vue';
+import Events from '../views/Event.vue';
 import Dj from '../views/Dj.vue';
 import AddEvent from '../views/AddEvent.vue';
 import EditEvent from '../views/EditEvent.vue';
 import store from '../store/index';
+import Authorize from '../views/Authorize';
 
 
 Vue.use(Router)
@@ -86,6 +87,14 @@ const router = new Router({
       path: "/events/edit",
       name: "edit-event",
       component: EditEvent,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/dj/authorize",
+      name: "authorize",
+      component: Authorize,
       meta: {
         requiresAuth: false
       }

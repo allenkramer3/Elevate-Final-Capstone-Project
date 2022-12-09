@@ -29,6 +29,15 @@ export default new Vuex.Store({
         eventInformation: "Come get your jingle on and compete for prizes in your ugliest christmas sweater!",
         genres: "Hip-Hop / Rap, Pop",
         eventPicture: ""
+      },
+      {
+        eventID: 2,
+        hostID: 2001,
+        djID: 3001,
+        eventName: "Huddle Party",
+        eventInformation: "Shuting it down",
+        genres: "Pop, Alternative",
+        eventPicture: ""
       }
     ]
   },

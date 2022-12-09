@@ -5,30 +5,46 @@
           <div class="loading" v-if="isLoading">
               <img src="../assets/loading_motion.gif"/>
           </div>
-          <div class="event" v-for="event in events" v-bind:key="event.id" v-bind:style="{'background-color': event.backgroundColor}" v-else>
+          <!-- <div class="event" v-for="event in events" v-bind:key="event.id" v-bind:style="{'background-color': event.backgroundColor}" v-else>
               <router-link v-bind:to="{name: 'Event', params: {id: event.id}}">
                   {{event.title}}
               </router-link>
-          </div>
+          </div> -->
+
+        <h2>List of Events:</h2>
+        <div class="events-list">
+            <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" />
+
+        </div>
+
       </div>
   </div>
 </template>
 
 <script>
 import EventService from '../services/EventService';
+import EventDetail from './EventDetail.vue';
 
 export default {
-    data() {
-        return {
-            events: [],
-            isLoading: true
-        };
+  components: { 
+      EventDetail 
     },
+    // data() {
+    //     return {
+    //         events: [],
+    //         isLoading: true
+    //     };
+    // },
     created() {
         EventService.getEvents().then(response => {
             this.events = response.data;
             this.isLoading = false;
         });
+    },
+    computed: {
+        events(){
+            return this.$store.state.events;
+        }
     }
 };
 </script>
