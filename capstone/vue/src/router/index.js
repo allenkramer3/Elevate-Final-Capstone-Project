@@ -4,7 +4,7 @@ import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Logout from '../views/Logout.vue';
 import Register from '../views/Register.vue';
-import Events from '../views/Event.vue';
+import Event from '../views/Event.vue';
 import Dj from '../views/Dj.vue';
 import AddEvent from '../views/AddEvent.vue';
 import EditEvent from '../views/EditEvent.vue';
@@ -62,7 +62,7 @@ const router = new Router({
     {
       path: "/events",
       name: "events",
-      component: Events,
+      component: Event,
       meta: {
         requiresAuth: false
       }
