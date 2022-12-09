@@ -12,6 +12,10 @@
       <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'register'}">Register</router-link>
       </button>
+      <button class="btn">
+        <router-link class="btn-header" v-bind:to="{ name: 'events'}">Events</router-link>
+      </button>
+
       <router-link class="btn-header" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
 
@@ -64,9 +68,7 @@
 .btn {
   padding: 0.6em 2em;
   border: none;
-  margin-left: 75px;
-  margin-right: 75px;
-  margin-bottom: 75px;
+  margin: 30px;
   outline: none;
   color: rgb(255, 255, 255);
   background: #111;

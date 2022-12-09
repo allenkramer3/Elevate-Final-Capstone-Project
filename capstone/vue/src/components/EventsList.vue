@@ -34,6 +34,10 @@ export default {
 </script>
 
 <style scoped>
+div {
+    background-color: white;
+}
+
 .events {
     display: flex;
     justify-content: space-between;

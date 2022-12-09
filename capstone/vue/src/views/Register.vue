@@ -44,13 +44,14 @@
           <h1>Create an Account</h1>
   
           <label for="email2">Username</label>
-          <input type="text" placeholder="Create Username" id="email2">
+          <input type="text" placeholder="Create Username" id="email2" v-model="user.username">
   
           <label for="password2">Password</label>
           <input
             type="password"
             placeholder="Create Password"
             id="password2"
+            v-model="user.password"
           >
   
           <label for="password3">Confirm Password</label>
@@ -58,17 +59,19 @@
             type="password"
             placeholder="Confirm Password"
             id="password3"
+            v-model="user.confirmPassword"
           >
+
+          <label for="role">Are you a DJ or a Host</label>
+          <select name="role" id="role" v-model="user.role">
+            <option value="HOST">Host</option>
+            <option value="DJ">DJ</option>
+          </select>
   
           <div class="form-actions">
-            <button class="btn">Sign Up</button>
-            <div class="extras">
-              <a>Back to Login</a>
-            </div>
+            <button class="btn" v-on:click="register">Sign Up</button>
           </div>
-          <div class="guest-actions">
-            <button class="btn">Continue as Guest</button>
-          </div>
+          
         </form>
   </div>
 
@@ -85,7 +88,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        role: '',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -129,10 +132,10 @@ export default {
   #login {
        display: flex;
        height: 100vh;
-       flex-direction: column;
+       /* flex-direction: column; */
        height: 35rem;
        justify-content: center;
-       margin: 4rem auto;
+       /* margin: 4rem auto; */
       }
       .logo {
        height: 200px;
@@ -207,6 +210,9 @@ export default {
       }
       .btn {
         cursor: pointer;
+      }
+      select{
+        margin: 10px;
       }
 
 </style>

@@ -44,7 +44,7 @@
       </section> -->
       <section id="login">
         <form>
-          <h1>Please log in to your account or sign-up below!</h1>
+          <h1>Please log in to your account</h1>
   
           <label for="email">Username</label>
           <input
@@ -142,13 +142,15 @@ export default {
 </script>
 
 <style scoped>
+
   #login {
        display: flex;
        height: 100vh;
-       flex-direction: column;
+       /* flex-direction: column; */
        height: 35rem;
        justify-content: center;
-       margin: 4rem auto;
+       /* margin: 4rem auto; */
+       
       }
       .logo {
        /* height: 200px; */

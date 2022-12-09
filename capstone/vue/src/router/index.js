@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-
+import Events from '../views/Events.vue'
 import store from '../store/index'
 
 
@@ -55,6 +55,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/events",
+      name: "events",
+      component: Events,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 
