@@ -7,7 +7,7 @@ public class Host {
     private int hostID;
 
     private int userID;
-    private int playlistID;
+
 
     public int getHostID() {
         return hostID;
@@ -26,25 +26,18 @@ public class Host {
         this.userID = userID;
     }
 
-    public int getPlaylistID() {
-        return playlistID;
-    }
-
-    public void setPlaylistID(int playlistID) {
-        this.playlistID = playlistID;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Host eventHost = (Host) o;
-        return hostID == eventHost.hostID  && userID == eventHost.userID && playlistID == eventHost.playlistID;
+        return hostID == eventHost.hostID  && userID == eventHost.userID;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(hostID, userID, playlistID);
+        return Objects.hash(hostID, userID);
     }
 
     @Override
@@ -52,7 +45,6 @@ public class Host {
         return "EventHost{" +
                 "hostID=" + hostID +
                 ", userID=" + userID +
-                ", playlistID=" + playlistID +
                 '}';
     }
 }
