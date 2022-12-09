@@ -27,6 +27,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
@@ -67,6 +68,20 @@ public class EventController {
         int hostID = hostDao.findHostIDByUserID(userId);
         eventDao.updateEvent(event, hostID);
     }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(path="/list", method = RequestMethod.GET)
+    public List<Event> listOfEvents(){
+        return eventDao.listOfEvents();
+    }
+
+    @PreAuthorize("hasRole('DJ')")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path= "/delete/{eventID}", method = RequestMethod.DELETE)
+    public void deleteEvent(@PathVariable int eventID){
+        eventDao.deleteEvent(eventID);
+    }
+
 
 
     // testing

@@ -5,6 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcEventDao implements EventDao {
 
@@ -27,5 +30,38 @@ public class JdbcEventDao implements EventDao {
                 "WHERE event_id = ? AND host_id = ?";
         jdbcTemplate.update(sql, updatedEvent.getEventName(), updatedEvent.getEventInformation(), updatedEvent.getGenres(), updatedEvent.getEventPicture(), updatedEvent.getEventID(), hostID);
     }
+
+    @Override
+    public List<Event> listOfEvents() {
+        List<Event> eventList = new ArrayList<>();
+        String sql = "SELECT * FROM event";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            eventList.add(mapRowToEvent(rowSet));
+        }
+        return eventList;
+    }
+
+    @Override
+    public void deleteEvent(int eventID) {
+        String sql = "DELETE FROM event WHERE event_id = ?";
+        int deletedEvent = jdbcTemplate.update(sql, eventID);
+    }
+
+    private Event mapRowToEvent(SqlRowSet rowSet){
+        Event event = new Event();
+
+        event.setEventID(rowSet.getInt("event_id"));
+        event.setHostID(rowSet.getInt("host_id"));
+        event.setDjID(rowSet.getInt("dj_id"));
+        event.setEventName(rowSet.getString("event_name"));
+        event.setEventInformation(rowSet.getString("event_information"));
+        event.setGenres(rowSet.getString("genres"));
+        event.setEventPicture(rowSet.getString("event_picture"));
+
+
+        return event;
+    }
+
 
 }
