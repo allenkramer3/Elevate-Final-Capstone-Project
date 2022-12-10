@@ -36,11 +36,7 @@ public class SpotifyController {
         return spotifyService.getDevices();
     }
 
-<<<<<<< HEAD
     @RequestMapping(path = "/artist/tracks", method = RequestMethod.GET)
-=======
-    @RequestMapping(path = "/artistTracks", method = RequestMethod.GET)
->>>>>>> de151627b9c3edfae3e37d72827c595a3fe0b1c2
     public String getSpotifyArtistTopTracks() throws JsonProcessingException {
         return spotifyService.getArtistTopTracks();
     }
