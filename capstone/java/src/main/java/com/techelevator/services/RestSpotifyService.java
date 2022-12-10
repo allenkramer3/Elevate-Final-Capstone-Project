@@ -15,10 +15,10 @@ public class RestSpotifyService implements SpotifyService {
     private final String AUTHORIZE_URL = "https://accounts.spotify.com/en/authorize";
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
-    private String callBackUrl = "http://localhost:8080/callback";
-    private String AUTH_CODE = "";
-    private String ACCESS_TOKEN = "";
-    private String DEVICE_ID = "cdad209a657d405c11b2a017bea34a445d22cb1e";
+    private String callBackUrl = "http://localhost:8080/dj/authorize";
+    private String AUTH_CODE = "AQBDZ3qCk_BneINIaYaZUVXo-HsCjnhIC-lCJSqvGdwNr--gLWoqWQjUHt79sBUmFwcIgiztq8W32k3Ws1HTRYZoZycvjImnbtP16HSJRRuDekVRSCVhUDNw9AtwmG4Jb0gzCBtnCGbAL8Jo3NjORrT_LQawUVhAH0V197olraLdCVcJM2O1kW3QIKB3Q_5jHPM9PEOOkeAGmQgFDgZ79ijGdD2Iba0q6qoYTrHwtkN40B03D-h7AUBGBly4zjKk8m0qkMktEhXt5KbVcHEJsOYH1YyywllvtjnbDG-4P9jGwhKSu3K85QLm8xOXFB8Lv4N85_tDzw";
+    private String ACCESS_TOKEN = "BQDAZsKUKqvioK72P1YFg1Y_vzwq5PpV5Uj1MluFx1jnX1nVBU9aD1txz5lievxdrRvqZvUgyrde-2qjwzcmWe7vYNh4YRIvi8ORd-4lX7QG84oSEQgfPyO3Lpw_d8DWghgytLokyNSK8pB9sYjzUAKixFtqmPNCOaq_Q5EpVMHk8JUViIXQn_bloj2Sh5O8TGlcF31_gujt";
+    private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
 
     public String getAccessToken() throws RestClientResponseException {
         String spotifyUrl = "https://accounts.spotify.com/api/token";
@@ -26,7 +26,7 @@ public class RestSpotifyService implements SpotifyService {
 
         MultiValueMap<String, String> bodyData = new LinkedMultiValueMap<String, String>();
         bodyData.add("grant_type", "authorization_code");
-        bodyData.add("redirect_uri", "http://localhost:8080/callback");
+        bodyData.add("redirect_uri", "http://localhost:8080/dj/authorize");
         bodyData.add("code", AUTH_CODE);
 
         HttpHeaders headers = new HttpHeaders();
