@@ -21,7 +21,7 @@ public class SpotifyController {
      * These are the service calls to get spotify data and return JSON back to client
      */
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/token", method = RequestMethod.GET)
     public String getSpotifyAccessToken() throws JsonProcessingException {
         //BEGIN - Just for information not needed
         URI currentUri = ServletUriComponentsBuilder.fromCurrentRequestUri().build().toUri();
@@ -31,17 +31,17 @@ public class SpotifyController {
         return spotifyService.getAccessToken();
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/devices", method = RequestMethod.GET)
     public String getSpotifyConnectedDevices() throws JsonProcessingException {
         return spotifyService.getDevices();
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/artist/tracks", method = RequestMethod.GET)
     public String getSpotifyArtistTopTracks() throws JsonProcessingException {
         return spotifyService.getArtistTopTracks();
     }
 
-    @RequestMapping(path = "", method = RequestMethod.PUT)
+    @RequestMapping(path = "/play", method = RequestMethod.PUT)
     public String playSpotifyTrack() throws JsonProcessingException {
         return spotifyService.startResumePlayback();
     }

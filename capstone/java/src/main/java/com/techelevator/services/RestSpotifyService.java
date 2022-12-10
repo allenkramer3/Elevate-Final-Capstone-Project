@@ -16,7 +16,7 @@ public class RestSpotifyService implements SpotifyService {
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
     private String callBackUrl = "http://localhost:8080/callback";
-    private String AUTH_CODE = "";
+    private String AUTH_CODE = "AQA1aUvirNPyLwzQOvZvJsQazBKkVJxhXWx1nhJ3MgUmWT9dpg2aCLsfsGkTFNAG6wShqnJMhzUcdjbTIrk7ztiJpFgpd21bptIBmYOh5_eqhyAtOLZVnUfH2yjPC0K_81pvmFxpoAf72Q0aNuPZ38PIyTzkCxKrQEFPsU1G24sHEsP7KO3Zbus_BQTADa7vjF4l52C_IfDppdIBGkaPLAliHeSXDo2C1CWi0uBrf6fXFB7GjTxndZILOlDYFNdcbw5ACy70hrDG-QMp6UiM--IqNzUBEjzH_vXUn8qsxtUC6Jaywcn15Yd8mTqxQMOunuymsFKUGQ";
     private String ACCESS_TOKEN = "";
     private String DEVICE_ID = "cdad209a657d405c11b2a017bea34a445d22cb1e";
 
