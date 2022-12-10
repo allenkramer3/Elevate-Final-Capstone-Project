@@ -8,5 +8,12 @@ public interface SpotifyService {
     String getDevices();
     String getArtistTopTracks();
     String startResumePlayback();
+    String pausePlayback();
+    String skipToNext();
+    String searchForItem(String userSearch);
+    String createPlaylist(String name);
+    String getUsersPlaylist();
+
+
 
 }

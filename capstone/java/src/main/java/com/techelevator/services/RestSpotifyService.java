@@ -16,9 +16,11 @@ public class RestSpotifyService implements SpotifyService {
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
     private String callBackUrl = "http://localhost:8080/dj/authorize";
-    private String AUTH_CODE = "AQBDZ3qCk_BneINIaYaZUVXo-HsCjnhIC-lCJSqvGdwNr--gLWoqWQjUHt79sBUmFwcIgiztq8W32k3Ws1HTRYZoZycvjImnbtP16HSJRRuDekVRSCVhUDNw9AtwmG4Jb0gzCBtnCGbAL8Jo3NjORrT_LQawUVhAH0V197olraLdCVcJM2O1kW3QIKB3Q_5jHPM9PEOOkeAGmQgFDgZ79ijGdD2Iba0q6qoYTrHwtkN40B03D-h7AUBGBly4zjKk8m0qkMktEhXt5KbVcHEJsOYH1YyywllvtjnbDG-4P9jGwhKSu3K85QLm8xOXFB8Lv4N85_tDzw";
-    private String ACCESS_TOKEN = "BQDAZsKUKqvioK72P1YFg1Y_vzwq5PpV5Uj1MluFx1jnX1nVBU9aD1txz5lievxdrRvqZvUgyrde-2qjwzcmWe7vYNh4YRIvi8ORd-4lX7QG84oSEQgfPyO3Lpw_d8DWghgytLokyNSK8pB9sYjzUAKixFtqmPNCOaq_Q5EpVMHk8JUViIXQn_bloj2Sh5O8TGlcF31_gujt";
+    private String AUTH_CODE = "AQBHnOPnqUNGDb9nLC_6hFpydGK0IUTcVlabfm3FD_z4n1Nb-ghrK7ROVHUOzDqIuGmTsrx3wtMOAuuYQbRHw1M7LRXA7PDF6hQ5DQ35VhdfnMFzk341bHRkdsVPeEUi7yMFe8eS2e2fOBHSNNFFed-OszjpUmLk267ZNZffdAGSe637pzFM0-91l39Jf5GdlWIRpxtSBIu0S0MLJscxTKiw-pbcuzT4XPujYU2jc0tmOVve3Sb5pA3bNZ4fDlgEgSUkibF1KXz5nUeviEllzXX98HP63LNWHlAnDWz_es5i-KhDDfTF9wXuhBYiQ7yX-Uotq6WiOg";
+    private String ACCESS_TOKEN = "BQCbt83J_sb0IdoRMBVquOGsiM01tAWi1GsBYjXhsLYpBdOrHV5MXXJwznY-ZEDps6o9HnGLXaitOFOzzC-GnzPI3Lc3diVYQHnI8sIynTtqXv6OhIXsxBk-yCLaQZ66hehve7S1MGzWJsezUCkVWEgKNQsEuWBpER4ZCDPvR9pDvuQjRJREktAzFJk17ux8OYoToGcrvX2S";
     private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
+    private final String BASE_SPOTIFY_URL = "https://api.spotify.com/v1/";
+    //private final String SCOPE = "user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-modify-public user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read";
 
     public String getAccessToken() throws RestClientResponseException {
         String spotifyUrl = "https://accounts.spotify.com/api/token";
@@ -89,5 +91,95 @@ public class RestSpotifyService implements SpotifyService {
 
         return response.getBody();
     }
+
+    @Override
+    public String pausePlayback() {
+        String spotifyUrl = "https://api.spotify.com/v1/me/player/pause?device_id="+DEVICE_ID;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
+        headers.set("Content-Type", "application/x-www-form-urlencoded");
+
+
+        HttpEntity<Object> entity = new HttpEntity<>(headers);
+
+        // make an HTTP PUT request with headers
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.PUT, entity, String.class);
+
+        return response.getBody();
+    }
+
+    @Override
+    public String skipToNext() {
+        String spotifyUrl = "https://api.spotify.com/v1/me/player/next?device_id="+DEVICE_ID;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
+        headers.set("Content-Type", "application/x-www-form-urlencoded");
+
+
+
+        HttpEntity<Object> entity = new HttpEntity<>(headers);
+
+        // make an HTTP PUT request with headers
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST, entity, String.class);
+
+        return response.getBody();
+    }
+
+    public String searchForItem(String userSearch) throws RestClientResponseException {
+        String spotifyUrl = BASE_SPOTIFY_URL + "search?q=" + userSearch + "&type=track&limit=10";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
+        headers.set("Content-Type", "application/x-www-form-urlencoded");
+
+        HttpEntity entity = new HttpEntity(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.GET,entity, String.class, userSearch);
+
+        return response.getBody();
+
+    }
+
+    @Override
+    public String createPlaylist(String name) {
+        String spotifyUrl = BASE_SPOTIFY_URL + "users/arkramer702/playlists";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
+        headers.set("Content-Type", "application/x-www-form-urlencoded");
+       // headers.set("Scope", "Scope " + SCOPE);
+
+        HttpEntity entity = new HttpEntity(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class, name);
+
+        return response.getBody();
+
+    }
+
+    @Override
+    public String getUsersPlaylist() {
+        String spotifyUrl = BASE_SPOTIFY_URL + "users/arkramer702/playlists";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
+        headers.set("Content-Type", "application/x-www-form-urlencoded");
+
+
+        HttpEntity entity = new HttpEntity(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.GET,entity, String.class);
+
+        return response.getBody();
+
+    }
+
 
 }
