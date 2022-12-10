@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div >
     <div class="loading" v-if="isLoading">
         <img src="../assets/loading_motion.gif" />
     </div>
-    <div v-else>
+    <div v-else class="event-card">
         <h1>{{ event.eventName }}</h1>
         <p>test</p>
         <!-- <p> {{ event.hostName }}</p> -->
@@ -82,6 +82,9 @@ export default {
 </script>
 
 <style>
+.event-card {
+    background-color: violet;
+}
 .btn.edit-event {
   color: #fff;
   text-decoration: none;
@@ -95,4 +98,7 @@ export default {
   border-color: #ef031a;
   margin-bottom: 10px;
 }
+
+
+
 </style>

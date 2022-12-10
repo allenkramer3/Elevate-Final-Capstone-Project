@@ -10,14 +10,13 @@
                   {{event.title}}
               </router-link>
           </div> -->
-
-        <h2>List of Events:</h2>
-        <div class="events-list">
-            <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" />
-
         </div>
 
-      </div>
+            <h2>List of Events:</h2>
+            <div class="events-list">
+                <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" />
+
+            </div>
   </div>
 </template>
 

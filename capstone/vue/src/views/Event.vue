@@ -1,18 +1,18 @@
 <template>
   <div>
-   <event-detail />
+   <!-- <event-detail /> -->
    <events-list />
   </div>
 </template>
 
 <script>
-import EventDetail from '../components/EventDetail.vue';
+// import EventDetail from '../components/EventDetail.vue';
 import EventsList from '../components/EventsList.vue';
 
 export default {
     name: "event",
     components: {
-      EventDetail,
+      // EventDetail,
         EventsList
     }
 };

@@ -60,7 +60,7 @@ body{
 .app {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 200px 1fr 50px;
   grid-template-areas:
     "header header header"
     "main-body main-body main-body"
@@ -151,6 +151,10 @@ body{
 .app {
    background-color: white;
    height: 100vh; 
+ }
+
+ .footer {
+   background-color: rgb(230, 230, 230);
  }
   
 </style>
