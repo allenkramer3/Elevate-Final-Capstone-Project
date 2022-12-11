@@ -5,6 +5,8 @@
     <div class="guest-actions">
       <button class="btn">Continue as Guest</button>
     </div>
+    
+    <img src="../assets/Club.png" alt="w3-border w3-padding" class="center">
     <div class="wrap">
       <div class="search">
         <input type="text" class="searchTerm" placeholder="Type an event">
