@@ -2,8 +2,6 @@
   <div class="home">
     <h1 style="text-align:center">Welcome to Elevate.</h1>
     <h2 style="text-align:center">Please log in or continue as a guest.</h2>
-    <img src="nightclub.jpg" alt="Paris" class="center">
-
     <div class="guest-actions">
       <button class="btn">Continue as Guest</button>
     </div>
@@ -16,6 +14,8 @@
       </div>
     </div>
   </div>
+
+
 </template>
 
 <script>
