@@ -2,6 +2,8 @@
   <div class="home">
     <h1 style="text-align:center">Welcome to Elevate.</h1>
     <h2 style="text-align:center">Please log in or continue as a guest.</h2>
+    <img src="nightclub.jpg" alt="Paris" class="center">
+
     <div class="guest-actions">
       <button class="btn">Continue as Guest</button>
     </div>
@@ -67,7 +69,8 @@ export default {
 }
 
 .searchTerm:focus{
-  color: #4098FF;
+  color: #000000;
+  
 }
 
 .searchButton {
@@ -82,4 +85,22 @@ export default {
   font-size: 20px;
 }
 
+.btn {
+  background-color: #4098FF;
+  margin: 0;
+  position: absolute;
+  left: 45%;
+  border-radius: 6px; 
+  border: none;
+  color: white;
+  padding: 5px 9px;
+  font-size: 14px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 </style>
