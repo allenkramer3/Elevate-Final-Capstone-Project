@@ -37,6 +37,13 @@ export default {
     font-family: "Audiowide", sans-serif;
   }
 
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
    h2 {
     color: white;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
@@ -97,10 +104,5 @@ export default {
   font-size: 14px;
 }
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
+
 </style>
