@@ -63,6 +63,9 @@ export default new Vuex.Store({
     },
     SET_CURRENT_EVENT(state, data) {
       state.events = data;
+    },
+    SET_EVENTS(state, data){
+      state.events = data;
     }
   }
 })
