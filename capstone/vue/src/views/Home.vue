@@ -5,10 +5,10 @@
     <div class="guest-actions">
       <button class="btn">Continue as Guest</button>
     </div>
-    
-    <img src="../assets/Club.png" alt="w3-border w3-padding" class="center">
+    <img src="../assets/Club.png" alt="Club" class="center">
     <div class="wrap">
       <div class="search">
+        <img class="search-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2Ljk2NiA1Ni45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTU1LjE0Niw1MS44ODdMNDEuNTg4LDM3Ljc4NmMzLjQ4Ni00LjE0NCw1LjM5Ni05LjM1OCw1LjM5Ni0xNC43ODZjMC0xMi42ODItMTAuMzE4LTIzLTIzLTIzcy0yMywxMC4zMTgtMjMsMjMgIHMxMC4zMTgsMjMsMjMsMjNjNC43NjEsMCw5LjI5OC0xLjQzNiwxMy4xNzctNC4xNjJsMTMuNjYxLDE0LjIwOGMwLjU3MSwwLjU5MywxLjMzOSwwLjkyLDIuMTYyLDAuOTIgIGMwLjc3OSwwLDEuNTE4LTAuMjk3LDIuMDc5LTAuODM3QzU2LjI1NSw1NC45ODIsNTYuMjkzLDUzLjA4LDU1LjE0Niw1MS44ODd6IE0yMy45ODQsNmM5LjM3NCwwLDE3LDcuNjI2LDE3LDE3cy03LjYyNiwxNy0xNywxNyAgcy0xNy03LjYyNi0xNy0xN1MxNC42MSw2LDIzLjk4NCw2eiIgZmlsbD0iIzAwMDAwMCIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
         <input type="text" class="searchTerm" placeholder="Type an event">
         <button type="submit" class="searchButton">
           <i class="fa fa-search"></i>
@@ -44,6 +44,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  border: 3px solid #4098FF;
 }
 
    h2 {
@@ -67,7 +68,11 @@ export default {
 }
 
 .searchTerm {
-  width: 100%;
+  position:relative;  
+left:13%;
+top:25%;
+width:30%;
+  width: 75%;
   border: 3px solid #4098FF;
   border-right: none;
   padding: 5px;
@@ -76,6 +81,14 @@ export default {
   outline: none;
   color: #9DBFAF;
 }
+
+ .search-icon {
+    position: absolute;
+    top: 10px;
+    left: 635px;
+    width: 14px;
+    
+  }
 
 .searchTerm:focus{
   color: #000000;
@@ -95,13 +108,13 @@ export default {
 }
 
 .btn {
-  background-color: #4098FF;
+  /*background-color: #4098FF; */
   margin: 0;
   position: absolute;
   left: 45%;
   border-radius: 6px; 
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 5px 9px;
   font-size: 14px;
 }
