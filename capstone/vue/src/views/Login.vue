@@ -51,6 +51,7 @@
             type="text"
             placeholder="Username"
             id="email"
+            v-model="user.username"
           >
   
           <label for="password">Password</label>
@@ -58,10 +59,11 @@
             type="password"
             placeholder="Password"
             id="password"
+            v-model="user.password"
           >
   
           <div class="form-actions">
-            <button class="btn">Log In</button>
+            <button class="btn" v-on:click.prevent="login">Log In</button>
             <div class="extras">
               <a>Create an Account</a>
             </div>

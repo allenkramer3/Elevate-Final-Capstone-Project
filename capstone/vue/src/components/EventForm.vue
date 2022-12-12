@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import EventService from "../services/EventService";
+import EventService from "../services/EventService.js";
 
 export default {
     name: 'event-form',
@@ -37,7 +37,7 @@ export default {
     methods: {
         createEvent() {
             const newEvent = {
-                eventID: Number(this.$route.params.eventID),
+                // eventID: Number(this.$route.params.eventID),
                 eventName: this.event.eventName,
                 hostName: this.event.hostName
             };
@@ -48,7 +48,8 @@ export default {
                     .addEvent(newEvent)
                     .then(response => {
                         if (response.status === 201) {
-                            this.$router.push(`/events/${newEvent.eventID}`);
+                            // this.$router.push(`/events/${newEvent.eventID}`);
+                            this.$router.push(`/events`);
                         }
                     })
                     .catch(error => {
@@ -70,7 +71,7 @@ export default {
             }
         },
         cancelEvent() {
-            this.$router.push(`/events/${this.$route.params.eventID}`);
+            this.$router.push(`/dj`);
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
@@ -84,6 +85,9 @@ export default {
                 this.errorMsg =
                 "Error " + verb + " event. Request could not be created.";
             }
+        },
+        addNewEvent() {
+            this.$store.commit("ADD_EVENT", this.event)
         }
     },
     created() {
