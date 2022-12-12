@@ -11,8 +11,9 @@ public interface SpotifyService {
     String pausePlayback();
     String skipToNext();
     String searchForItem(String userSearch);
-    String createPlaylist(String name);
+    String createPlaylist();
     String getUsersPlaylist();
+    String addItemsToPlaylist();
 
 
 
