@@ -146,7 +146,7 @@ public class RestSpotifyService implements SpotifyService {
     }
 
     @Override
-    public String createPlaylist(String name) {
+    public String createPlaylist() {
         String spotifyUrl = BASE_SPOTIFY_URL + "users/arkramer702/playlists";
 
         HttpHeaders headers = new HttpHeaders();
@@ -157,7 +157,7 @@ public class RestSpotifyService implements SpotifyService {
 
         HttpEntity entity = new HttpEntity(headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class, name);
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class);
 
         return response.getBody();
 

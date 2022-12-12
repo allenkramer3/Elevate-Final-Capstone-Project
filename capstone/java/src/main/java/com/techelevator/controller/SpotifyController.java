@@ -60,8 +60,8 @@ public class SpotifyController {
     }
 
     @RequestMapping(path = "/create/playlist", method = RequestMethod.POST)
-    public String createPlaylist(@RequestBody String name) throws JsonProcessingException {
-        return spotifyService.createPlaylist(name);
+    public String createPlaylist() throws JsonProcessingException {
+        return spotifyService.createPlaylist();
     }
 
     @RequestMapping(path = "/user/playlist", method = RequestMethod.GET)
