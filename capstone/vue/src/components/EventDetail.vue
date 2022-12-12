@@ -83,20 +83,34 @@ export default {
 
 <style>
 .event-card {
-    background-color: violet;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(144, 0, 190, .2);
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    margin: 5px 5px 5px 5px;
 }
 .btn.edit-event {
-  color: #fff;
   text-decoration: none;
+  color: white;
   background-color: #508ca8;
-  border-color: #508ca8;
+  border: solid black;
+  border-width: 1px;
+  padding: 5px 5px 5px 5px;
   margin-bottom: 10px;
+  margin-left: 20px;
+  border-radius: 3px;
+  font-size: 15px;
 }
 .btn.delete-event {
   color: #fff;
   background-color: #ef031a;
-  border-color: #ef031a;
+  border: solid black;
+  border-width: 1px;
   margin-bottom: 10px;
+  margin-left: 20px;
+  padding: 5px 5px 5px 5px;
+  border-radius: 3px;
+  font-size: 15px;
 }
 
 

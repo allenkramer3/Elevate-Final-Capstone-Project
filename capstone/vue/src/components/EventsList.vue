@@ -49,6 +49,9 @@ export default {
 </script>
 
 <style scoped>
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
 div {
     background-color: white;
 }
