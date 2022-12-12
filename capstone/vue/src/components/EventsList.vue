@@ -14,7 +14,14 @@
 
             <h2>List of Events:</h2>
             <div class="events-list">
-                <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" />
+                <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" >
+
+                <router-link >
+
+
+                </router-link>
+
+                </event-detail>
 
             </div>
   </div>
@@ -22,6 +29,7 @@
 
 <script>
 import EventService from '../services/EventService';
+// import EventService from '../services/EventService';
 import EventDetail from './EventDetail.vue';
 
 export default {
@@ -34,15 +42,30 @@ export default {
     //         isLoading: true
     //     };
     // },
-    created() {
-        EventService.getEvents().then(response => {
-            this.events = response.data;
-            this.isLoading = false;
-        });
+    // created() {
+    //     EventService.getEvents().then(response => {
+    //         this.events = response.data;
+    //         this.isLoading = false;
+    //     });
+    // },
+    data() {
+        return {
+
+        }
+    },
+    created(){
+        this.retrieveEvents();
     },
     computed: {
         events(){
             return this.$store.state.events;
+        }
+    },
+    methods: {
+        retrieveEvents(){
+            EventService.getEvents().then(response => {
+                this.$store.commit("SET_EVENTS", response.data);
+            });
         }
     }
 };
