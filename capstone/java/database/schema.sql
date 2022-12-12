@@ -38,10 +38,10 @@ CREATE TABLE dj (
 );
 
 CREATE TABLE playlist (
-    playlist_id SERIAL,
+    playlist_uri varchar(50) NOT NULL UNIQUE,
     dj_id int NOT NULL,
     playlist_name varchar(50),
-    CONSTRAINT PK_playlist PRIMARY KEY (playlist_id),
+    CONSTRAINT PK_playlist_uri PRIMARY KEY (playlist_uri),
     CONSTRAINT FK_dj_id FOREIGN KEY (dj_id) REFERENCES dj (dj_id)
 );
 
@@ -77,32 +77,34 @@ CREATE TABLE genre (
 );
 
 CREATE TABLE song (
-    song_id SERIAL,
+    track_uri varchar(100) NOT NULL UNIQUE,
     song_name varchar(100) NOT NULL,
     artist_name varchar(50) NOT NULL,
     genre_id int NOT NULL,
-    CONSTRAINT PK_song PRIMARY KEY (song_id),
+    CONSTRAINT PK_track_uri PRIMARY KEY (track_uri),
     CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES genre (genre_id)
 );
 
 CREATE TABLE playlist_song (
-    playlist_id int NOT NULL UNIQUE,
-    song_id int NOT NULL UNIQUE,
-    CONSTRAINT FK_playlist_id FOREIGN KEY (playlist_id) REFERENCES playlist (playlist_id),
-    CONSTRAINT FK_song_id FOREIGN KEY (song_id) REFERENCES song (song_id)
+    playlist_uri varchar(50) NOT NULL,
+    track_uri varchar(100) NOT NULL,
+    CONSTRAINT FK_playlist_uri FOREIGN KEY (playlist_uri) REFERENCES playlist (playlist_uri),
+    CONSTRAINT FK_track_uri FOREIGN KEY (track_uri) REFERENCES song (track_uri)
 );
 
 CREATE TABLE host_playlist (
     host_id int NOT NULL,
-    playlist_id int NOT NULL,
+    playlist_uri varchar(50) NOT NULL,
     CONSTRAINT FK_host_id FOREIGN KEY (host_id) REFERENCES host (host_id),
-    CONSTRAINT FK_playlist_id FOREIGN KEY (playlist_id) REFERENCES playlist (playlist_id)
+    CONSTRAINT FK_playlist_uri FOREIGN KEY (playlist_uri) REFERENCES playlist (playlist_uri)
 );
 
 DROP USER IF EXISTS final_capstone_owner;
 DROP USER IF EXISTS final_capstone_appuser;
 
 CREATE USER final_capstone_owner
+WITH PASSWORD 'finalcapstone';
+CREATE USER final_capstone_appuser
 WITH PASSWORD 'finalcapstone';
 
 GRANT ALL
@@ -113,8 +115,6 @@ GRANT ALL
 ON ALL SEQUENCES IN SCHEMA public
 TO final_capstone_owner;
 
-CREATE USER final_capstone_appuser
-WITH PASSWORD 'finalcapstone';
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 ON ALL TABLES IN SCHEMA public

@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class Playlist {
 
-    private int playlistID;
+    private String playlistUri;
     private String playlistName;
     private int djID;
 
-    public int getPlaylistID() {
-        return playlistID;
+    public String getPlaylistUri() {
+        return playlistUri;
     }
 
-    public void setPlaylistID(int playlistID) {
-        this.playlistID = playlistID;
+    public void setPlaylistUri(String playlistUri) {
+        this.playlistUri = playlistUri;
     }
 
     public String getPlaylistName() {
@@ -37,18 +37,18 @@ public class Playlist {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Playlist playlist = (Playlist) o;
-        return playlistID == playlist.playlistID && djID == playlist.djID && Objects.equals(playlistName, playlist.playlistName);
+        return playlistUri == playlist.playlistUri && djID == playlist.djID && Objects.equals(playlistName, playlist.playlistName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(playlistID, playlistName, djID);
+        return Objects.hash(playlistUri, playlistName, djID);
     }
 
     @Override
     public String toString() {
         return "Playlist{" +
-                "playlistID=" + playlistID +
+                "playlistID=" + playlistUri +
                 ", playlistName='" + playlistName + '\'' +
                 ", djID=" + djID +
                 '}';
