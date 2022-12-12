@@ -22,7 +22,7 @@ public class JdbcEventDao implements EventDao {
     public void createNewEvent(Event newEvent, int dJID) {
         String sql = "INSERT INTO event (host_id, dj_id, event_name, event_information, genres, event_picture) " +
                      "VALUES (?, ?, ?, ?, ?, ?) ";
-        jdbcTemplate.update(sql,  newEvent.getHostID(), dJID, newEvent.getEventName(), "", "", "");
+        jdbcTemplate.update(sql,  /* newEvent.getHostID(), */ 2001, dJID, newEvent.getEventName(), "", "", "");
     }
 
     @Override

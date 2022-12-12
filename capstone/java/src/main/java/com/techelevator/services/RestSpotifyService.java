@@ -1,5 +1,8 @@
 package com.techelevator.services;
 
+
+import com.techelevator.spotify.Album;
+
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
@@ -7,6 +10,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 import java.util.Base64;
+
 
 @Component
 public class RestSpotifyService implements SpotifyService {
@@ -16,8 +20,8 @@ public class RestSpotifyService implements SpotifyService {
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
     private String callBackUrl = "http://localhost:8080/dj/authorize";
-    private String AUTH_CODE = "AQBHnOPnqUNGDb9nLC_6hFpydGK0IUTcVlabfm3FD_z4n1Nb-ghrK7ROVHUOzDqIuGmTsrx3wtMOAuuYQbRHw1M7LRXA7PDF6hQ5DQ35VhdfnMFzk341bHRkdsVPeEUi7yMFe8eS2e2fOBHSNNFFed-OszjpUmLk267ZNZffdAGSe637pzFM0-91l39Jf5GdlWIRpxtSBIu0S0MLJscxTKiw-pbcuzT4XPujYU2jc0tmOVve3Sb5pA3bNZ4fDlgEgSUkibF1KXz5nUeviEllzXX98HP63LNWHlAnDWz_es5i-KhDDfTF9wXuhBYiQ7yX-Uotq6WiOg";
-    private String ACCESS_TOKEN = "BQCbt83J_sb0IdoRMBVquOGsiM01tAWi1GsBYjXhsLYpBdOrHV5MXXJwznY-ZEDps6o9HnGLXaitOFOzzC-GnzPI3Lc3diVYQHnI8sIynTtqXv6OhIXsxBk-yCLaQZ66hehve7S1MGzWJsezUCkVWEgKNQsEuWBpER4ZCDPvR9pDvuQjRJREktAzFJk17ux8OYoToGcrvX2S";
+    private String AUTH_CODE = "AQDIc7zC1Fyd-Oc2L-DWL6NZkMC1i6IR7Z3b7MHoOdxQLtvlG5Mr8GpR6bb-u5L7evwZaBP42DlekphQay1MlF-LmNtLMtU5uctBDohG-rAz3sx_5pAm4chdBC9VUGrJYwn2Hr9TNPKjkWJLCgh762CvXdYmGR9aXV3x3_YJfAu_pEZmlKpaBm46VbcTbjTkQ71xd29SY7tOeI5qO4FOnXqOAxWTRIz5JCbrqCWLXQUwzCtxNdN1EB2KiNqIeN-mOzYi7qu9mFD-wtt6vg8_Ry-cejYvTEeuveTbmhBeW8phoELrOj7C4P-gCGVV9yBbctZPV76Blw0ncBas8UTjiqZ1uovXF298ycpQxVy5JMV4LE5mGvIIpGOPbFSqyPR2TYdCzqFcGGLM_LHuXLD0QTmzW2fVOtKh5HzNQIeDdSMvirsn2UGJC3EHQv6npmN_isBP6OPBCbHDie7a4T1PAUmSkI1BO1jtrRoqnhB3dflQUON-5xgnHmF6PlM-5xDbIbZcMhosri08z2RlEXoUrcTuYPXtsNCYpndyWhIvibOo5w9A4gN70ftT-YqbzdGOsMia3tzIy_VbVc7E";
+    private String ACCESS_TOKEN = "BQBaKci7n6qwCXShWqLrdPclxT6VYjhiAKM2f8PE9r_kOJaZTU3sHPZ1mwLpXPZbRobZ6OyBtOZ4mqn9b62QPQ8Mls8qBFL63kemRVpLRQMpfP2h_CSlGpMngbyCqyKonszBfkD3eOEXnVvIe9L9tXI0MSOBBiixrGYgMh20LqTUYBireKGx-UHHuzw-A-TZX7JmQf97LEtbeNlhRqdLLOgHFSQzrKF6gUdqAO1mNLF6OVNUdqHxHXPL1m2aOArMEa_QKx8k29XxGSTCKg";
     private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
     private final String BASE_SPOTIFY_URL = "https://api.spotify.com/v1/";
     //private final String SCOPE = "user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-modify-public user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read";
@@ -30,6 +34,7 @@ public class RestSpotifyService implements SpotifyService {
         bodyData.add("grant_type", "authorization_code");
         bodyData.add("redirect_uri", "http://localhost:8080/dj/authorize");
         bodyData.add("code", AUTH_CODE);
+       // bodyData.add("scope", SCOPE);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -82,7 +87,10 @@ public class RestSpotifyService implements SpotifyService {
         headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
         headers.set("Content-Type", "application/x-www-form-urlencoded");
 
-        String jsonData = "{\"context_uri\":\"spotify:album:5ht7ItJgpBH7W6vJ5BqpPr\",\"offset\":{\"position\":\"5\"},\"position_ms\":\"0\"}";
+        Album album = new Album();
+
+        String jsonData = "{\"context_uri\":\"spotify:playlist:1LRuw3nPnVvq2YyFDIeRXH\",\"offset\":{\"position\":\"0\"},\"position_ms\":\"0\"}";
+        //String jsonData = "{\"context_uri\":" + album.getAlbumUri() + ",\"offset\":{\"position\":\"5\"},\"position_ms\":\"0\"}";
 
         HttpEntity<Object> entity = new HttpEntity<>(jsonData, headers);
 
@@ -153,9 +161,14 @@ public class RestSpotifyService implements SpotifyService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
         headers.set("Content-Type", "application/x-www-form-urlencoded");
-       // headers.set("Scope", "Scope " + SCOPE);
 
-        HttpEntity entity = new HttpEntity(headers);
+        //String jsonData = "{\"name\":\"TechElevator111\"}";
+        String playlistName = "";
+
+        String jsonData = "{\"name\":\"" + playlistName + "\"}";
+
+
+        HttpEntity entity = new HttpEntity(jsonData, headers);
 
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class);
 
@@ -176,6 +189,25 @@ public class RestSpotifyService implements SpotifyService {
         HttpEntity entity = new HttpEntity(headers);
 
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.GET,entity, String.class);
+
+        return response.getBody();
+
+    }
+
+    @Override
+    public String addItemsToPlaylist() {
+        String spotifyUrl = BASE_SPOTIFY_URL + "playlists/4kAdXFkjXqKMTDL5KqHRcX/tracks";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
+        headers.set("Content-Type", "application/x-www-form-urlencoded");
+
+        String jsonData = "{\"uris\":[\"spotify:track:2ZL7WZcjuYKi1KUDtp4kCC\"]}";
+
+        HttpEntity entity = new HttpEntity(jsonData,headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class);
 
         return response.getBody();
 

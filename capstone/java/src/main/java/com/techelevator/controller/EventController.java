@@ -18,6 +18,7 @@ import java.net.URL;
 import java.security.Principal;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
 @RequestMapping("/event")

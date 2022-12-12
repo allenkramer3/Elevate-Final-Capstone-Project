@@ -13,6 +13,7 @@ public interface SpotifyService {
     String searchForItem(String userSearch);
     String createPlaylist();
     String getUsersPlaylist();
+    String addItemsToPlaylist();
 
 
 

@@ -69,4 +69,9 @@ public class SpotifyController {
         return spotifyService.getUsersPlaylist();
     }
 
+    @RequestMapping(path = "/add/playlist", method = RequestMethod.POST)
+    public String addItemsToPlaylist() throws JsonProcessingException {
+        return spotifyService.addItemsToPlaylist();
+    }
+
 }
