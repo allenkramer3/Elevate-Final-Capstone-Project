@@ -12,8 +12,12 @@ export default {
         return axios.put(`/events/${event.id}`, event)
     },
 
+    getEvents(){
+        return axios.get('/event/list')
+    },
+
     getEvent(eventID) {
-        return axios.get(`/events/${eventID}`)
+        return axios.get(`/event/${eventID}`)
     },
 
     deleteEvent(eventID) {

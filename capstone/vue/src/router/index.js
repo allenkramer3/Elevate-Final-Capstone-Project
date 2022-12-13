@@ -10,6 +10,7 @@ import AddEvent from '../views/AddEvent.vue';
 import EditEvent from '../views/EditEvent.vue';
 import store from '../store/index';
 import Authorize from '../views/Authorize';
+import EventDetail from '../components/EventDetail.vue'
 
 
 Vue.use(Router)
@@ -98,6 +99,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: '/events/:eventId',
+      name: 'event',
+      component: EventDetail,
+      meta: {
+        requiresAuth: false
+      }
+
     }
   ]
 })

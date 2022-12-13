@@ -47,6 +47,7 @@ body{
 .header {
   grid-area: header;
   background: black;
+  border-radius: 5px;
 }
 
 .main-body {
@@ -60,7 +61,7 @@ body{
 .app {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 200px 1fr 50px;
+  grid-template-rows: 225px 1fr 50px;
   grid-template-areas:
     "header header header"
     "main-body main-body main-body"
@@ -70,12 +71,14 @@ body{
 }
 
 .logo {
-  margin-bottom: 0px;
+  margin-bottom: -80px;
   height: 200px;
   width: auto;
+  border-radius: 5px;
 }
 
 .btn {
+  display: inline-block;
   padding: 0.6em 2em;
   border: none;
   margin: 30px;
