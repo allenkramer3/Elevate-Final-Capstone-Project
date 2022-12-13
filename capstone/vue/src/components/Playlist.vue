@@ -1,11 +1,12 @@
 <template>
   <div>
-      <h3>Playlist:</h3>
-      <p>song 1</p>
-      <p>song 2</p>
-      <p>song 3</p>
-      <p>song 4</p>
-      <p v-for="song in songs" v-bind:key="song.song" >{{songs.song}}</p>
+      <h2>Playlist:</h2>
+      <div v-for="song in playlist" v-bind:key="song.songName" >
+        <h3>{{song.songName}}</h3>
+        <p>By: {{song.artist}}</p>
+
+          
+        </div>
   </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
     },
     methods: {
         retrieveSongs(){
-            PlaylistService.retrieveSongs(this.$route.params.eventID).then(response => {
+            PlaylistService.getSongs(this.$route.params.eventID).then(response => {
                 this.$store.commit("SET_CURRENT_PLAYLIST", response.data);
             })
         }
