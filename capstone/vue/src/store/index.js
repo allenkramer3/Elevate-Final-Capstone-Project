@@ -49,9 +49,16 @@ export default new Vuex.Store({
         genres: "",
         eventPicture: ""
     },
-    playlist: {
-      songs: ['take care', 'Tuscan Leather']
-    }
+    playlist: [
+      {
+        songName: "Take Care",
+        artist: "Drake"
+      },
+      {
+        songName: "Tuscan Leather",
+        artist: "Drake"
+      }
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
