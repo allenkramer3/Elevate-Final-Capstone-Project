@@ -6,7 +6,9 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class JdbcPlaylistDao implements PlaylistDao{
@@ -18,7 +20,7 @@ public class JdbcPlaylistDao implements PlaylistDao{
     }
 
     @Override
-    public List<String> listDJPlaylists(int djID) {
+    public List<Map<String, String>> listDJPlaylists(int djID) {
         List<String> playlistNames = new ArrayList<>();
         String sql = "SELECT * FROM playlist WHERE dj_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djID);
@@ -26,7 +28,22 @@ public class JdbcPlaylistDao implements PlaylistDao{
             Playlist playlist = mapRowToPlaylist(results);
             playlistNames.add(playlist.getPlaylistName());
         }
-        return playlistNames;
+
+        List <Map<String, String>> json =new ArrayList<>();
+
+        for(String playlistName: playlistNames){
+            String sql2 = "SELECT playlist_uri FROM playlist WHERE playlist_name = ?;";
+            String uri = jdbcTemplate.queryForObject(sql2, String.class, playlistName);
+            Map<String, String> playlistData = new HashMap<>();
+
+            playlistData.put("playlistURI", uri);
+            playlistData.put("playlistName", playlistName);
+
+            json.add(playlistData);
+
+        }
+
+        return json;
     }
 
     private Playlist mapRowToPlaylist(SqlRowSet rowSet){

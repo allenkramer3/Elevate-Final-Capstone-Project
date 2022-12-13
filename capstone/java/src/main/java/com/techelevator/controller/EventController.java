@@ -38,8 +38,8 @@ public class EventController {
 
     @PreAuthorize("hasRole('DJ')")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/create/{hostName}", method = RequestMethod.POST)
-    public void createNewEvent(@RequestBody Event event, @PathVariable String hostName, Principal principal) {
+    @RequestMapping(path = "/create", method = RequestMethod.POST)
+    public void createNewEvent(@RequestBody Event event, Principal principal) {
         int userID = getLoggedInUserID(principal);
         int DjID = djDao.findDjIDByUserID(userID);
         eventDao.createNewEvent(event, DjID);

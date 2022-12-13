@@ -59,6 +59,12 @@ export default new Vuex.Store({
         artist: "Drake"
       }
     ],
+    playlists:[
+      {
+        playlistURI: 0,
+        playlistName: "mock pop playlist"
+      }
+    ],
     hosts: [
       {
         hostName: "testHost",
@@ -97,6 +103,9 @@ export default new Vuex.Store({
     },
     SET_HOSTS(state, data){
       state.hosts = data;
+    },
+    SET_PLAYLISTS(state, data){
+      state.playlists = data;
     }
   }
 })

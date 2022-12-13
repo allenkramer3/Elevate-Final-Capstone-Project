@@ -26,6 +26,10 @@ export default {
 
     getHosts(){
         return axios.get('/dj/hosts')
+    },
+
+    getPlaylists(){
+        return axios.get('/playlist/list')
     }
 
 }
