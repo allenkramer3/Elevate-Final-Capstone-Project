@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.Event;
+import com.techelevator.model.Playlist;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -53,6 +54,18 @@ public class JdbcEventDao implements EventDao {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<String> getDJEvents(int djID) {
+        List<String> eventNames = new ArrayList<>();
+        String sql = "SELECT * FROM event WHERE dj_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djID);
+        while (results.next()){
+            Event events = mapRowToEvent(results);
+            eventNames.add(events.getEventName());
+        }
+        return eventNames;
     }
 
 

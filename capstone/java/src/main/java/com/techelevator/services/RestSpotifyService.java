@@ -1,6 +1,8 @@
 package com.techelevator.services;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techelevator.spotify.Album;
 
 import com.techelevator.spotify.Tracks;
@@ -21,8 +23,8 @@ public class RestSpotifyService implements SpotifyService {
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
     private String callBackUrl = "http://localhost:8080/dj/authorize";
-    private String AUTH_CODE = "AQAcgrGPCleE9xywarlosuQ7GBCmcT-7zkqHh8bk1q-50WN6tf9W-cMIcqrdazsFXnMmmTOHm1ltw8KsJYc8tYvkn-KaPlyjonbhWoS5No6KxWiGZPBcpq4C2S2esUgKKCY4n6unSGs5GOzL16vf95eCLwMLcGP1V9LZw-PAJySnfp6wrGzzoD2d6l5zUZBLquRLNb3eWegYxo1U00BHtV_BMmth26vC_0UCPlcfeo3oYpGywuZ1IPZiGryp8xkFhvwMqhiCGaCNM1lb8dOyVV4dOh2ImdxcgwJyEWDxVzRcQzGkfWGEMq9ukYUhWs3Rpck7SOdOq_7Z3Dpkuuy0olVVFlWE7nSRrhFNhrhN7Zh_oONIivVHVpEy_3-GqLnTXgDtaCSGsDOyk-kJP70CxaOKK_J_pqVBEa5Kc7pts201fIuYxyH3CUo47CTme0OZOCv4GM2G1yu3B9lYs-poLvIVNYeK4DJ0dApGeNbvEIMJVsg8ZBj9E2ernnQBrV7nPowfQhZWOjmFgAuKr7qeD81K-jpkFmbzYwf5rwUTja1-BgmaMlZDaMFeTi7k-ktTqlfXDWU36Qbiborj";
-    private String ACCESS_TOKEN = "BQDqebSH4FWvfjiMrQytqalHzcU1RN9Q7vu3IBsefah3AdcB9ls1WgapMQZyTCqd9C-2VaimlpBJZrqtz4wDYwXv_T2MczCU5WtHLYPyVk0olLEDknQWjijJIQsgKi7qiqhUuyuEkCn4m4-nap_7yAZ2tsR_8F94dbCoXwg2eEunSobA4Gs7aQ_FKtAbpaDtAv8fDo6PBl6gaJDo8u8yNLkfQVFwIAdl719lSzhIUaocltm3vFq4M_sVn2lr3lO-Y3aGxunDDb8bsuCCIA";
+    private String AUTH_CODE = "AQAhwwAVe3ThUSfx5NASkZXhuvpSZUw82PV9VkmOXjGBTy20QOBT_qNb6pd_8WQ24Hnp_dWBV45wvPDecHX2h2C2Ctkkbgfz6J_qBiy8Y9V07YAAOpyX6iltgtxCrt7xCtSwSaJm7sxUvKxR-bt1_id5GA6uQ8jxzaHXZ5-DEu8kvHReDojttA4GdH9_MbdrkawUgshHq_K4vWj9wTXP2aQCMgA5JtD-5T6GlVC8f9K_ooNbtzBd8W0bq6FBbHMUgSkym7o9KlU0_jFYNnYLuVKhvfc8b8FYOvtuwYwAE7t7cTKn-B6NXmT8QgCggc_N53soZhIvWTRBjGmClzbflR2x-RrR3-n7hCs9B28smRKLy_t_fLDQpqR4ZmyI26pzVl_mwhtMMDP6TBeXWi8BtDYzRG0n6etY7cDrOL_hlA5Ex-4OF_N5RiFJatIp8ZyoZ4UVnTiZbhv0MEELz5PNL1WGi9H_ezdtvFtpWesc5wddOGzpyw56TDlcmHj2nPzEj6JBa2dyiJVuwjorYWxw1ipZRfh6RxtoAchE57VW5sEpvYSKw0PV9oqVANSOKp8pccIqhcwd8dPt0KA0";
+    private String ACCESS_TOKEN = "BQB3j4iT1MAu3yrso2D963QpHdRnYYEoPFMNDoUpuLOCC946fl2Z9K8NNhbDwqi4F2OuCjCjPdayZq6hz3RnGEq1DE-S02IXMWfRx9acPhQx3C4bTuZ-eFyC7BVLgWtZlOCkADQfGCGfp2MkWMzjHG7JnbMWcjvoL-eclJ9j7aSVGv7kmGHv5FBx3B3eRveP3v8yYTHnu4hD3rxlsiHss7V2N549sOlPrfGd39FgiFHlOUc8ZIkj6v3hTfs-1R32eSCX8J-Tw4xRKMSNLg";
     private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
     private final String BASE_SPOTIFY_URL = "https://api.spotify.com/v1/";
     //private final String SCOPE = "user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-modify-public user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read";
@@ -149,7 +151,14 @@ public class RestSpotifyService implements SpotifyService {
 
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.GET,entity, String.class, userSearch);
 
-        return response.getBody();
+        try {
+            Tracks tracks = new ObjectMapper().readValue(response.getBody().toString(), Tracks.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+
+        return response.getBody().toString();
 
     }
 

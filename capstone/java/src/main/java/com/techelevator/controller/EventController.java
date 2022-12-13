@@ -66,6 +66,12 @@ public class EventController {
     }
 
     @PreAuthorize("hasRole('DJ')")
+    @RequestMapping(path="/dj/{djID}", method = RequestMethod.GET)
+    public List<String> getDJsEvents(@PathVariable int djID){
+        return eventDao.getDJEvents(djID);
+    }
+
+    @PreAuthorize("hasRole('DJ')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path= "/delete/{eventID}", method = RequestMethod.DELETE)
     public void deleteEvent(@PathVariable int eventID){

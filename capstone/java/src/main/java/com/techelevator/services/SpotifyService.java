@@ -1,6 +1,7 @@
 package com.techelevator.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.techelevator.spotify.Tracks;
 
 public interface SpotifyService {
 
