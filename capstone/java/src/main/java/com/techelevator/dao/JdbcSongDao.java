@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.SearchResponseDTO;
 import com.techelevator.model.Song;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -57,6 +58,14 @@ public class JdbcSongDao implements SongDao{
         }
         return songs;
     }
+
+    @Override
+    public void createSong(SearchResponseDTO searchResponseDTO) {
+        String sql = "INSERT INTO song (track_uri, song_name, artist_name, genre_id) " +
+                    "VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, searchResponseDTO.getUri(), searchResponseDTO.getName(), searchResponseDTO.getArtists(), 3);
+    }
+
 
     private Song mapRowToSong(SqlRowSet rowSet){
         Song song = new Song();
