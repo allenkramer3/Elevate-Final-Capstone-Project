@@ -73,14 +73,14 @@ export default new Vuex.Store({
     ],
     songs: [
       {
-        trackUri: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
-        songName: "Spin Bout U",
-        artistName: "Drake",
+        name: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
+        uri: "Spin Bout U",
+        artists: "Drake",
       },
       {
-        trackUri: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
-        songName: "The Spins",
-        artistName: "Drake",
+        name: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
+        uri: "The Spins",
+        artists: "Drake",
       }
     ]
   },

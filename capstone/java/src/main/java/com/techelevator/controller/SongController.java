@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.SongDao;
+import com.techelevator.model.SearchResponseDTO;
 import com.techelevator.model.Song;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,11 @@ public class SongController {
     @RequestMapping(path="/playlist/{eventID}", method = RequestMethod.GET)
     public List<Map<String, String>> listOfPlaylistSongs(@PathVariable int eventID){
         return songDao.listPlaylistSongs(eventID);
+    }
+
+    @RequestMapping(path="/add", method = RequestMethod.POST)
+    public void createSongs(SearchResponseDTO searchResponseDTO){
+        songDao.createSong(searchResponseDTO);
     }
 
 }

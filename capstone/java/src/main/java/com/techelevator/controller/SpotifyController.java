@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
+@CrossOrigin
 @RestController
 public class SpotifyController {
 
@@ -54,8 +55,8 @@ public class SpotifyController {
         return spotifyService.skipToNext();
     }
 
-    @RequestMapping(path = "/search/tracks", method = RequestMethod.GET)
-    public String searchForItem(@RequestBody String userSearch) throws JsonProcessingException {
+    @RequestMapping(path = "/search/tracks/{userSearch}", method = RequestMethod.GET)
+    public String searchForItem(@PathVariable String userSearch) throws JsonProcessingException {
         return spotifyService.searchForItem(userSearch);
     }
 
