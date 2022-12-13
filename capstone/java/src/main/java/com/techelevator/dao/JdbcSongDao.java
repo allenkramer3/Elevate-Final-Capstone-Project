@@ -7,7 +7,9 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class JdbcSongDao implements SongDao{
@@ -45,14 +47,15 @@ public class JdbcSongDao implements SongDao{
     }
 
     @Override
-    public List<String> listPlaylistSongs(String playlistName) {
-        List<String> songs = new ArrayList<>();
+    public Map<String, String> listPlaylistSongs(int eventID) {
+        Map<String, String> songs = new HashMap<>();
         String sql = "SELECT * FROM song AS s JOIN playlist_song AS ps ON s.track_uri = ps.track_uri " +
-                "JOIN playlist AS p ON ps.playlist_uri = p.playlist_uri WHERE playlist_name = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, playlistName);
+                "JOIN playlist AS p ON ps.playlist_uri = p.playlist_uri " +
+                "JOIN event AS e ON p.playlist_uri = e.playlist_uri WHERE event_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventID);
         while (results.next()){
             Song song = mapRowToSong(results);
-            songs.add(song.getSongName());
+            songs.put(song.getSongName(), song.getArtistName());
         }
         return songs;
     }

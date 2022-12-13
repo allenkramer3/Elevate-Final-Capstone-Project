@@ -20,10 +20,14 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public void createNewEvent(Event newEvent, int dJID) {
-        String sql = "INSERT INTO event (host_id, dj_id, event_name, event_information, genres, event_picture) " +
-                     "VALUES (?, ?, ?, ?, ?, ?) ";
-        jdbcTemplate.update(sql,  /* newEvent.getHostID(), */ 2001, dJID, newEvent.getEventName(), "", "", "");
+    public void createNewEvent(Event newEvent, String hostName, int dJID) {
+//        String sql = "SELECT host_id FROM host AS h " +
+//                "JOIN users AS u ON h.user_id = u.user_id " +
+//                "WHERE username = ?;";
+//        int hostID = jdbcTemplate.queryForObject(sql, Integer.class, hostName);
+        String sql = "INSERT INTO event (host_id, dj_id, playlist_uri, event_name, event_information, genres, event_picture) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?) ";
+        jdbcTemplate.update(sql,  newEvent.getHostID(), dJID, newEvent.getPlaylistUri(), newEvent.getEventName(), "", "", "");
     }
 
     @Override
@@ -81,6 +85,7 @@ public class JdbcEventDao implements EventDao {
         event.setEventID(rowSet.getInt("event_id"));
         event.setHostID(rowSet.getInt("host_id"));
         event.setDjID(rowSet.getInt("dj_id"));
+        event.setPlaylistUri(rowSet.getString("playlist_uri"));
         event.setEventName(rowSet.getString("event_name"));
         event.setEventInformation(rowSet.getString("event_information"));
         event.setGenres(rowSet.getString("genres"));

@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/song")
@@ -29,9 +30,9 @@ public class SongController {
         return songDao.getTrackUri(songName);
     }
 
-    @RequestMapping(path="/playlist/{playlistName}", method = RequestMethod.GET)
-    public List<String> listOfPlaylistSongs(@PathVariable String playlistName){
-        return songDao.listPlaylistSongs(playlistName);
+    @RequestMapping(path="/playlist/{eventID}", method = RequestMethod.GET)
+    public Map<String, String> listOfPlaylistSongs(@PathVariable int eventID){
+        return songDao.listPlaylistSongs(eventID);
     }
 
 

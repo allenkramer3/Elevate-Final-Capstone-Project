@@ -7,6 +7,10 @@ public class Event {
     private int eventID;
     private int djID;
     private int hostID;
+    private String playlistUri;
+
+
+
     private String eventName;
     private String eventInformation;
     private String genres;
@@ -31,6 +35,13 @@ public class Event {
         return hostID;
     }
 
+    public String getPlaylistUri() {
+        return playlistUri;
+    }
+
+    public void setPlaylistUri(String playlistUri) {
+        this.playlistUri = playlistUri;
+    }
     public void setHostID(int hostID) {
         this.hostID = hostID;
     }
