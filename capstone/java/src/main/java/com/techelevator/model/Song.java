@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class Song {
 
-    private int songID;
+    private String trackUri;
     private String songName;
-    private int artistID;
+    private String artistName;
     private int genreID;
 
-    public int getSongID() {
-        return songID;
+    public String getTrackUri() {
+        return trackUri;
     }
 
-    public void setSongID(int songID) {
-        this.songID = songID;
+    public void setTrackUri(String trackUri) {
+        this.trackUri = trackUri;
     }
 
     public String getSongName() {
@@ -25,12 +25,12 @@ public class Song {
         this.songName = songName;
     }
 
-    public int getArtistID() {
-        return artistID;
+    public String getArtistName() {
+        return artistName;
     }
 
-    public void setArtistID(int artistID) {
-        this.artistID = artistID;
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
     }
 
     public int getGenreID() {
@@ -46,20 +46,20 @@ public class Song {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Song song = (Song) o;
-        return songID == song.songID && artistID == song.artistID && genreID == song.genreID && Objects.equals(songName, song.songName);
+        return genreID == song.genreID && Objects.equals(trackUri, song.trackUri) && Objects.equals(songName, song.songName) && Objects.equals(artistName, song.artistName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(songID, songName, artistID, genreID);
+        return Objects.hash(trackUri, songName, artistName, genreID);
     }
 
     @Override
     public String toString() {
         return "Song{" +
-                "songID=" + songID +
+                "trackUri='" + trackUri + '\'' +
                 ", songName='" + songName + '\'' +
-                ", artistID=" + artistID +
+                ", artistName='" + artistName + '\'' +
                 ", genreID=" + genreID +
                 '}';
     }

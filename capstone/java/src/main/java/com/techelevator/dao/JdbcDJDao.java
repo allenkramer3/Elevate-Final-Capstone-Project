@@ -47,6 +47,9 @@ public class JdbcDJDao implements DJDao {
     }
 
 
+
+
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
