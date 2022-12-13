@@ -137,34 +137,18 @@ export default {
        justify-content: center;
        /* margin: 4rem auto; */
       }
-      .logo {
-       height: 200px;
-       width: auto;
-       padding-bottom: 10px;
-       filter: grayscale(100%);
-       padding-top: 20px;
-      }
-      #content {
-       background-color: #496bcb;
-       color: #fff;
-      }
       #login {
        padding-top: 0px;
-      }
-      #login {
-       background-color: #fcfcfc;
-      }
-      #content,
-      #login {
+       background-color: rgba(144, 0, 190, .2);
+       border-radius: 5px;
        padding: 5vh 1rem 1rem 1rem;
       }
-      #content h1,
       #login h1 {
        margin-bottom: 2rem;
        font-family: sans-serif;
       }
-      #content h1 {
-       font-size: 3rem;
+      form {
+        padding-right: 20px;
       }
       form h1 {
        margin-left: 0;
