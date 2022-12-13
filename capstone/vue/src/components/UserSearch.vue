@@ -3,7 +3,7 @@
       <input type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="Search" />
       <ul>
           <li v-for="result in results" v-bind:key="result.id" >
-              {{ result.name }}
+              <p >{{ result.name }}</p>
               -
               {{ result.artists[0].name }}
               <button v-on:click="addSong"> Add Song</button> 
@@ -38,25 +38,13 @@ export default {
                 });
           },
          addSong(){
-              this.newSong = {
-                         trackUri: this.results[1],
-                         songName: this.results[0],
-                         artistName: this.results[2],
-                         genreID: '3'
-                    }
-             
-             PlaylistService.addSong(this.newSong).then(response => {
-                if(response.status === 201){
-                    
-                alert("Song added")
-                }
-             });
+              this.newSong.songName = this.results.name;
          }
     },
     computed: {
-        songs(){
-            return this.$store.state.songs;
-        }
+        // songs(){
+        //     return this.$store.state.songs;
+        // }
     }
 };
 </script>
