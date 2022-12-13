@@ -1,26 +1,39 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.DJDao;
 import com.techelevator.dao.PlaylistDao;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.techelevator.dao.UserDao;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/playlist")
 public class PlaylistController{
 
     private PlaylistDao playlistDao;
+    private DJDao djDao;
+    private UserDao userDao;
 
-    public PlaylistController(PlaylistDao playlistDao){
+    public PlaylistController(PlaylistDao playlistDao, DJDao djDao, UserDao userDao){
         this.playlistDao = playlistDao;
+        this.djDao = djDao;
+        this.userDao = userDao;
     }
 
-    @RequestMapping(path="/dj/{djID}", method = RequestMethod.GET)
-    public List<String> getDJPlaylistNames(@PathVariable int djID){
-        return playlistDao.listDJPlaylists(djID);
+    private int getLoggedInUserID (Principal principal) {
+        int loggedInUserID = userDao.findIdByUsername(principal.getName());
+        return loggedInUserID;
+    }
+
+    @RequestMapping(path="/list", method = RequestMethod.GET)
+    public List<Map<String, String>> getDJPlaylistNames(Principal principal){
+        int userID = getLoggedInUserID(principal);
+        int DjID = djDao.findDjIDByUserID(userID);
+        return playlistDao.listDJPlaylists(DjID);
     }
 
 }

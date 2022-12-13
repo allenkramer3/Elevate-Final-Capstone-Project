@@ -6,8 +6,31 @@
           <input id="eventName" type="text" class="form-control" v-model="event.eventName" autocomplete="off" />
       </div>
       <div class="form-group">
-          <label for="hostName">Host Name:</label>
-          <input id="hostName" type="text" class="form-control" v-model="event.hostName" autocomplete="off" />
+          <label >Host Name:</label>
+          <br>
+          <!-- <input id="hostName" type="text" class="form-control" v-model="event.hostName" autocomplete="off" /> -->
+          <select v-model="event.hostID">
+              <option v-bind:value="host.hostID"  v-for="host in hosts" v-bind:key="host.hostID" >{{host.hostName}}</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="event-info">Event Information:</label>
+          <input id="event-info" type="text" class="form-control" v-model="event.eventInformation" autocomplete="off" />
+      </div>
+      <div class="form-group">
+          <label for="event-genres">Genre(s)</label>
+          <input id="event-genres" type="text" class="form-control" v-model="event.genres" autocomplete="off" />
+      </div>
+      <div class="form-group">
+          <label for="event-pic">Picture:</label>
+          <input id="event-pic" type="text" class="form-control" v-model="event.eventPicture" autocomplete="off" />
+      </div>
+      <div class="form-group">
+          <label >Assign Playlist: </label>
+          <br>
+          <select name="playlist-name" v-model="event.playlistUri" >
+              <option v-bind:value="playlist.playlistURI" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{playlist.playlistName}}</option>
+          </select>
       </div>
       <button class="btn btn-submit">Create New Event</button>
       <button class="btn btn-cancel" v-on:click="cancelEvent" type="button">Cancel</button>
@@ -28,10 +51,18 @@ export default {
     data() {
         return {
             event: {
+                hostID: 0,
                 eventName: '',
-                hostName: ''
+                eventInformation: '',
+                genres: '',
+                eventPicture: '',
+                playlistUri: '',
+
+                
             },
-            errorMsg: ''
+            errorMsg: '',
+            hostAsString: '',
+            hostToInt: parseInt(this.hostAsString)
         };
     },
     methods: {
@@ -45,7 +76,7 @@ export default {
             if (this.eventID === 0){
                 // add
                 EventService
-                    .addEvent(newEvent)
+                    .addEvent(this.event)
                     .then(response => {
                         if (response.status === 201) {
                             // this.$router.push(`/events/${newEvent.eventID}`);
@@ -69,6 +100,8 @@ export default {
                         this.handleErrorResponse(error, "updating");
                     });
             }
+
+            
         },
         cancelEvent() {
             this.$router.push(`/dj`);
@@ -88,9 +121,23 @@ export default {
         },
         addNewEvent() {
             this.$store.commit("ADD_EVENT", this.event)
+        },
+        retrieveHosts(){
+            EventService.getHosts().then(response => {
+                this.$store.commit("SET_HOSTS", response.data)
+            });
+        },
+        retrievePlaylists(){
+            EventService.getPlaylists().then(response => {
+                this.$store.commit("SET_PLAYLISTS", response.data)
+            });
         }
     },
     created() {
+
+        this.retrieveHosts();
+        this.retrievePlaylists();
+
         if (this.eventID != 0) {
             EventService
                 .getEvent(this.eventID)
@@ -106,6 +153,14 @@ export default {
                     }
                 });
         }
+    }, 
+    computed: {
+        hosts(){
+            return this.$store.state.hosts
+        },
+        playlists(){
+            return this.$store.state.playlists
+        },
     }
 };
 </script>
@@ -114,7 +169,7 @@ export default {
 .new-event-form {
     padding: 10px;
     margin-bottom: 10px;
-    background-color:#fff;
+    background-color:rgb(233, 186, 233);
 }
 
 .form-group {
