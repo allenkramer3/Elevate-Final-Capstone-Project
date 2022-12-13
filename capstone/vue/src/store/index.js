@@ -70,6 +70,18 @@ export default new Vuex.Store({
         hostName: "testHost",
         hostID: 0
       }
+    ],
+    songs: [
+      {
+        trackUri: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
+        songName: "Spin Bout U",
+        artistName: "Drake",
+      },
+      {
+        trackUri: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
+        songName: "The Spins",
+        artistName: "Drake",
+      }
     ]
   },
   mutations: {
