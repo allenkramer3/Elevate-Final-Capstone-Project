@@ -39,9 +39,9 @@ export default {
           },
          addSong(){
               this.newSong = {
-                         trackUri: this.results[1],
-                         songName: this.results[0],
-                         artistName: this.results[2],
+                         trackUri: this.results.uri,
+                         songName: this.results.name,
+                         artistName: this.results.artists,
                          genreID: '3'
                     }
              
