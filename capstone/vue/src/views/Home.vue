@@ -1,10 +1,12 @@
 <template>
   <div class="home">
     <h1 style="text-align:center">Welcome to Elevate.</h1>
-    <h2 style="text-align:center">Please log in or continue as a guest.</h2>
-    <div class="guest-actions">
-      <button class="btn">Continue as Guest</button>
-    </div>
+    <h2 style="text-align:center">If you are an Elevate Host or DJ, please login below.</h2>
+    <button>Login</button>
+    <h2 style="text-align:center">If you want to register as an Elevate DJ or Host, please register below.</h2>
+    <button>Register</button>
+    <h2 style="text-align:center">Feel free to view any of our events by clicking on the events link below.</h2>
+    <button>Events</button>
     <img src="../assets/Club.png" alt="Club" class="center">
     <div class="wrap">
       <div class="search">
@@ -70,9 +72,9 @@ export default {
 
 .searchTerm {
   position:relative;  
-left:13%;
-top:25%;
-width:30%;
+  left:13%;
+  top:25%;
+  width:30%;
   width: 75%;
   border: 3px solid #4098FF;
   border-right: none;
