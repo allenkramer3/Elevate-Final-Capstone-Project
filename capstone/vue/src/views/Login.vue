@@ -64,9 +64,6 @@
   
           <div class="form-actions">
             <button class="btn" v-on:click.prevent="login">Log In</button>
-            <div class="extras">
-              <a>Create an Account</a>
-            </div>
           </div>
         </form>
   
@@ -153,27 +150,16 @@ export default {
        justify-content: center;
        /* margin: 4rem auto; */
        
-      }
-      .logo {
-       /* height: 200px; */
-       width: auto;
-       padding-bottom: 10px;
-       filter: grayscale(100%);
-       padding-top: 20px;
-      }
-      #content {
-       background-color: #496bcb;
-       color: #fff;
-      }
+  }
       #login {
        padding-top: 0px;
       }
       #login {
-       background-color: #fcfcfc;
+       background-color: rgba(144, 0, 190, .2);
+       border-radius: 5px;
       }
-      #content,
       #login {
-       padding: 5vh 1rem 1rem 1rem;
+       padding: 4vh 1rem 1rem 1rem;
       }
       #content h1,
       #login h1 {
@@ -182,6 +168,9 @@ export default {
       }
       #content h1 {
        font-size: 3rem;
+      }
+      form {
+        padding-right: 20px;
       }
       form h1 {
        margin-left: 0;
