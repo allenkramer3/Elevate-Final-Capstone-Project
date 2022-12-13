@@ -2,11 +2,17 @@
   <div class="home">
     <h1 style="text-align:center">Welcome to Elevate.</h1>
     <h2 style="text-align:center">If you are an Elevate Host or DJ, please login below.</h2>
-    <button>Login</button>
+    <button class="home-nav">
+      <router-link class="link-nav" v-bind:to="{ name: 'login'}">Login</router-link>
+    </button>
     <h2 style="text-align:center">If you want to register as an Elevate DJ or Host, please register below.</h2>
-    <button>Register</button>
+    <button class="home-nav">
+      <router-link v-bind:to="{ name: 'register'}">Register</router-link>
+    </button>
     <h2 style="text-align:center">Feel free to view any of our events by clicking on the events link below.</h2>
-    <button>Events</button>
+    <button class="home-nav">
+      <router-link v-bind:to="{ name: 'events'}">Events</router-link>
+    </button>
     <img src="../assets/Club.png" alt="Club" class="center">
     <div class="wrap">
       <div class="search">
@@ -18,8 +24,6 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -120,6 +124,10 @@ export default {
   color: rgb(0, 0, 0);
   padding: 5px 9px;
   font-size: 14px;
+}
+
+.link-nav {
+  margin: auto;
 }
 
 
