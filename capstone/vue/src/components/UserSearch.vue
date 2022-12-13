@@ -38,7 +38,23 @@ export default {
                 });
           },
          addSong(){
+<<<<<<< HEAD
               this.newSong.songName = this.results.name;
+=======
+              this.newSong = {
+                         trackUri: this.results.uri,
+                         songName: this.results.name,
+                         artistName: this.results.artists,
+                         genreID: '3'
+                    }
+             
+             PlaylistService.addSong(this.newSong).then(response => {
+                if(response.status === 201){
+                    
+                alert("Song added")
+                }
+             });
+>>>>>>> 89af6311be1d1cc2ffa4dc313a6758a203d34520
          }
     },
     computed: {

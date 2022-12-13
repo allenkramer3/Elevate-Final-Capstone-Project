@@ -18,7 +18,9 @@
       <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'dj'}">Dj</router-link>
       </button>
+      <button class="btn">
       <router-link class="btn-header" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      </button>
     </div>
 
     <div class="main-body">
