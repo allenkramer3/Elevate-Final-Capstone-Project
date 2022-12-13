@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/song")
 public class SongController {
@@ -28,7 +29,7 @@ public class SongController {
     }
 
     @RequestMapping(path="/playlist/{eventID}", method = RequestMethod.GET)
-    public Map<String, String> listOfPlaylistSongs(@PathVariable int eventID){
+    public List<Map<String, String>> listOfPlaylistSongs(@PathVariable int eventID){
         return songDao.listPlaylistSongs(eventID);
     }
 

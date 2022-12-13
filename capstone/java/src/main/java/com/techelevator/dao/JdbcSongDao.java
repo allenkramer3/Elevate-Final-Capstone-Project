@@ -43,19 +43,41 @@ public class JdbcSongDao implements SongDao{
     }
 
     @Override
-    public Map<String, String> listPlaylistSongs(int eventID) {
-        Map<String, String> songs = new HashMap<>();
+    public List<Map<String, String>> listPlaylistSongs(int eventID) {
+//        Map<String, String> songs = new HashMap<>();
+//        String sql = "SELECT * FROM song AS s " +
+//                     "JOIN playlist_song AS ps ON s.track_uri = ps.track_uri " +
+//                     "JOIN playlist AS p ON ps.playlist_uri = p.playlist_uri " +
+//                     "JOIN event AS e ON p.playlist_uri = e.playlist_uri " +
+//                     "WHERE event_id = ?;";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventID);
+//        while (results.next()){
+//            Song song = mapRowToSong(results);
+//            songs.put(song.getSongName(), song.getArtistName());
+//        }
+//        return songs;
+        List<Song> songs = new ArrayList<>();
         String sql = "SELECT * FROM song AS s " +
                      "JOIN playlist_song AS ps ON s.track_uri = ps.track_uri " +
                      "JOIN playlist AS p ON ps.playlist_uri = p.playlist_uri " +
                      "JOIN event AS e ON p.playlist_uri = e.playlist_uri " +
                      "WHERE event_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventID);
-        while (results.next()){
-            Song song = mapRowToSong(results);
-            songs.put(song.getSongName(), song.getArtistName());
+        while (results.next()) {
+            songs.add(mapRowToSong(results));
         }
-        return songs;
+
+        List<Map<String, String>> json = new ArrayList<>();
+
+        for(Song song: songs){
+            Map<String, String> songAndArtist = new HashMap<>();
+            songAndArtist.put("songName", song.getSongName());
+            songAndArtist.put("artist", song.getArtistName());
+
+            json.add(songAndArtist);
+        }
+
+        return json;
     }
 
     private Song mapRowToSong(SqlRowSet rowSet){

@@ -20,9 +20,9 @@ export default {
     },
     methods: {
         retrieveSongs(){
-            PlaylistService.getSongs(this.$route.params.eventID).then(response => {
+            PlaylistService.getSongs(this.$route.params.eventId).then(response => {
                 this.$store.commit("SET_CURRENT_PLAYLIST", response.data);
-            })
+            });
         }
     },
     computed: {
