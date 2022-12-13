@@ -25,8 +25,8 @@ public class RestSpotifyService implements SpotifyService {
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
     private String callBackUrl = "http://localhost:8080/dj/authorize";
-    private String AUTH_CODE = "AQAd2H2I25fCXkQEYQwlhOfLm8RP0uzikP3V3P4_TqRgWThDWa9-n8-Zb5lJua8VDz69HTWvhdhhiF-TJNFJnrV7bvkR4yZVy_RVu0jfV2uNsl4AmxI-6SOc-mQayf2tQc1kTrqAtUY7XwavxU_BOzauR-Fb4iLpt0jnuVtkl36b8twlvPqNXW4ArQy4CY8cEpPF_HK0c9_N-yNTND6jkz8Wo6ved3htTaAef9fBPE4meGRbN_SnSSr-nUluxnIntSfvQAzYSiQaJc990FYUDxu0a1IcKcQ0MyIwpjQE_mYTT5x9NjqWvxNJU8kMJc2A9DMuhEMSEEZUFlaCcISGoHHoxde4tklRzSUjgcsgtpruXK6TLjXM3Vs-BKTigwtSQr5ukCFPSU4w5Cq1va83hSmb9z-NDLUZtLgBHas-ZHVPvQIhH-tuWzgBYDZf-vvJ7Uf6m6_5rDtTV3rMKbEO7SlMC-sNeAPHelzLvAQO2V1VePjZqzmv6eZSB0eM-kwkwNql97j7U1lo9l06hae0l353WUKe2EOVRwEi-Xv-wgLIXgquLMnosnLE4RRK7O-0MNPraSQbJkF8YEqN";
-    private String ACCESS_TOKEN = "BQC1ES3YqvnhOsSfHUKkvB1ejwkaYlsyR_WUMSdpdTYjjF1FhDtoZ_ldJU9ekC9-6IK6r_cgxqD2t454iwB3EDB8IWamcamuw7EFzYmZf9eysAdKOCd4WhHU1GaLW-4y8vYjNRRXSloHHbOFRk1MzNwVtN3gw149TVUMuopEefriEui-jeiDv60AhLEKEu1IbF7RM32KzdBd2WTIADJmGpIlGkc2YvTY1wp9rK2ORlIhNA2gcmGvoV7Gni4vKYH68eZ6KK8-7bWG9lT_2g";
+    private String AUTH_CODE = "AQBMwEeo0P1bh4OQfquouSRa8ek9-sT5YUjNtj5wjgwLZcaXMrr7qob_QoH7EybdtQB05RAYQI1wGm6biM4H10ppHX0VlWYqHwejQZotVbw9h2aZKYRRNP4mLkETD_CCaC5AtkCWi7c03LSk-czepcy3y1fmHe-RT5MuLe14nc2mFxksM4sPxbxTU_hFDlBmLN0s_mtkpUGCh93x6Qh1qrQ32YB-bh9LisXEOzghvybi9x4mpAxHI9B4NiZsjfL4Qoysbg3LddOWr9uY2OLtbX3J6316Nc_lQGa1a-q9_xtKrCsNToPlrhQ06hzkR8oFpyddix5GyOZcTCXi_xhrd8Fgq4zUu2MocjrVCGBKUf21dJ-mFgmGPmKS7qWbCYW9DLhPonouVa_18-gJdaJksOO4fG3akcdRPy6afDM5gf5NknOGQyGAq8LNpCdXmmPYitN-IGCYMQAEFAeUuAVIzRu0cH9tVPlPeIOFDGxm50OgFFRd9E7bcy8w-rCQaKyFFYuySGI7jQHKF99VaAcgUdDaR0stK2KdB-QwUvsvKkqaX-MUe6Odn0OhVgE_JdpLe4dfCUVpk30rW9BQ";
+    private String ACCESS_TOKEN = "BQAcQ1NOWByQ_8_Ri1KvzfOHUsHcJnNJDOfAeTFqefJ7Dgcvf4zDsbjKAyBL8_0N1jMofaRBv0DjYR7vtdxzxHJ0ZfQyC3ZZb44tYmmdel8Qj12CdJIsYZjbJ_PVVA0r2l9tZf5hdlpmpjkJJrJySCb6iV7VAouaE2zXfIoUKwgJMrwxFrACZwX1b3d5y-mZv21LZ_4uyhf2glSRh6aWcmZzEG7L1qtCObuev8IkQ0fYkpGFk0zufyD3n-GzjH_GAQ8EIW11z0lb6nxCMw";
     private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
     private final String BASE_SPOTIFY_URL = "https://api.spotify.com/v1/";
 
@@ -213,9 +213,9 @@ public class RestSpotifyService implements SpotifyService {
     }
 
     @Override
-    public String addItemsToPlaylist(String trackUri, String playlistUri) {
-        String playlistID = playlistUri.substring(16);
-        String spotifyUrl = BASE_SPOTIFY_URL + "playlists/" + playlistID + "/tracks";
+    public String addItemsToPlaylist(String trackUri) {
+
+        String spotifyUrl = BASE_SPOTIFY_URL + "playlists/5o0ZidwaV7XrPJ4j43uqNu/tracks";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -227,7 +227,7 @@ public class RestSpotifyService implements SpotifyService {
         HttpEntity entity = new HttpEntity(jsonData,headers);
 
         // make an HTTP POST request with headers
-        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class, playlistUri);
+        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class);
 
         return response.getBody();
     }
