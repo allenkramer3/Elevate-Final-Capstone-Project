@@ -17,4 +17,6 @@ public interface EventDao {
 
     Event getEvent(int eventID);
 
+    List<String> getDJEvents(int djID);
+
 }
