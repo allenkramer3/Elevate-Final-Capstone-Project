@@ -58,6 +58,18 @@ export default new Vuex.Store({
         songName: "Tuscan Leather",
         artist: "Drake"
       }
+    ],
+    songs: [
+      {
+        trackUri: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
+        songName: "Spin Bout U",
+        artistName: "Drake",
+      },
+      {
+        trackUri: "spotify:track:2ZL7WZcjuYKi1KUDtp4kCC",
+        songName: "The Spins",
+        artistName: "Drake",
+      }
     ]
   },
   mutations: {
