@@ -7,7 +7,10 @@
       </div>
       <div class="form-group">
           <label for="hostName">Host Name:</label>
-          <input id="hostName" type="text" class="form-control" v-model="event.hostName" autocomplete="off" />
+          <!-- <input id="hostName" type="text" class="form-control" v-model="event.hostName" autocomplete="off" /> -->
+          <select name="host-name"  >
+              <option value="host-name" v-for="host in hosts" v-bind:key="host.hostID">{{host.hostName}}</option>
+          </select>
       </div>
       <button class="btn btn-submit">Create New Event</button>
       <button class="btn btn-cancel" v-on:click="cancelEvent" type="button">Cancel</button>
@@ -69,6 +72,8 @@ export default {
                         this.handleErrorResponse(error, "updating");
                     });
             }
+
+            
         },
         cancelEvent() {
             this.$router.push(`/dj`);
@@ -88,9 +93,17 @@ export default {
         },
         addNewEvent() {
             this.$store.commit("ADD_EVENT", this.event)
-        }
+        },
+        retrieveHosts(){
+                EventService.getHosts().then(response => {
+                    this.$store.commit("SET_HOSTS", response.data)
+                });
+            }
     },
     created() {
+
+        this.retrieveHosts();
+
         if (this.eventID != 0) {
             EventService
                 .getEvent(this.eventID)
@@ -105,6 +118,11 @@ export default {
                         this.$router.push({ name: 'Home'})
                     }
                 });
+        }
+    }, 
+    computed: {
+        hosts(){
+            return this.$store.state.hosts
         }
     }
 };

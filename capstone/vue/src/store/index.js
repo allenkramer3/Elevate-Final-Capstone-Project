@@ -58,6 +58,12 @@ export default new Vuex.Store({
         songName: "Tuscan Leather",
         artist: "Drake"
       }
+    ],
+    hosts: [
+      {
+        hostName: "testHost",
+        hostID: 0
+      }
     ]
   },
   mutations: {
@@ -88,6 +94,9 @@ export default new Vuex.Store({
     },
     SET_CURRENT_PLAYLIST(state, data){
       state.playlist = data;
+    },
+    SET_HOSTS(state, data){
+      state.hosts = data;
     }
   }
 })

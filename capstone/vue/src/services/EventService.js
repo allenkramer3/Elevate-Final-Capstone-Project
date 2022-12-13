@@ -22,6 +22,10 @@ export default {
 
     deleteEvent(eventID) {
         return axios.delete(`/events/${eventID}`);
+    },
+
+    getHosts(){
+        return axios.get('/dj/hosts')
     }
 
 }

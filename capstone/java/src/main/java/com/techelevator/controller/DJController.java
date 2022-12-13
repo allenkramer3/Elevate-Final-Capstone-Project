@@ -3,14 +3,17 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.DJDao;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 @RequestMapping("/dj")
 public class DJController {
 
@@ -20,9 +23,9 @@ public class DJController {
         this.djDao = djDao;
     }
 
-    @PreAuthorize("hasRole('DJ')")
+//    @PreAuthorize("hasRole('DJ')")
     @RequestMapping(value="/hosts", method = RequestMethod.GET)
-    public Map<String, Integer> getListOfHosts(){
+    public List<Map<String, String>> getListOfHosts(){
         return djDao.listHostNames();
     }
 

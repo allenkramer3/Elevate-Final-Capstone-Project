@@ -28,20 +28,27 @@ public class JdbcDJDao implements DJDao {
     }
 
     @Override
-    public Map<String, Integer> listHostNames(){
+    public List<Map<String, String>> listHostNames(){
         List<User> hosts = new ArrayList<>();
         String sql = "SELECT * FROM users WHERE role = 'ROLE_HOST'";
         SqlRowSet rowSet= jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()){
             hosts.add(mapRowToUser(rowSet));
         }
-        Map<String, Integer> usernames = new HashMap<>();
+
+        List<Map<String, String>> json = new ArrayList<>();
+
         for(User user: hosts){
             String sql2 = "SELECT host_id FROM host WHERE user_id = ?";
             Integer hostID = jdbcTemplate.queryForObject(sql2, Integer.class, user.getId());
-            usernames.put(user.getUsername(), hostID);
+            Map<String, String> usernames = new HashMap<>();
+
+            usernames.put("hostID", hostID.toString());
+            usernames.put("hostName", user.getUsername());
+
+            json.add(usernames);
         }
-        return usernames;
+        return json;
     }
 
     private User mapRowToUser(SqlRowSet rs) {
