@@ -17,7 +17,7 @@ export default {
     },
 
     getEvent(eventID) {
-        return axios.get(`/events/${eventID}`)
+        return axios.get(`/event/${eventID}`)
     },
 
     deleteEvent(eventID) {

@@ -20,7 +20,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 @RequestMapping("/event")
 public class EventController {
 
@@ -70,6 +70,15 @@ public class EventController {
     @RequestMapping(path= "/delete/{eventID}", method = RequestMethod.DELETE)
     public void deleteEvent(@PathVariable int eventID){
         eventDao.deleteEvent(eventID);
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/{eventID}", method = RequestMethod.GET)
+    public Event event(@PathVariable int eventID){
+
+        Event event = eventDao.getEvent(eventID);
+
+        return event;
     }
 
 
