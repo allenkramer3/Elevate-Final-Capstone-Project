@@ -22,6 +22,6 @@ public interface SpotifyService {
 
     String getUsersPlaylist();
 
-    String addItemsToPlaylist(String trackUri, String playlistID);
 
+    String addItemsToPlaylist(String trackUri);
 }

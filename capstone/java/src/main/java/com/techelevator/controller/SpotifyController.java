@@ -71,8 +71,8 @@ public class SpotifyController {
     }
 
     @RequestMapping(path = "/add/playlist/{trackUri}", method = RequestMethod.POST)
-    public String addItemsToPlaylist(@PathVariable String trackUri, @RequestBody String playlistUri) throws JsonProcessingException {
-        return spotifyService.addItemsToPlaylist(trackUri, playlistUri);
+    public String addItemsToPlaylist(@PathVariable String trackUri) throws JsonProcessingException {
+        return spotifyService.addItemsToPlaylist(trackUri);
     }
 
 }
