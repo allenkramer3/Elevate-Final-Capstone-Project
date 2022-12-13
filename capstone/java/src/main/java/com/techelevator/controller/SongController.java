@@ -1,10 +1,7 @@
 package com.techelevator.controller;
 
-
 import com.techelevator.dao.SongDao;
-import com.techelevator.model.Event;
 import com.techelevator.model.Song;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +31,5 @@ public class SongController {
     public Map<String, String> listOfPlaylistSongs(@PathVariable int eventID){
         return songDao.listPlaylistSongs(eventID);
     }
-
 
 }

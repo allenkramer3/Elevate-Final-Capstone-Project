@@ -22,4 +22,5 @@ public class JdbcHostDao implements HostDao {
             return 0;
         }
     }
+
 }

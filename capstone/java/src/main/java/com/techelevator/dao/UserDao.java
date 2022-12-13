@@ -19,4 +19,5 @@ public interface UserDao {
     void createDj(int UserId);
 
     void createHost(int UserId);
+
 }

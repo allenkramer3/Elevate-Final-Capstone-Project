@@ -1,8 +1,6 @@
 package com.techelevator.dao;
 
-
 import com.techelevator.model.Event;
-import com.techelevator.model.Playlist;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -20,11 +18,7 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public void createNewEvent(Event newEvent, String hostName, int dJID) {
-//        String sql = "SELECT host_id FROM host AS h " +
-//                "JOIN users AS u ON h.user_id = u.user_id " +
-//                "WHERE username = ?;";
-//        int hostID = jdbcTemplate.queryForObject(sql, Integer.class, hostName);
+    public void createNewEvent(Event newEvent, int dJID) {
         String sql = "INSERT INTO event (host_id, dj_id, playlist_uri, event_name, event_information, genres, event_picture) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?) ";
         jdbcTemplate.update(sql,  newEvent.getHostID(), dJID, newEvent.getPlaylistUri(), newEvent.getEventName(), "", "", "");
@@ -33,7 +27,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public void updateEvent(Event updatedEvent, int hostID){
         String sql = "UPDATE event SET event_name = ?, event_information = ?, genres = ?, event_picture = ?" +
-                "WHERE event_id = ? AND host_id = ?";
+                     "WHERE event_id = ? AND host_id = ?";
         jdbcTemplate.update(sql, updatedEvent.getEventName(), updatedEvent.getEventInformation(), updatedEvent.getGenres(), updatedEvent.getEventPicture(), updatedEvent.getEventID(), hostID);
     }
 
@@ -50,7 +44,6 @@ public class JdbcEventDao implements EventDao {
 
     @Override
     public Event getEvent(int eventID){
-//        Event event = new Event();
         String sql = "SELECT * FROM event WHERE event_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventID);
         if (results.next()){
@@ -72,7 +65,6 @@ public class JdbcEventDao implements EventDao {
         return eventNames;
     }
 
-
     @Override
     public void deleteEvent(int eventID) {
         String sql = "DELETE FROM event WHERE event_id = ?";
@@ -81,7 +73,6 @@ public class JdbcEventDao implements EventDao {
 
     private Event mapRowToEvent(SqlRowSet rowSet){
         Event event = new Event();
-
         event.setEventID(rowSet.getInt("event_id"));
         event.setHostID(rowSet.getInt("host_id"));
         event.setDjID(rowSet.getInt("dj_id"));
@@ -90,10 +81,7 @@ public class JdbcEventDao implements EventDao {
         event.setEventInformation(rowSet.getString("event_information"));
         event.setGenres(rowSet.getString("genres"));
         event.setEventPicture(rowSet.getString("event_picture"));
-
-
         return event;
     }
-
 
 }

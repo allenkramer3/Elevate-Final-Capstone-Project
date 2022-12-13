@@ -8,9 +8,6 @@ public class Event {
     private int djID;
     private int hostID;
     private String playlistUri;
-
-
-
     private String eventName;
     private String eventInformation;
     private String genres;
@@ -42,9 +39,11 @@ public class Event {
     public void setPlaylistUri(String playlistUri) {
         this.playlistUri = playlistUri;
     }
+
     public void setHostID(int hostID) {
         this.hostID = hostID;
     }
+
     public String getEventName() {
         return eventName;
     }
@@ -101,4 +100,5 @@ public class Event {
                 ", eventPicture='" + eventPicture + '\'' +
                 '}';
     }
+
 }

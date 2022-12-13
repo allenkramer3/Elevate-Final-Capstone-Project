@@ -1,5 +1,4 @@
-package com.techelevator.services;
-
+package com.techelevator.security.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,7 +13,6 @@ import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 import java.util.Base64;
 
-
 @Component
 public class RestSpotifyService implements SpotifyService {
 
@@ -27,7 +25,6 @@ public class RestSpotifyService implements SpotifyService {
     private String ACCESS_TOKEN = "BQB3j4iT1MAu3yrso2D963QpHdRnYYEoPFMNDoUpuLOCC946fl2Z9K8NNhbDwqi4F2OuCjCjPdayZq6hz3RnGEq1DE-S02IXMWfRx9acPhQx3C4bTuZ-eFyC7BVLgWtZlOCkADQfGCGfp2MkWMzjHG7JnbMWcjvoL-eclJ9j7aSVGv7kmGHv5FBx3B3eRveP3v8yYTHnu4hD3rxlsiHss7V2N549sOlPrfGd39FgiFHlOUc8ZIkj6v3hTfs-1R32eSCX8J-Tw4xRKMSNLg";
     private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
     private final String BASE_SPOTIFY_URL = "https://api.spotify.com/v1/";
-    //private final String SCOPE = "user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-modify-public user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read";
 
     public String getAccessToken() throws RestClientResponseException {
         String spotifyUrl = "https://accounts.spotify.com/api/token";
@@ -37,7 +34,6 @@ public class RestSpotifyService implements SpotifyService {
         bodyData.add("grant_type", "authorization_code");
         bodyData.add("redirect_uri", "http://localhost:8080/dj/authorize");
         bodyData.add("code", AUTH_CODE);
-       // bodyData.add("scope", SCOPE);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -92,13 +88,12 @@ public class RestSpotifyService implements SpotifyService {
 
         Album album = new Album();
 
-
         String jsonData = "{\"uris\":[\"" + trackUri + "\"]}";
         HttpEntity<Object> entity = new HttpEntity<>(jsonData, headers);
 
         // make an HTTP PUT request with headers
        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.PUT, entity, String.class);
-        //ResponseEntity<Tracks> response = restTemplate.exchange(spotifyUrl, HttpMethod.PUT, entity, Tracks.class);
+
         return "Song is playing!";
     }
 
@@ -129,11 +124,9 @@ public class RestSpotifyService implements SpotifyService {
         headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
         headers.set("Content-Type", "application/x-www-form-urlencoded");
 
-
-
         HttpEntity<Object> entity = new HttpEntity<>(headers);
 
-        // make an HTTP PUT request with headers
+        // make an HTTP POST request with headers
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST, entity, String.class);
 
         return response.getBody();
@@ -149,6 +142,7 @@ public class RestSpotifyService implements SpotifyService {
 
         HttpEntity entity = new HttpEntity(headers);
 
+        // make an HTTP GET request with headers
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.GET,entity, String.class, userSearch);
 
         try {
@@ -157,9 +151,7 @@ public class RestSpotifyService implements SpotifyService {
             e.printStackTrace();
         }
 
-
         return response.getBody().toString();
-
     }
 
     @Override
@@ -179,10 +171,10 @@ public class RestSpotifyService implements SpotifyService {
 
         HttpEntity entity = new HttpEntity(jsonData, headers);
 
+        // make an HTTP POST request with headers
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class);
 
         return response.getBody();
-
     }
 
     @Override
@@ -194,13 +186,12 @@ public class RestSpotifyService implements SpotifyService {
         headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
         headers.set("Content-Type", "application/x-www-form-urlencoded");
 
-
         HttpEntity entity = new HttpEntity(headers);
 
+        // make an HTTP GET request with headers
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.GET,entity, String.class);
 
         return response.getBody();
-
     }
 
     @Override
@@ -217,11 +208,10 @@ public class RestSpotifyService implements SpotifyService {
 
         HttpEntity entity = new HttpEntity(jsonData,headers);
 
+        // make an HTTP POST request with headers
         ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.POST,entity, String.class, playlistUri);
 
         return response.getBody();
-
     }
-
 
 }

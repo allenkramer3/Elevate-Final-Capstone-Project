@@ -1,7 +1,6 @@
-package com.techelevator.services;
+package com.techelevator.security.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.techelevator.spotify.Tracks;
 
 public interface SpotifyService {
 
@@ -15,7 +14,5 @@ public interface SpotifyService {
     String createPlaylist();
     String getUsersPlaylist();
     String addItemsToPlaylist(String trackUri, String playlistID);
-
-
 
 }

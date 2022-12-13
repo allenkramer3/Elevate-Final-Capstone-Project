@@ -1,6 +1,5 @@
 package com.techelevator.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techelevator.dao.DJDao;
 import com.techelevator.dao.EventDao;
 import com.techelevator.dao.HostDao;
@@ -11,16 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin
 @RestController
-//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 @RequestMapping("/event")
 public class EventController {
 
@@ -47,7 +42,7 @@ public class EventController {
     public void createNewEvent(@RequestBody Event event, @PathVariable String hostName, Principal principal) {
         int userID = getLoggedInUserID(principal);
         int DjID = djDao.findDjIDByUserID(userID);
-        eventDao.createNewEvent(event, hostName, DjID);
+        eventDao.createNewEvent(event, DjID);
     }
 
     @PreAuthorize("hasAnyRole('HOST','DJ')")
@@ -87,49 +82,7 @@ public class EventController {
         return event;
     }
 
-
-
-    // testing
-//    @RequestMapping(path = "/song", method = RequestMethod.GET)
-//    public Object findSongs(String songName) throws IOException, InterruptedException {
-//        URL urlForGet = new URL("https://itunes.apple.com/search?term=jaded&entity=musicTrack&limit=1");
-//        String readLine = null;
-//        HttpURLConnection connection = (HttpURLConnection) urlForGet.openConnection();
-//        connection.setRequestMethod("GET");
-////        connection.setRequestProperty("userId", "1");
-//        int responseCode = connection.getResponseCode();
-
-
-
-
-
-//        InputStream responseStream = connection.getInputStream();
-//
-//
-//        ObjectMapper mapper = new ObjectMapper();
-//        SongResult song = mapper.readValue(responseStream, SongResult.class);
-//        return song;
-
-//        if (responseCode == HttpURLConnection.HTTP_OK){
-//            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//            StringBuffer response = new StringBuffer();
-//            while ((readLine = in .readLine()) != null){
-//                response.append(readLine);
-//            } in .close();
-//
-//
-//
-//
-//            String json = response.toString();
-//
-//
-//
-//
-//            return json;
-//        }
-
-//        return null;
-    }
+}
 
 
 

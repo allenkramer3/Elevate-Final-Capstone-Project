@@ -8,7 +8,6 @@ public class Host {
 
     private int userID;
 
-
     public int getHostID() {
         return hostID;
     }
@@ -17,7 +16,6 @@ public class Host {
         this.hostID = hostID;
     }
 
-
     public int getUserID() {
         return userID;
     }
@@ -25,7 +23,6 @@ public class Host {
     public void setUserID(int userID) {
         this.userID = userID;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -47,4 +44,5 @@ public class Host {
                 ", userID=" + userID +
                 '}';
     }
+
 }

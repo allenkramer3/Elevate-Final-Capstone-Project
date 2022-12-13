@@ -1,8 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Host;
 import com.techelevator.model.User;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -46,10 +44,6 @@ public class JdbcDJDao implements DJDao {
         return usernames;
     }
 
-
-
-
-
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
@@ -59,7 +53,5 @@ public class JdbcDJDao implements DJDao {
         user.setActivated(true);
         return user;
     }
-
-
 
 }

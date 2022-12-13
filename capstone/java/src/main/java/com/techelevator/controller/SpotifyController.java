@@ -1,8 +1,7 @@
 package com.techelevator.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.techelevator.services.SpotifyService;
-import com.techelevator.spotify.Tracks;
+import com.techelevator.security.services.SpotifyService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
