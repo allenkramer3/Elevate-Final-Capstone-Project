@@ -44,6 +44,19 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
+    public Event getEvent(int eventID){
+//        Event event = new Event();
+        String sql = "SELECT * FROM event WHERE event_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventID);
+        if (results.next()){
+            return mapRowToEvent(results);
+        } else {
+            return null;
+        }
+    }
+
+
+    @Override
     public void deleteEvent(int eventID) {
         String sql = "DELETE FROM event WHERE event_id = ?";
         int deletedEvent = jdbcTemplate.update(sql, eventID);

@@ -4,14 +4,19 @@
         <img src="../assets/loading_motion.gif" />
     </div>
     <div v-else class="event-card">
-        <h1>{{ event.eventName }}</h1>
-        <p>test</p>
-        <!-- <p> {{ event.hostName }}</p> -->
-        <h3>{{event.eventInformation}}</h3>
-        <h3>{{event.eventGenre}}</h3>
+        <h1>{{ events.eventName }}</h1>
+        <p>Hello</p>
+        <p> {{ events.hostName }}</p>
+        <h3>{{events.eventInformation}}</h3>
+        <h3>{{events.eventGenre}}</h3>
         <router-link v-bind:to="{ name: 'edit-event', params: {eventID: $route.params.eventID} }" class="btn edit-event">Edit Event</router-link>
         <button class="btn delete-event" v-on:click="deleteEvent">Delete Event</button>
         <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}</div>
+        <div>
+          <playlist />  
+        </div>
+        
+
     </div>
     
   </div>
@@ -19,12 +24,14 @@
 
 <script>
 import EventService from "../services/EventService";
+import Playlist from './Playlist.vue';
 
 export default {
+  components: { Playlist },
     name: 'event-card',
-    props: {
-        event: Object,
-    },
+    // props: {
+    //     event: Object,
+    // },
     data() {
         return {
             isLoading: false,
@@ -34,7 +41,7 @@ export default {
     methods: {
        retrieveEvent() {
            EventService
-            .getEvent(this.$route.params.eventID)
+            .getEvent(this.$route.params.eventId)
             .then(response => {
                 this.$store.commit("SET_CURRENT_EVENT", response.data);
                 this.isLoading = false;

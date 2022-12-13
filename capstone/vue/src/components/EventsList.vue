@@ -2,39 +2,40 @@
   <div>
       <h1>Elevate Events</h1>
       <div class="events">
-          <div class="loading" v-if="isLoading">
-              <img src="../assets/loading_motion.gif"/>
-          </div>
+            <div class="loading" v-if="isLoading === false">
+              <h2>List of Events:</h2>
+                 <!-- <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" v-on:click="viewEventDetails(event.eventID)" /> -->
+                <router-link v-bind:to="{name : 'event', params: {eventId: event.eventID}}" v-for="event in events" v-bind:key="event.eventID" class="links">
+                    <div class="card">
+                         <h1>{{event.eventName}}</h1>
+                        <h3>{{event.eventInformation}}</h3>   
+                    </div>
+                    
+                </router-link>
+                 
+            </div>
+            <div v-else>
+                <img src="../assets/loading_motion.gif"/>
+            </div> 
+
           <!-- <div class="event" v-for="event in events" v-bind:key="event.id" v-bind:style="{'background-color': event.backgroundColor}" v-else>
               <router-link v-bind:to="{name: 'Event', params: {id: event.id}}">
                   {{event.title}}
               </router-link>
           </div> -->
         </div>
-
-            <h2>List of Events:</h2>
-            <div class="events-list">
-                <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" >
-
-                <router-link >
-
-
-                </router-link>
-
-                </event-detail>
-
-            </div>
+           
   </div>
 </template>
 
 <script>
 import EventService from '../services/EventService';
 // import EventService from '../services/EventService';
-import EventDetail from './EventDetail.vue';
+// import EventDetail from './EventDetail.vue';
 
 export default {
   components: { 
-      EventDetail 
+    //   EventDetail 
     },
     // data() {
     //     return {
@@ -50,7 +51,7 @@ export default {
     // },
     data() {
         return {
-
+            isLoading: true
         }
     },
     created(){
@@ -65,16 +66,31 @@ export default {
         retrieveEvents(){
             EventService.getEvents().then(response => {
                 this.$store.commit("SET_EVENTS", response.data);
+                this.isLoading = false;
             });
+        },
+        viewEventDetails(eventId) {
+            this.$router.push(`/events/${eventId}`)
         }
     }
 };
 </script>
 
 <style scoped>
-h1, h2 {
+h1, h2{
     font-family: Arial, Helvetica, sans-serif;
+    
 }
+
+.card {
+    background-color: turquoise;
+    color: black;
+}
+
+.links {
+    text-decoration: none;
+}
+
 div {
     background-color: white;
 }

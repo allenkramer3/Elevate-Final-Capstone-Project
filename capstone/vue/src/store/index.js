@@ -39,7 +39,19 @@ export default new Vuex.Store({
         genres: "Pop, Alternative",
         eventPicture: ""
       }
-    ]
+    ],
+    event: {
+        eventID: 7,
+        hostID: 2001,
+        djID: 3001,
+        eventName: "",
+        eventInformation: "",
+        genres: "",
+        eventPicture: ""
+    },
+    playlist: {
+      songs: ['take care', 'Tuscan Leather']
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -62,10 +74,13 @@ export default new Vuex.Store({
       state.events.push(event);
     },
     SET_CURRENT_EVENT(state, data) {
-      state.events = data;
+      state.event = data;
     },
     SET_EVENTS(state, data){
       state.events = data;
+    },
+    SET_CURRENT_PLAYLIST(state, data){
+      state.playlist = data;
     }
   }
 })
