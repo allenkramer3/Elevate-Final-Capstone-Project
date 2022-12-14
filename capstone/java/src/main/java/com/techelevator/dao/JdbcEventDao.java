@@ -25,10 +25,10 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public void updateEvent(Event updatedEvent, int hostID){
-        String sql = "UPDATE event SET event_name = ?, event_information = ?, genres = ?, event_picture = ?" +
-                     "WHERE event_id = ? AND host_id = ?";
-        jdbcTemplate.update(sql, updatedEvent.getEventName(), updatedEvent.getEventInformation(), updatedEvent.getGenres(), updatedEvent.getEventPicture(), updatedEvent.getEventID(), hostID);
+    public void updateEvent(Event updatedEvent){
+        String sql = "UPDATE event SET playlist_uri = ?, event_name = ?, event_information = ?, genres = ?, event_picture = ?" +
+                     "WHERE event_id = ?;";
+        jdbcTemplate.update(sql, updatedEvent.getPlaylistUri(), updatedEvent.getEventName(), updatedEvent.getEventInformation(), updatedEvent.getGenres(), updatedEvent.getEventPicture(), updatedEvent.getEventID());
     }
 
     @Override
