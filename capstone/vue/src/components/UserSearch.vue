@@ -6,7 +6,7 @@
               {{ result.name }}
               -
               {{ result.artists[0].name }}
-              <button v-on:click="addSong"> Add Song</button> 
+              <button v-on:click="addSong(result)"> Add Song</button> 
           </li>
       </ul>
       <button class="btn btn-search">Search</button>
@@ -37,11 +37,13 @@ export default {
                     this.results = response.data;
                 });
           },
-         addSong(){
+         addSong(result){
+             alert(result.name)
+
               this.newSong = {
-                         trackUri: this.results.uri,
-                         songName: this.results.name,
-                         artistName: this.results.artists,
+                         trackUri: result.uri,
+                         songName: result.name,
+                         artistName: result.artists,
                          genreID: '3'
                     }
              
