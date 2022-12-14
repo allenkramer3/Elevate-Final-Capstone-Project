@@ -11,6 +11,7 @@ import EditEvent from '../views/EditEvent.vue';
 import store from '../store/index';
 import Authorize from '../views/Authorize';
 import EventDetail from '../components/EventDetail.vue'
+import DjProfile from '../views/DjProfile.vue';
 
 
 Vue.use(Router)
@@ -107,7 +108,14 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-
+    },
+    {
+      path: '/dj/:djId',
+      name: 'dj-profile',
+      component: DjProfile,
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
 })

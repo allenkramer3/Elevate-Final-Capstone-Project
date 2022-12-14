@@ -82,7 +82,8 @@ export default new Vuex.Store({
         uri: "The Spins",
         artists: "Drake",
       }
-    ]
+    ],
+    djId: ''
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -118,6 +119,9 @@ export default new Vuex.Store({
     },
     SET_PLAYLISTS(state, data){
       state.playlists = data;
+    },
+    SET_CURRENT_DJ(state, data) {
+      state.djId = data;
     }
   }
 })

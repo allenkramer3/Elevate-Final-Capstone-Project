@@ -31,6 +31,10 @@ export default {
 
     getPlaylists(){
         return axios.get('/playlist/list')
+    },
+
+    getDjEvents(djId) {
+        return axios.get(`/event/dj/:${djId}`)
     }
 
 }
