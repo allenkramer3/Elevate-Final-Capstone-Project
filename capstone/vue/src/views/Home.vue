@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <h1 style="text-align:center">Welcome to Elevate.</h1>
-    <h2 style="text-align:center">If you are an Elevate Host or DJ, please login below.</h2>
-    <button class="home-nav">
-      <router-link class="link-nav" v-bind:to="{ name: 'login'}">Login</router-link>
-    </button>
-    <h2 style="text-align:center">If you want to register as an Elevate DJ or Host, please register below.</h2>
-    <button class="home-nav">
-      <router-link v-bind:to="{ name: 'register'}">Register</router-link>
-    </button>
-    <h2 style="text-align:center">Feel free to view any of our events by clicking on the events link below.</h2>
-    <button class="home-nav">
-      <router-link v-bind:to="{ name: 'events'}">Events</router-link>
-    </button>
+
+    <h1>Welcome to Elevate</h1>
+    <h2>If you are an Elevate Host or DJ, please login below.</h2>
+    <div class="btn-nav">
+      <button class="home-nav" role="button">
+        <router-link class="nav" v-bind:to="{ name: 'login'}">Login</router-link>
+      </button>
+      <h2>If you want to register as an Elevate Host or DJ, please register below.</h2>
+      <button class="home-nav" role="button">
+        <router-link class="nav" v-bind:to="{ name: 'register'}">Register</router-link>
+      </button>
+      <h2>Feel free to view any of our events by clicking on the events link below or clicking the dropdown of events.</h2>
+    </div>
+
+   
+
     <img src="../assets/Club.png" alt="Club" class="center">
     <div class="wrap">
       <div class="search">
@@ -33,34 +36,37 @@ export default {
 </script>
 
 <style scoped>
-  .home {
+
+.home {
   background-image: linear-gradient(#000200, #4A007b, #9000BE, #A96BCB);
   height: 100vh;
-  }
+}
 
-  h1 {
-    color: rgb(216, 216, 216);
-    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
-    font-style: italic;
-    font-family: "Audiowide", sans-serif;
-    padding-top: 10px;
-  }
+h1 {
+  color: white;
+  text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+  font-style: italic;
+  font-family: "Audiowide", sans-serif;
+  padding-top: 10px;
+  text-align: center;
+}
 
-  .center {
+.center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  border: 3px solid #4098FF;
+  border: 3px solid #ff00d4;
 }
 
-   h2 {
-    color: white;
-    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
-    font-style: oblique;
-  }
+h2 {
+  color: white;
+  text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+  font-style: oblique;
+  text-align: center;
+}
   
-  .wrap{
+.wrap{
   width: 50%;
   position: absolute;
   top: 50%;
@@ -80,7 +86,7 @@ export default {
   top:25%;
   width:30%;
   width: 75%;
-  border: 3px solid #4098FF;
+  border: 3px solid #ff00d4;
   border-right: none;
   padding: 5px;
   height: 20px;
@@ -89,24 +95,22 @@ export default {
   color: #9DBFAF;
 }
 
- .search-icon {
-    position: absolute;
-    top: 10px;
-    left: 635px;
-    width: 14px;
-    
-  }
+.search-icon {
+  position: absolute;
+  top: 10px;
+  left: 635px;
+  width: 14px; 
+}
 
 .searchTerm:focus{
   color: #000000;
-  
 }
 
 .searchButton {
   width: 40px;
   height: 36px;
-  border: 1px solid #4098FF;
-  background: #4098FF;
+  border: 1px solid #ff00d4;
+  background: #ff00b3;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -115,7 +119,6 @@ export default {
 }
 
 .btn {
-  /*background-color: #4098FF; */
   margin: 0;
   position: absolute;
   left: 45%;
@@ -126,9 +129,58 @@ export default {
   font-size: 14px;
 }
 
-.link-nav {
-  margin: auto;
+.btn-nav {
+  display: grid;
+  place-items: center;
 }
 
+.nav {
+  text-decoration: none;
+}
+
+.home-nav {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.home-nav:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.home-nav:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.home-nav:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
 
 </style>

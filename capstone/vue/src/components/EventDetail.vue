@@ -9,7 +9,7 @@
         <p> {{ events.hostName }}</p>
         <h3>{{events.eventInformation}}</h3>
         <h3>{{events.eventGenre}}</h3>
-        <router-link v-bind:to="{ name: 'edit-event', params: {eventID: $route.params.eventID} }" class="btn edit-event">Edit Event</router-link>
+        <router-link v-bind:to="{ name: 'edit-event', params: {eventID: $route.params.eventId} }" class="btn edit-event">Edit Event</router-link>
         <button class="btn delete-event" v-on:click="deleteEvent">Delete Event</button>
         <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}</div>
         <div>

@@ -56,9 +56,9 @@ export default {
          }
     },
     computed: {
-        songs(){
-            return this.$store.state.songs;
-        }
+        // songs(){
+        //     return this.$store.state.songs;
+        // }
     }
 };
 </script>
