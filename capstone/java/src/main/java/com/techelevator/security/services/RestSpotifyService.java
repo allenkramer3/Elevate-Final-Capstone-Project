@@ -108,9 +108,26 @@ public class RestSpotifyService implements SpotifyService {
 
         // make an HTTP PUT request with headers
        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.PUT, entity, String.class);
-
-
     }
+
+//    public void startResumePlaybackSong(String songName) throws RestClientResponseException {
+//        String spotifyUrl = "https://api.spotify.com/v1/me/player/play?device_id="+DEVICE_ID;
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        headers.set("Authorization","Bearer "+ ACCESS_TOKEN);
+//        headers.set("Content-Type", "application/x-www-form-urlencoded");
+//
+//        String sql= "SELECT track_uri FROM song WHERE song_name = ?;";
+//        String result = jdbcTemplate.queryForObject(sql,String.class, songName);
+//
+//
+//        String jsonData = "{\"context_uri\":\"" + result + "\",\"offset\":{\"position\":\"0\"},\"position_ms\":\"0\"}";
+//        HttpEntity<Object> entity = new HttpEntity<>(jsonData, headers);
+//
+//        // make an HTTP PUT request with headers
+//        ResponseEntity<String> response = restTemplate.exchange(spotifyUrl, HttpMethod.PUT, entity, String.class);
+//    }
 
     @Override
     public String pausePlayback() {
@@ -242,6 +259,10 @@ public class RestSpotifyService implements SpotifyService {
         headers.set("Content-Type", "application/x-www-form-urlencoded");
 
         String jsonData = "{\"uris\":[\"" + trackUri + "\"]}";
+
+        String sql = "INSERT INTO playlist_song (playlist_uri, track_uri) " +
+                     "VALUES (?, ?);";
+        jdbcTemplate.update(sql, playlistUri, trackUri);
 
         HttpEntity entity = new HttpEntity(jsonData,headers);
 
