@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Event;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EventDao {
 
@@ -16,6 +17,6 @@ public interface EventDao {
 
     Event getEvent(int eventID);
 
-    List<String> getDJEvents(int djID);
+    List<Event> getDJEventNames(int djID);
 
 }

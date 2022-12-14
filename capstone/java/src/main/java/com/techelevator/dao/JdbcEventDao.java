@@ -54,13 +54,13 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public List<String> getDJEvents(int djID) {
-        List<String> eventNames = new ArrayList<>();
+    public List<Event> getDJEventNames(int djID) {
+        List<Event> eventNames = new ArrayList<>();
         String sql = "SELECT * FROM event WHERE dj_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djID);
         while (results.next()){
             Event events = mapRowToEvent(results);
-            eventNames.add(events.getEventName());
+            eventNames.add(events);
         }
         return eventNames;
     }
