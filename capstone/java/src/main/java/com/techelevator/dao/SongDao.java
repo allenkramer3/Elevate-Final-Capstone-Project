@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.NewSongDTO;
 import com.techelevator.model.SearchResponseDTO;
 import com.techelevator.model.Song;
 
@@ -14,6 +15,6 @@ public interface SongDao {
 
     List<Map<String, String>> listPlaylistSongs(int eventID);
 
-    void createSong(SearchResponseDTO searchResponseDTO);
+    void createSong(NewSongDTO newSongDTO);
 
 }

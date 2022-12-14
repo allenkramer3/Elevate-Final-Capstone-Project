@@ -10,8 +10,8 @@ export default {
         return axios.get(`/search/tracks/${searchText}`)
     },
 
-    addSong(song){
-         return axios.post('/song/add', song)
+    addSong(newSong){
+         return axios.post('/song/add', newSong)
      }
 
 }
