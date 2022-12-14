@@ -1,6 +1,6 @@
 <template>
   <div>
-      <input type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="Search" />
+      <input type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="Search Song" />
       <ul>
           <li v-for="result in results" v-bind:key="result.id" >
               {{ result.name }}
@@ -10,7 +10,7 @@
               <!-- <button v-on:click="addToPlaylist()"> Request Song</button> -->
           </li>
       </ul>
-      <button class="btn btn-search">Search</button>
+      <!-- <button class="btn btn-search">Search</button> -->
   </div>
 </template>
 
@@ -70,5 +70,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>
