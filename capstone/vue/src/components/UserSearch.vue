@@ -1,6 +1,6 @@
 <template>
   <div>
-      <input type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="Search Song" />
+      <input class="searchInput" type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="Search Song" />
       <ul>
           <li v-for="result in results" v-bind:key="result.id" >
               {{ result.name }}
@@ -49,17 +49,24 @@ export default {
              PlaylistService.addSong(this.newSong).then(response => {
                 if(response.status === 200){
                 this.addToPlaylist();
-                alert("Song added")
                 }
              });
          },
          addToPlaylist(){
-         PlaylistService.addToPlaylist(this.newSong.uri, this.$store.state.event.playlistUri).then(response => {
-                    if (response.status === 200){
-                        alert("Song requested!")
-                    }
-                })
-    }
+         PlaylistService.addToPlaylist(this.newSong.uri, this.$store.state.event.playlistUri).then(response =>{
+             if(response.status === 200){
+                 this.retrieveSongsList();
+             }
+         })
+         
+        
+    },
+     retrieveSongsList(){
+            PlaylistService.getSongs(this.$route.params.eventId).then(response => {
+                this.$store.commit("SET_CURRENT_PLAYLIST", response.data);
+            })
+        }
+
     },
     computed: {
         // songs(){
@@ -70,6 +77,10 @@ export default {
 </script>
 
 <style>
+
+.searchInput{
+    margin-top: 20px;
+}
 
 
 </style>
