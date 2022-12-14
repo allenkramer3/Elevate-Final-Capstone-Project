@@ -23,9 +23,9 @@ export default {
             searchText: '',
             results: [],
             newSong: {
-                 trackUri: '',
-                 songName: '',
-                 artistName: '',
+                 uri: '',
+                 name: '',
+                 artists: '',
                  genreID: '3'
              }
         };
@@ -38,12 +38,12 @@ export default {
                 });
           },
          addSong(result){
-             alert(result.name)
+             
 
               this.newSong = {
-                         trackUri: result.uri,
-                         songName: result.name,
-                         artistName: result.artists,
+                         uri: result.uri,
+                         name: result.name,
+                         artists: result.artists[0].name,
                          genreID: '3'
                     }
              
