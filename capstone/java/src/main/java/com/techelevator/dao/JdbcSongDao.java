@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.NewSongDTO;
 import com.techelevator.model.SearchResponseDTO;
 import com.techelevator.model.Song;
+import com.techelevator.security.services.RestSpotifyService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -16,9 +17,11 @@ import java.util.Map;
 public class JdbcSongDao implements SongDao{
 
     private final JdbcTemplate jdbcTemplate;
+    private RestSpotifyService restSpotifyService;
 
-    public JdbcSongDao(JdbcTemplate jdbcTemplate) {
+    public JdbcSongDao(JdbcTemplate jdbcTemplate, RestSpotifyService restSpotifyService) {
         this.jdbcTemplate = jdbcTemplate;
+        this.restSpotifyService = restSpotifyService;
     }
 
     @Override
@@ -46,18 +49,6 @@ public class JdbcSongDao implements SongDao{
 
     @Override
     public List<Map<String, String>> listPlaylistSongs(int eventID) {
-//        Map<String, String> songs = new HashMap<>();
-//        String sql = "SELECT * FROM song AS s " +
-//                     "JOIN playlist_song AS ps ON s.track_uri = ps.track_uri " +
-//                     "JOIN playlist AS p ON ps.playlist_uri = p.playlist_uri " +
-//                     "JOIN event AS e ON p.playlist_uri = e.playlist_uri " +
-//                     "WHERE event_id = ?;";
-//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventID);
-//        while (results.next()){
-//            Song song = mapRowToSong(results);
-//            songs.put(song.getSongName(), song.getArtistName());
-//        }
-//        return songs;
         List<Song> songs = new ArrayList<>();
         String sql = "SELECT * FROM song AS s " +
                      "JOIN playlist_song AS ps ON s.track_uri = ps.track_uri " +
@@ -87,6 +78,7 @@ public class JdbcSongDao implements SongDao{
         String sql = "INSERT INTO song (track_uri, song_name, artist_name, genre_id) " +
                     "VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, newSongDTO.getUri(), newSongDTO.getName(), newSongDTO.getArtists(), 3);
+       // restSpotifyService.addItemsToPlaylist(newSongDTO.getUri(),)
     }
 
 

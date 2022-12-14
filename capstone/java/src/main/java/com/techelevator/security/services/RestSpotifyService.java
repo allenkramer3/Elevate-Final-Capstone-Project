@@ -26,13 +26,14 @@ public class RestSpotifyService implements SpotifyService {
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
     private String callBackUrl = "http://localhost:8080/dj/authorize";
-    private String AUTH_CODE = "AQDSZMf2SU175Ofu0IDjNrUjHRcMLqcCziJxEZwIi_e6fo4IwTP3c8uFCJbiOVoi5JbLJ8vIqRvcZOSJTk5uVrOvZOPi8iUC91RZxj87sQIlv-ujbPw-e3DP-nTjgtPg4cQVX8bpQmkYI_3Sn8DkfIL6cHHM-VSyQUqU_BDiA7xZ2AgNy64frX3bGulnXnsmiAtouXDlIwY_H-E-McuT-V7hqtTUYTMqN5prqMT86jirQVzhLjA8lS8hEnxsY73iMdg0CBU_0nNlndAYBuPORW-Z9ibdxY0kO5XXUMuAEksGOjSCCCkYXO5RDGhXcni-eZGnFlVmxvn1EoVDTBdUcGZwIzrG_wcb4gVa3_RzOneM83-gKITExOyT1Fw0XX6x0egM55_GeIDsS4upKh-VIot5efkbWXOFHSien5XzUU7OSYl6ruE6dQzjcWSFXpixYFhER7OMM_qWYrVSvB5C20iyPSNGN6Ud0HNVDNi60NDduzH-Va6Sh4jRRakYoumiPIGxhdWXtE7h41wyJcEpGaod2EvT34z_QECbSRIDs0KG_pCNnryhNs9tubTgdH7R1P7-cvIsKygxdL5s";
-    private String ACCESS_TOKEN = "BQAN2WR2wPeNfW4Gk1ZeAPoytDRzGD3zAMlaEdQzN802D9bgylbNZTUWCGnou-bTqYraiZReczwMuAY2kF-zKjWSMIYck-X1C9WuGSW0nUa4mphjGonuMYoMW4Pgh69rON2eDeBFxV8UxoRiuXd_5rat4IBbSARFpY2d6jyjzQOlQq4rgRsrHgz-cG66c649GkocHM19SO6Bso3CnfWNEtMg67a6Gje2qmEN446EddBSBxs3cUjFqizElOT0n8HfX_w6eN7bb_7rZiUI_A";
+    private String AUTH_CODE = "AQAct7PkAycNTnwZulufcIikQ3BoqK67JO8nekOG38enAfN5ZvA5aNRuloUqr6JYjLC2QQtTLgQ-7wiDGTLu2snwTIKdV-qh182j6Dgceu3oinTFieQ9TDa45RMlsPOmhwEEXleeSack8C1No1fqo_XwKsdib8BcKKhCf4l0Vu7V9KQUglLi7V7P2VzAQSXGjAfOpjC5fZurdIFMk7lpAhp11y24p1SDbXkFmZq15rglyPky0VWOHk3RZ_i0SCu31h-Dg5bThrgRxhsilV6nm0d9UpML0aa2gAOTTaNVKjH8ytjvEpii1mN5N5O9PduIZvibEBjcXGeOSmCvmfG5uskGzw9VR3O1nQ4nrQhFAW3DhLGe5FOKTrCVVX_W5knjsYzbY08ZfAjMQ3oeuTBv1kWV5WIV_MnCM5B3DVxYXCe8Ik2zUT0JgN2mgWhp_aVNtlvSVNY83uTgh2w19loLLQIcJQjVnqc5wlvOqzz1c1Ogk5R0GIqC04e_DVboJ3Nl0tF_6hX7rgva0qU3tU3LTA59fC1bpqGSfCkoCZtmO_wxYbdE8qCsPxQkM7zVKJvC5Rp5VOmp-1o8RSKh";
+    private String ACCESS_TOKEN = "BQDDap5WgYs6Nwvidq-2vazvBk2a-zKv674WI1vJpd3STKCkc3d2nIRIEQHrMSyhlfcGhVk93HVN0_qHuUbXidIQkdXXHrFuPouW6CNkzVvlzhxsxqPsdNjDYFLF2K4XXJmNDPsf6Am8mZcFluE6qlvKihwzlxlCV3k7J_SVEOu4eggf3ozHrb-c_GWa-nnJCEWN_Ax3Osqb3INZPdemDT6IrAmHMOr-MjJvjuCbWaUnayQD3q7X4sN0C2w7atTdrty8fQVtsZdQQg4saQ";
     private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
     private final String BASE_SPOTIFY_URL = "https://api.spotify.com/v1/";
 
 
     private final JdbcTemplate jdbcTemplate;
+
 
 
     public RestSpotifyService(JdbcTemplate jdbcTemplate) {
@@ -244,14 +245,14 @@ public class RestSpotifyService implements SpotifyService {
     @Override
     public String addItemsToPlaylist(String trackUri, String playlistUri) {
         String fullString = playlistUri;
-        String[] separatedString = fullString.split(":");
-        String playlistID = separatedString[3];
+        String separatedString = fullString.replace("%3A", ":");
+        String correctString = separatedString.replace("=", "");
 
-        String fullString2 = playlistID;
-        String[] separatedString2 = fullString2.split("\"");
-        String playlistID2 = separatedString2[0];
+        String fullString2 = correctString;
+        String[] separatedString2 = fullString2.split(":");
+        String playlistID = separatedString2[2];
 
-        String spotifyUrl = BASE_SPOTIFY_URL + "playlists/" + playlistID2 + "/tracks";
+        String spotifyUrl = BASE_SPOTIFY_URL + "playlists/" + playlistID + "/tracks";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -260,9 +261,17 @@ public class RestSpotifyService implements SpotifyService {
 
         String jsonData = "{\"uris\":[\"" + trackUri + "\"]}";
 
+//        String messedUpString = playlistUri;
+//        String[] separatedMessedUpString = messedUpString.split("\"");
+//        String correctUri = separatedMessedUpString[3];
+
+
+
+
+
         String sql = "INSERT INTO playlist_song (playlist_uri, track_uri) " +
                      "VALUES (?, ?);";
-        jdbcTemplate.update(sql, playlistUri, trackUri);
+        jdbcTemplate.update(sql, correctString, trackUri);
 
         HttpEntity entity = new HttpEntity(jsonData,headers);
 

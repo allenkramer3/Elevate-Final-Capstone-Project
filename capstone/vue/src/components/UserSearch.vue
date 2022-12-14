@@ -6,7 +6,8 @@
               {{ result.name }}
               -
               {{ result.artists[0].name }}
-              <button v-on:click="addSong(result)"> Add Song</button> 
+              <button v-on:click="addSong(result); addToPlaylist(result)" >Request Song</button> 
+              <!-- <button v-on:click="addToPlaylist()"> Request Song</button> -->
           </li>
       </ul>
       <button class="btn btn-search">Search</button>
@@ -38,8 +39,6 @@ export default {
                 });
           },
          addSong(result){
-             
-
               this.newSong = {
                          uri: result.uri,
                          name: result.name,
@@ -48,12 +47,19 @@ export default {
                     }
              
              PlaylistService.addSong(this.newSong).then(response => {
-                if(response.status === 201){
-                    
+                if(response.status === 200){
+                this.addToPlaylist();
                 alert("Song added")
                 }
              });
-         }
+         },
+         addToPlaylist(){
+         PlaylistService.addToPlaylist(this.newSong.uri, this.$store.state.event.playlistUri).then(response => {
+                    if (response.status === 200){
+                        alert("Song requested!")
+                    }
+                })
+    }
     },
     computed: {
         // songs(){
