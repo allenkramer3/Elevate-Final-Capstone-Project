@@ -3,17 +3,16 @@
 
     <h1>Welcome to Elevate</h1>
     <h2>If you are an Elevate Host or DJ, please login below.</h2>
-    <button class="home-nav">
-      <router-link class="nav" v-bind:to="{ name: 'login'}">Login</router-link>
-    </button>
-    <h2>If you want to register as an Elevate Host or DJ, please register below.</h2>
-    <button class="home-nav">
-      <router-link class="nav" v-bind:to="{ name: 'register'}">Register</router-link>
-    </button>
-    <h2>Feel free to view any of our events by clicking on the events link below or clicking the dropdown of events.</h2>
-    <button class="home-nav">
-      <router-link class="nav" v-bind:to="{ name: 'events'}">Events</router-link>
-    </button>
+    <div class="btn-nav">
+      <button class="home-nav" role="button">
+        <router-link class="nav" v-bind:to="{ name: 'login'}">Login</router-link>
+      </button>
+      <h2>If you want to register as an Elevate Host or DJ, please register below.</h2>
+      <button class="home-nav" role="button">
+        <router-link class="nav" v-bind:to="{ name: 'register'}">Register</router-link>
+      </button>
+      <h2>Feel free to view any of our events by clicking on the events link below or clicking the dropdown of events.</h2>
+    </div>
 
    
 
@@ -130,11 +129,58 @@ h2 {
   font-size: 14px;
 }
 
+.btn-nav {
+  display: grid;
+  place-items: center;
+}
+
 .nav {
-  display: flex;
-  justify-content: center;
   text-decoration: none;
-  margin-left: auto;
+}
+
+.home-nav {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.home-nav:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.home-nav:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.home-nav:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
 }
 
 </style>
