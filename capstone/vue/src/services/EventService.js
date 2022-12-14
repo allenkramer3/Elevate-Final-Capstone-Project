@@ -9,7 +9,8 @@ export default {
     },
 
     updateEvent(event) {
-        return axios.put(`/events/${event.id}`, event)
+        // return axios.put(`/events/${event.id}`, event)
+        return axios.put(`/event/update`, event)
     },
 
     getEvents(){

@@ -3,7 +3,7 @@
       <input type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="Search" />
       <ul>
           <li v-for="result in results" v-bind:key="result.id" >
-              <p >{{ result.name }}</p>
+              {{ result.name }}
               -
               {{ result.artists[0].name }}
               <button v-on:click="addSong"> Add Song</button> 
@@ -38,9 +38,6 @@ export default {
                 });
           },
          addSong(){
-<<<<<<< HEAD
-              this.newSong.songName = this.results.name;
-=======
               this.newSong = {
                          trackUri: this.results.uri,
                          songName: this.results.name,
@@ -54,7 +51,6 @@ export default {
                 alert("Song added")
                 }
              });
->>>>>>> 89af6311be1d1cc2ffa4dc313a6758a203d34520
          }
     },
     computed: {

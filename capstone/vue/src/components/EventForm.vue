@@ -32,7 +32,7 @@
               <option v-bind:value="playlist.playlistURI" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{playlist.playlistName}}</option>
           </select>
       </div>
-      <button class="btn btn-submit">Create New Event</button>
+      <button class="btn btn-submit">Submit</button>
       <button class="btn btn-cancel" v-on:click="cancelEvent" type="button">Cancel</button>
   </form>
 </template>
@@ -90,10 +90,10 @@ export default {
                 // update
                 newEvent.id = this.eventID;
                 EventService
-                    .updateEvent(newEvent)
+                    .updateEvent(this.event)
                     .then(response => {
-                        if (response.status === 200) {
-                            this.$router.push(`/events/${newEvent.eventID}`);
+                        if (response.status === 201) {
+                            this.$router.push(`/events/${this.event.eventID}`);
                         }
                     })
                     .catch(error => {
@@ -199,6 +199,7 @@ label {
     color: #fff;
     background-color: #0062cc;
     border-color: #005cbf;
+    margin-right: 10px;
 }
 
 .btn-cancel {
