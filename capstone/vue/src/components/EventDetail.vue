@@ -13,6 +13,7 @@
         <button class="btn delete-event" v-on:click="deleteEvent">Delete Event</button>
         <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}</div>
         <div>
+          <music-player />  
           <playlist />
           <user-search />
         </div>
@@ -27,9 +28,10 @@
 import EventService from "../services/EventService";
 import Playlist from './Playlist.vue';
 import UserSearch from './UserSearch.vue';
+import MusicPlayer from './MusicPlayer.vue';
 
 export default {
-  components: { Playlist, UserSearch },
+  components: { Playlist, UserSearch , MusicPlayer},
     name: 'event-card',
     // props: {
     //     event: Object,

@@ -22,7 +22,7 @@ export default {
         retrieveSongs(){
             PlaylistService.getSongs(this.$route.params.eventId).then(response => {
                 this.$store.commit("SET_CURRENT_PLAYLIST", response.data);
-            });
+            })
         }
     },
     computed: {

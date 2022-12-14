@@ -10,7 +10,7 @@ public interface SpotifyService {
 
     String getArtistTopTracks();
 
-    String startResumePlayback(String trackUri);
+    void startResumePlayback(int eventID);
 
     String pausePlayback();
 
@@ -23,5 +23,5 @@ public interface SpotifyService {
     String getUsersPlaylist();
 
 
-    String addItemsToPlaylist(String trackUri);
+    String addItemsToPlaylist(String trackUri, String playlistUri);
 }

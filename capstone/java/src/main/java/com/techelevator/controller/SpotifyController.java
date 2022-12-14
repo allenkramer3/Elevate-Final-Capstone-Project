@@ -40,9 +40,9 @@ public class SpotifyController {
         return spotifyService.getArtistTopTracks();
     }
 
-    @RequestMapping(path = "/play/{trackUri}", method = RequestMethod.PUT)
-    public String playSpotifyTrack(@PathVariable String trackUri) throws JsonProcessingException {
-        return spotifyService.startResumePlayback(trackUri);
+    @RequestMapping(path = "/play/{eventID}", method = RequestMethod.PUT)
+    public void playSpotifyTrack(@PathVariable int eventID) throws JsonProcessingException {
+         spotifyService.startResumePlayback(eventID);
     }
 
     @RequestMapping(path = "/pause", method = RequestMethod.PUT)
@@ -71,8 +71,8 @@ public class SpotifyController {
     }
 
     @RequestMapping(path = "/add/playlist/{trackUri}", method = RequestMethod.POST)
-    public String addItemsToPlaylist(@PathVariable String trackUri) throws JsonProcessingException {
-        return spotifyService.addItemsToPlaylist(trackUri);
+    public String addItemsToPlaylist(@PathVariable String trackUri, @RequestBody String playlistUri) throws JsonProcessingException {
+        return spotifyService.addItemsToPlaylist(trackUri, playlistUri);
     }
 
 }
