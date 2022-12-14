@@ -34,7 +34,7 @@ export default {
     },
 
     getDjEvents(djId) {
-        return axios.get(`/event/dj/:${djId}`)
+        return axios.get(`/event/dj/${djId}`)
     }
 
 }

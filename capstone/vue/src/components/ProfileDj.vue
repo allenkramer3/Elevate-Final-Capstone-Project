@@ -4,7 +4,13 @@
       <div>
           <h2>My Events</h2>
           <ul>
-              <li v-for="event in events" v-bind:key="event.eventID"></li>
+              <li v-for="event in events" v-bind:key="event.eventID">{{ event.eventName }}</li>
+          </ul>
+      </div>
+      <div>
+          <h2>My Playlists</h2>
+          <ul>
+              <li v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{ playlist.playlistName }}</li>
           </ul>
       </div>
   </div>
@@ -17,18 +23,39 @@ export default {
     name: 'profile-dj',
     data() {
         return {
-            events: {
-
-            }
+            events: [
+                {
+                    eventID: '',
+                    djID: '',
+                    hostID: '',
+                    playlistUri: '',
+                    eventName: '',
+                    eventInformation: '',
+                    genres: '',
+                    eventPicture: ''
+                }
+            ],
+            playlists: [
+                {
+                    playlistURI: '',
+                    playlistName: ''
+                }
+            ]
         }
     },
     created() {
         this.retrieveDjEvents();
+        this.retrieveDjPlaylists();
     },
     methods: {
         retrieveDjEvents() {
-            EventService.getDjEvents().then(response => {
+            EventService.getDjEvents(this.$route.params.djId).then(response => {
                 this.events = response.data;
+            });
+        },
+        retrieveDjPlaylists() {
+            EventService.getPlaylists().then(response => {
+                this.playlists = response.data;
             });
         }
     }

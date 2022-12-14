@@ -62,8 +62,8 @@ public class EventController {
 
     @PreAuthorize("hasRole('DJ')")
     @RequestMapping(path="/dj/{djID}", method = RequestMethod.GET)
-    public List<String> getDJsEvents(@PathVariable int djID){
-        return eventDao.getDJEvents(djID);
+    public List<Event> getDJsEventNames(@PathVariable int djID){
+        return eventDao.getDJEventNames(djID);
     }
 
     @PreAuthorize("hasRole('DJ')")

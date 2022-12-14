@@ -2,29 +2,28 @@
   <div class="home">
 
     <h1>Welcome to Elevate</h1>
-    <h2>If you are an Elevate Host or DJ, please login below.</h2>
     <div class="btn-nav">
-      <button class="home-nav" role="button">
+      <h2 class="text-center1">If you are an Elevate Host or DJ, please login</h2>
+      <button id="nav1" class="home-nav" role="button">
         <router-link class="nav" v-bind:to="{ name: 'login'}">Login</router-link>
       </button>
-      <h2>If you want to register as an Elevate Host or DJ, please register below.</h2>
-      <button class="home-nav" role="button">
+      <h2 class="text-center2">If you want to register as an Elevate Host or DJ, please register</h2>
+      <button id="nav2" class="home-nav" role="button">
         <router-link class="nav" v-bind:to="{ name: 'register'}">Register</router-link>
       </button>
-      <h2>Feel free to view any of our events by clicking on the dropdown of events.</h2>
+      <h2 class="text-center3">Feel free to view any of our events by clicking on the dropdown of events</h2>
       <div class="form-group">
           <label>
-            <h2>Event Names:</h2>
-          </label>
-          <select>
+            <h2 class="text-center4">Event Names:
+              <select>
               <option v-bind:value="event.routeID" v-for="event in events" v-bind:key="event.routeID">{{ event.eventName }}</option>
-          </select>
-          <button class="event-route" v-on:click="viewEventDetails(eventID)">
-            Select Event
-          </button>
-      </div>    
+              </select>
+              <button class="event-route" v-on:click="viewEventDetails(eventID)">Select Event</button>
+            </h2>
+          </label>
+      </div>
+      <img src="../assets/Club.png" alt="Club" class="center">    
     </div>
-    <img src="../assets/Club.png" alt="Club" class="center">
   </div>
 </template>
 
@@ -80,7 +79,6 @@ h1 {
 }
 
 .center {
-  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
@@ -92,58 +90,49 @@ h2 {
   text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
   font-style: oblique;
   text-align: center;
-}
-  
-.wrap{
-  width: 50%;
   position: absolute;
-  top: 50%;
+}
+
+.text-center1 {
+  position: absolute;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.search {
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.searchTerm {
-  position:relative;  
-  left:13%;
-  top:25%;
-  width:30%;
-  width: 75%;
-  border: 3px solid #ff00d4;
-  border-right: none;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
-}
-
-.search-icon {
+.text-center2 {
   position: absolute;
-  top: 10px;
-  left: 635px;
-  width: 14px; 
+  top: 23.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.searchTerm:focus{
-  color: #000000;
+.text-center3 {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #ff00d4;
-  background: #ff00b3;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
+.text-center4 {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#nav1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#nav2 {
+  position: absolute;
+  top: 33.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .btn {
@@ -158,8 +147,9 @@ h2 {
 }
 
 .btn-nav {
-  display: grid;
-  place-items: center;
+  position: relative;
+  text-align: center;
+  color: white;
 }
 
 .nav {
@@ -169,16 +159,16 @@ h2 {
 .home-nav {
   align-items: center;
   appearance: none;
-  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  background-image: radial-gradient(100% 100% at 100% 0, white 0, #c90bf8 100%);
   border: 0;
   border-radius: 6px;
   box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
   box-sizing: border-box;
-  color: #fff;
+  color: white;
   cursor: pointer;
   display: inline-flex;
   font-family: "JetBrains Mono",monospace;
-  height: 48px;
+  height: 35px;
   justify-content: center;
   line-height: 1;
   list-style: none;
@@ -198,16 +188,16 @@ h2 {
 }
 
 .home-nav:focus {
-  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  box-shadow:#A96BCB 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #A96BCB 0 -3px 0 inset;
 }
 
 .home-nav:hover {
-  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #A96BCB 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
 .home-nav:active {
-  box-shadow: #3c4fe0 0 3px 7px inset;
+  box-shadow: #A96BCB 0 3px 7px inset;
   transform: translateY(2px);
 }
 
