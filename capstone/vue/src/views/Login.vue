@@ -4,17 +4,17 @@
       <br>
     </div> 
     <div class="login-box">
-    <h2>Login</h2>
+    <h2 class="main-text">Login</h2>
     <form>
       <div class="user-box">
         <input id="username" type="text" name="" required="" v-model="user.username">
-        <label for="username">Username</label>
+        <label class="box-text" for="username">Username</label>
       </div>
       <div class="user-box">
         <input id="password" type="password" name="" required="" v-model="user.password">
-        <label for="password">Password</label>
+        <label class="box-text" for="password">Password</label>
       </div>
-      <a href="#" v-on:click.prevent="login">
+      <a href="#" v-on:click.prevent="login" class="box-text">
         <span></span>
         <span></span>
         <span></span>
@@ -72,6 +72,20 @@ export default {
 .for-background {
   height: 100vh;
   width: 100vw;
+}
+
+.main-text {
+  color: white;
+  text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+  font-style: italic;
+  font-family: "Audiowide", sans-serif;
+  padding-top: 10px;
+}
+
+.box-text {
+  color: white;
+  text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+  font-style: oblique;
 }
 
 html {
