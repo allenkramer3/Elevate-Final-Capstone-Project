@@ -13,12 +13,12 @@
       </button>
       <h2 class="text-center3">Feel free to view any of our events by clicking on the dropdown of events</h2>
       <div class="form-group">
-          <label>
+          <label class="select">
             <h2 class="text-center4">Event Names:
               <select v-model="routeID">
               <option  v-bind:value="event.eventID" v-for="event in events" v-bind:key="event.eventID">{{ event.eventName }}</option>
               </select>
-              <button class="event-route" v-on:click="viewEventDetails()">Select Event</button>
+              <button class="event-route home-nav nav" v-on:click="viewEventDetails()">Select Event</button>
             </h2>
           </label>
       </div>
@@ -203,6 +203,11 @@ h2 {
 
 a.nav {
   color: rgb(243, 202, 237)
+}
+
+.event-route {
+  margin-left: 15px;
+  
 }
 
 </style>

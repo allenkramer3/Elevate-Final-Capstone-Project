@@ -2,7 +2,7 @@
   <div class="app">
   
     <div class="header">
-      <img class="logo" src="./assets/Elevate_Logo.png"/>
+      <img class="logo" src="./assets/Elevate_crop 2.png"/>
       <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'home' }">Home</router-link>
       </button>
