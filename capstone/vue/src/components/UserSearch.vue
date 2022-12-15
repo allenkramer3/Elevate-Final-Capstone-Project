@@ -30,10 +30,15 @@ export default {
     },
     methods: {
         search() {
-            PlaylistService.search(this.searchText)
+            if (this.searchText == ''){
+                this.results = [];
+            } else {
+               PlaylistService.search(this.searchText)
                 .then(response => {
                     this.results = response.data;
-                });
+                }); 
+            }
+            
           },
          addSong(result){
               this.newSong = {
@@ -55,8 +60,8 @@ export default {
                  this.retrieveSongsList();
              }
          })
-    },
-     retrieveSongsList(){
+        },
+        retrieveSongsList(){
             PlaylistService.getSongs(this.$route.params.eventId).then(response => {
                 this.$store.commit("SET_CURRENT_PLAYLIST", response.data);
             })
@@ -104,11 +109,11 @@ export default {
     transition:.3s;
     border-color:rgb(255, 149, 246);
     background-color: rgb(255, 245, 255);
-  }
+}
   
-  .searchBox[type=text]:focus{
+.searchBox[type=text]:focus{
     border-color:rgb(255, 149, 246);
     box-shadow:0 0 8px 0 rgb(253, 190, 248);
-  }
+}
 
 </style>
