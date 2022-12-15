@@ -22,15 +22,15 @@ import java.util.List;
 public class RestSpotifyService implements SpotifyService {
 
     private RestTemplate restTemplate = new RestTemplate();
-    private final String AUTHORIZE_URL = "https://accounts.spotify.com/en/authorize";
+
     private String CLIENT_ID = "39164483b245448a9b0816a999571e93";
     private String CLIENT_SECRET = "8da81ffcd6d943d39e8c1ffa85a901cc";
-    private String callBackUrl = "http://localhost:8080/dj/authorize";
     private String AUTH_CODE = "AQCkEKL_CN4VvRgutEyeo3iLy2varyzvA7hm-IChr6fgZS6QJCUDyfoPbm-iLeoeERHVjMm5VdICTYdXlBYOnpEiFZfht2tEdLPvgQCoeH0fu8WpjbiHyS1GvMJ2sKn-ObyO99AtIvc4hEY8Qu-PzslQNNfBwm1F7j-3iTio6fksf1Dtuvj-APfV5cjEBCf-qIDsazoG_vf2jtfIJAP0vLpYI_1y1F6eaQvjFu9oiSuqvLpFEa05YqwaaGe42FBAbbL7pSIK9dq6tVDriT7zrMDjSJucqBjGsBpNVI3NamX0oGad0wh98Pp88N1_gJLKpJQyqNQjbT_UXXAfsTD24SJRM7uVzAWFf_dEJHEl1Cm6fD2eY04qsmohlzQyQd6undpAorOirW-I47HyNI89jLAEWAB3pEG_joBT9nvG5vgHsJT4kM5CaWzXmdedcvYT6CaEtWM87r78aIKx4TFsqr1JxRuJNy1chDUJR7gOiGpZL86NkQa010RyDL7CySuIj8g2-QQxLq0gdO4I1BZj1hgFua7VM_wXScOOapA4N7Dd2dY-LQ5UjtA1v-mZKt8itd_EzUm5fkiRzHyR";
     private String ACCESS_TOKEN = "BQBQcFI2SpHiQ2wMFT5FUFfEe3CAw0ETqFowWEgTqj4Ka3t7dQfDDv3KsJ3i9R8u4aq2esz48lLcbINUQQrPxTFk2nzChPmHKJWYv00eBDwH3nVNU6jv9sEzFv9352TnwFoLWAp9Fo61lqL9PI6M9l29BKBCKcaVixJMImredTmHMW_GekKABjVmbuTqqMEhicrUDM7rSrzVHM2DIGcmqQauzXxI1zGhWyXDh7sV2wTMeFJ26U4aJOuF9LG-xj2GMfL42zMLx8D1GxCYng";
     private String DEVICE_ID = "73510ab9cdb61d2f22d2cebb814c604d29f23a3b";
     private final String BASE_SPOTIFY_URL = "https://api.spotify.com/v1/";
-
+    private String callBackUrl = "http://localhost:8080/dj/authorize";
+    private final String AUTHORIZE_URL = "https://accounts.spotify.com/en/authorize";
 
     private final JdbcTemplate jdbcTemplate;
 
