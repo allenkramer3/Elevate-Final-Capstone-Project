@@ -1,8 +1,8 @@
 <template>
-  <div>
-      <input class="searchInput" type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="Search Song" />
+  <div class="searchInput">
+      <input class="searchBox" type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="What song would you like to listen to?" />
       <ul>
-          <li v-for="result in results" v-bind:key="result.id" >
+          <li class="list" v-for="result in results" v-bind:key="result.id" >
               {{ result.name }}
               -
               {{ result.artists[0].name }}
@@ -79,7 +79,14 @@ export default {
 <style>
 
 .searchInput{
-    margin-top: 20px;
+    text-align: center;
+    
+}
+.list{
+    list-style-type: none;
+}
+.searchBox{
+    width: 20%;
 }
 
 

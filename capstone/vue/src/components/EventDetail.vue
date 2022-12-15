@@ -4,7 +4,8 @@
         <img src="../assets/loading_motion.gif" />
     </div>
     <div v-else class="event-card">
-        <h1>{{ events.eventName }}</h1>
+        <h1 class="eventTitle">{{ events.eventName }}</h1>
+        <div class="eventInformation">
         <p>Event Details:</p>
         <p> {{ events.hostName }}</p>
         <h3>{{events.eventInformation}}</h3>
@@ -12,10 +13,11 @@
         <router-link v-bind:to="{ name: 'edit-event', params: {eventID: $route.params.eventId} }" class="btn edit-event">Edit Event</router-link>
         <button class="btn delete-event" v-on:click="deleteEvent">Delete Event</button>
         <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}</div>
+        </div>
         <div>
-          <music-player />  
-          <playlist />
           <user-search />
+          <playlist />
+          <music-player /> 
         </div>
         
 
@@ -122,6 +124,19 @@ export default {
   padding: 5px 5px 5px 5px;
   border-radius: 3px;
   font-size: 15px;
+}
+.eventTitle{
+    text-align: center;
+}
+.eventInformation{
+    background-color: rgba(144, 0, 190, .2);
+    color: black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px 8px;
 }
 
 
