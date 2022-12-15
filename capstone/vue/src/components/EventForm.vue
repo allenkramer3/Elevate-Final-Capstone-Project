@@ -104,7 +104,13 @@ export default {
             
         },
         cancelEvent() {
-            this.$router.push(`/dj`);
+            if (this.eventID === 0){
+               this.$router.push(`/dj`); 
+            } else {
+                this.$router.push(`/events/${this.$route.params.eventId}`);
+            }
+
+            
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
