@@ -176,6 +176,22 @@ export default {
     padding: 10px;
     margin-bottom: 10px;
     background-color:rgb(233, 186, 233);
+
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: italic;
+    font-family: "Audiowide", sans-serif;
+    padding-top: 10px;
+
+    color: white;
+    background: rgba(0,0,0,.75);
+
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px 8px;
 }
 
 .form-group {

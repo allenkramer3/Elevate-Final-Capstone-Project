@@ -201,4 +201,8 @@ h2 {
   transform: translateY(2px);
 }
 
+a.nav {
+  color: rgb(243, 202, 237)
+}
+
 </style>
