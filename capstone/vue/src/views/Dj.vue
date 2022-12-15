@@ -52,7 +52,7 @@ export default {
     color: white;
     font-size: 90%;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
-    background: rgba(0,0,0,.75);
+    
     padding: 10px;
     width: 7%; 
     cursor: pointer;
