@@ -22,11 +22,8 @@ public class SpotifyController {
 
     @RequestMapping(path = "/token", method = RequestMethod.GET)
     public String getSpotifyAccessToken() throws JsonProcessingException {
-        //BEGIN - Just for information not needed
         URI currentUri = ServletUriComponentsBuilder.fromCurrentRequestUri().build().toUri();
         String asString = currentUri.toString();
-        //END
-
         return spotifyService.getAccessToken();
     }
 

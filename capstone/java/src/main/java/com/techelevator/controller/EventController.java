@@ -49,8 +49,6 @@ public class EventController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public void updateEvent(@RequestBody Event event, Principal principal){
-//        int userId = getLoggedInUserID(principal);
-//        int hostID = hostDao.findHostIDByUserID(userId);
         eventDao.updateEvent(event);
     }
 
@@ -76,9 +74,7 @@ public class EventController {
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/{eventID}", method = RequestMethod.GET)
     public Event event(@PathVariable int eventID){
-
         Event event = eventDao.getEvent(eventID);
-
         return event;
     }
 

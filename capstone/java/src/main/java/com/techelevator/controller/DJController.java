@@ -15,7 +15,6 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
-//@PreAuthorize("isAuthenticated()")
 @RequestMapping("/dj")
 public class DJController {
 
@@ -27,7 +26,6 @@ public class DJController {
         this.userDao = userDao;
     }
 
-//    @PreAuthorize("hasRole('DJ')")
     @RequestMapping(value="/hosts", method = RequestMethod.GET)
     public List<Map<String, String>> getListOfHosts(){
         return djDao.listHostNames();

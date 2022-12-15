@@ -3,11 +3,7 @@ package com.techelevator.model;
 public class NewSongDTO {
 
     private String name;
-
     private String uri;
-
-    // private String url;
-
     private String artists;
 
     public String getName() {
@@ -33,13 +29,5 @@ public class NewSongDTO {
     public void setArtists(String artists) {
         this.artists = artists;
     }
-
-//    public String getUrl() {
-//        return url;
-//    }
-//
-//    public void setUrl(String url) {
-//        this.url = url;
-//    }
 
 }

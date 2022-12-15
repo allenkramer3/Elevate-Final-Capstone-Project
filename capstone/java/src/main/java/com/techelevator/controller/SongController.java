@@ -2,7 +2,6 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.SongDao;
 import com.techelevator.model.NewSongDTO;
-import com.techelevator.model.SearchResponseDTO;
 import com.techelevator.model.Song;
 import org.springframework.web.bind.annotation.*;
 
