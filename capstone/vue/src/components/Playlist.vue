@@ -49,7 +49,7 @@ export default {
 .song {
     border-style: solid;
     border: 2px solid #9000BE;
-    border-radius: 1px;
+    border-radius: 5px;
     padding: 5px;
     margin: 10px;
     border: 2px solid;

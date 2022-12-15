@@ -1,9 +1,9 @@
 <template>
   <div>
-      <h1>Elevate Events</h1>
+      <h1 class ="title">Elevate Events</h1>
       <div class="events">
             <div class="loading" v-if="isLoading === false">
-              <h2>List of Events:</h2>
+
                  <!-- <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" v-on:click="viewEventDetails(event.eventID)" /> -->
                 <router-link v-bind:to="{name : 'event', params: {eventId: event.eventID}}" v-for="event in events" v-bind:key="event.eventID" class="links">
                     <div class="card">
@@ -83,8 +83,35 @@ h1, h2{
 }
 
 .card {
-    background-color: turquoise;
+    background-color: rgba(144, 0, 190, .2);
     color: black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px 8px;
+}
+.card:hover{
+    border-color: #ff00d4;
+    box-shadow: 0 0 10px #ff00d4;
+    
+}
+
+
+
+.card:hover::before{
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff00d4;
+
+
+    /* background-color:white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    animation-name: example;
+    animation-duration: 0.25s;
+    border-left: 8px solid black;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
 }
 
 .links {
@@ -115,5 +142,8 @@ div {
 .event a:visited {
     color: rgb(243, 243, 243);
     text-decoration: none;
+}
+.title{
+    text-align: center;
 }
 </style>

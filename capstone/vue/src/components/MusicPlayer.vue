@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class= "buttons">
       <button id="play" v-on:click="playSong(); hideButton = true" v-if="!hideButton"/>
       <button id="pause" v-on:click="pauseSong"/>
       <button id="fwd" v-on:click="skipSong"/>
@@ -32,6 +32,13 @@ export default {
 </script>
 
 <style>
+.buttons{
+    text-align:center;
+    
+    
+}
+
+
  #play, #pause, #fwd, #rew {
    width:80px;
    height: 80px;
@@ -40,6 +47,10 @@ export default {
    margin-top: 10px;
    display: inline-block;
    margin-right: 25px;
+   align-content: center;
+   border-radius: 5px;
+   
+  
 }
 
 #play:before {
@@ -53,6 +64,7 @@ export default {
     content: "";
     top: 10px;
     left: 25px;
+    
 }
 
 #pause:before {
