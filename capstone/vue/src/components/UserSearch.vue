@@ -5,7 +5,7 @@
         <ul>
             <li class="list" v-for="result in results" v-bind:key="result.id" >
             {{ result.name }} - {{ result.artists[0].name }}
-            <button class="request" v-on:click="addSong(result); addToPlaylist(result)">Request Song</button> 
+            <button class="request" v-on:click="addSong(result)">Request Song</button> 
             </li>
         </ul>
     </div>
@@ -33,12 +33,10 @@ export default {
             if (this.searchText == ''){
                 this.results = [];
             } else {
-               PlaylistService.search(this.searchText)
-                .then(response => {
+                PlaylistService.search(this.searchText).then(response => {
                     this.results = response.data;
-                }); 
+                });
             }
-            
           },
          addSong(result){
               this.newSong = {
@@ -59,14 +57,14 @@ export default {
              if(response.status === 200){
                  this.retrieveSongsList();
              }
-         })
+         });
         },
         retrieveSongsList(){
             PlaylistService.getSongs(this.$route.params.eventId).then(response => {
                 this.$store.commit("SET_CURRENT_PLAYLIST", response.data);
-            })
+            });
         }
-    }
+    },
 };
 </script>
 
@@ -115,5 +113,4 @@ export default {
     border-color:rgb(255, 149, 246);
     box-shadow:0 0 8px 0 rgb(253, 190, 248);
 }
-
 </style>
