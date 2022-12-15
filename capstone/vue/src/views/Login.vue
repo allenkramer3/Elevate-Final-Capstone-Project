@@ -1,5 +1,8 @@
 <template>
-  <div id="background">  
+  <div id="background"> 
+    <div class="for-background">
+      <br>
+    </div> 
     <div class="form">
       <div class="title">Welcome</div>
       <div class="subtitle">Please Login Below</div>
@@ -9,7 +12,7 @@
         <label for="username" class="placeholder">Username</label>
       </div>
       <div class="input-container ic2">
-        <input id="password" class="input" type="text" placeholder=" " v-model="user.password"/>
+        <input id="password" class="input" type="password" placeholder=" " v-model="user.password"/>
         <div class="cut"></div>
         <label for="password" class="placeholder">Password</label>
       </div>
@@ -57,6 +60,15 @@ export default {
 </script>
 
 <style scoped>
+#background {
+  background-color: rgb(235, 168, 229);
+}
+
+.for-background {
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   align-items: center;
   background-color: #000;
