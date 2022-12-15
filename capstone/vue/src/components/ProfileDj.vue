@@ -4,7 +4,7 @@
       <div class="events">
           <h2>My Events</h2>
           <ul>
-              <li class="list" v-for="event in events" v-bind:key="event.eventID">{{ event.eventName }}</li>
+              <li class="list-one" v-for="event in events" v-bind:key="event.eventID" v-on:click="routeToEvent(event.eventID)" >{{ event.eventName }}</li>
           </ul>
       </div>
       <div class="playlists">
@@ -57,6 +57,9 @@ export default {
             EventService.getPlaylists().then(response => {
                 this.playlists = response.data;
             });
+        },
+        routeToEvent(eventID){
+            this.$router.push(`/events/${eventID}`)
         }
     }
 }
@@ -73,7 +76,7 @@ h1 {
     text-align: center;
 }
 
-.list {
+.list, .list-one {
     list-style-type: none;
 }
 
@@ -83,6 +86,17 @@ h1 {
     font-style: italic;
     font-family: "Audiowide", sans-serif;
     padding-top: 10px;
+    margin-left: 10px;
+
+    color: white;
+    background: rgba(0,0,0,.75);
+
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px 8px;
 }
 
 .playlists {
@@ -91,6 +105,30 @@ h1 {
     font-style: italic;
     font-family: "Audiowide", sans-serif;
     padding-top: 10px;
+
+    color: white;
+    background: rgba(0,0,0,.75);
+
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px 8px;
+}
+
+.list, .list-one {
+    font-size: 20px;
+    width: fit-content;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.list-one:hover{
+    border-color: #ff00d4;
+    box-shadow: 0 0 10px #ff00d4;
+    
 }
 
 
