@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id ="background">
       <h1 class ="title">Elevate Events</h1>
       <div class="events">
             <div class="loading" v-if="isLoading === false">
@@ -7,8 +7,8 @@
                  <!-- <event-detail v-for="event in events" v-bind:event="event" v-bind:key="event.id" v-on:click="viewEventDetails(event.eventID)" /> -->
                 <router-link v-bind:to="{name : 'event', params: {eventId: event.eventID}}" v-for="event in events" v-bind:key="event.eventID" class="links">
                     <div class="card">
-                         <h1>{{event.eventName}}</h1>
-                        <h3>{{event.eventInformation}}</h3>   
+                         <h1 class="cardTitle">{{event.eventName}}</h1>
+                        <h3 class="cardInfo">{{event.eventInformation}}</h3>   
                     </div>
                     
                 </router-link>
@@ -77,14 +77,19 @@ export default {
 </script>
 
 <style scoped>
+#background{
+    background-color: transparent;
+}
+
 h1, h2{
     font-family: Arial, Helvetica, sans-serif;
     
 }
 
 .card {
-    background-color: rgba(144, 0, 190, .2);
-    color: black;
+    color: white;
+    background: rgba(0,0,0,.75);
+
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
@@ -119,16 +124,17 @@ h1, h2{
 }
 
 div {
-    background-color: white;
+    background-color: transparent;
 }
 
 .events {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color:transparent;
 }
 .event {
-    background-color: #f7fafc;
+    background-color: transparent;
     border-radius: 10px;
     padding: 40px;
     flex: 1;
@@ -145,5 +151,23 @@ div {
 }
 .title{
     text-align: center;
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: italic;
+    font-family: "Audiowide", sans-serif;
+    padding-top: 10px;
+    text-align: center;
+}
+.cardInfo{
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: oblique;
+}
+.cardTitle{
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: italic;
+    font-family: "Audiowide", sans-serif;
+    padding-top: 10px;
 }
 </style>
