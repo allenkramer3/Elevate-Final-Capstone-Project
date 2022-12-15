@@ -7,31 +7,28 @@
         <router-link class="btn-header" v-bind:to="{ name: 'home' }">Home</router-link>
       </button>
       <button class="btn">
-        <router-link class="btn-header" v-bind:to="{ name: 'login'}">Login</router-link>
+        <router-link class="btn-header" v-bind:to="{ name: 'login' }">Login</router-link>
       </button>
       <button class="btn">
-        <router-link class="btn-header" v-bind:to="{ name: 'register'}">Register</router-link>
+        <router-link class="btn-header" v-bind:to="{ name: 'register' }">Register</router-link>
       </button>
       <button class="btn">
-        <router-link class="btn-header" v-bind:to="{ name: 'events'}">Events</router-link>
+        <router-link class="btn-header" v-bind:to="{ name: 'events' }">Events</router-link>
       </button>
       <button class="btn">
-        <router-link class="btn-header" v-bind:to="{ name: 'dj'}">Dj</router-link>
+        <router-link class="btn-header" v-bind:to="{ name: 'dj' }">Dj</router-link>
       </button>
       <button :class="{btn: $store.state.token != ''}" v-if="$store.state.token != ''">
-      <router-link class="btn-header" v-bind:to="{ name: 'logout' }" >Logout</router-link>
+      <router-link class="btn-header" v-bind:to="{ name: 'logout' }">Logout</router-link>
       </button>
     </div>
 
-    
     <router-view class="main-body" />
    
-
     <div class="footer">
       <p> &copy; 2022 - Elevate by Zack, Alex, Allen, Jae and Krista</p>
     </div> 
 
-    
   </div>
 </template>
 
@@ -161,6 +158,5 @@ body{
  .footer {
    background-color: rgb(230, 230, 230);
  }
-  
 </style>
 
