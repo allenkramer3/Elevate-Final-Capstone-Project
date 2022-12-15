@@ -15,10 +15,10 @@
       <div class="form-group">
           <label>
             <h2 class="text-center4">Event Names:
-              <select>
-              <option v-bind:value="event.routeID" v-for="event in events" v-bind:key="event.routeID">{{ event.eventName }}</option>
+              <select v-model="routeID">
+              <option  v-bind:value="event.eventID" v-for="event in events" v-bind:key="event.eventID">{{ event.eventName }}</option>
               </select>
-              <button class="event-route" v-on:click="viewEventDetails(eventID)">Select Event</button>
+              <button class="event-route" v-on:click="viewEventDetails()">Select Event</button>
             </h2>
           </label>
       </div>
@@ -34,7 +34,7 @@ export default {
   name: "home",
   data() {
     return {
-      routeID: ''
+      routeID: 0
     }
   },
  created(){
@@ -52,8 +52,8 @@ export default {
                 this.isLoading = false;
             });
         },
-        viewEventDetails(eventId) {
-            this.$router.push(`/events/${eventId}`)
+        viewEventDetails() {
+            this.$router.push(`/events/${this.routeID}`)
         },
         // routeToEvent() {
         //   this.$router.push(`events/`)

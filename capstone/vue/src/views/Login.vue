@@ -1,105 +1,21 @@
 <template>
-  <!-- <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
-    </form>
-  </div> -->
-
-  <div id="login">
-      <!-- <section id="content">
-        <img class="logo">
-        <h1>Elevate</h1>
-        <p>Elevate your party!</p>
-      </section> -->
-      <section id="login">
-        <form>
-          <h1>Please log in to your account</h1>
-  
-          <label for="email">Username</label>
-          <input
-            type="text"
-            placeholder="Username"
-            id="email"
-            v-model="user.username"
-          >
-  
-          <label for="password">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            id="password"
-            v-model="user.password"
-          >
-  
-          <div class="form-actions">
-            <button class="btn" v-on:click.prevent="login">Log In</button>
-          </div>
-        </form>
-  
-        <!-- <form>
-          <h1>Create an Account</h1>
-  
-          <label for="email2">Username</label>
-          <input type="text" placeholder="Create Username" id="email2">
-  
-          <label for="password2">Password</label>
-          <input
-            type="password"
-            placeholder="Create Password"
-            id="password2"
-          >
-  
-          <label for="password3">Confirm Password</label>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            id="password3"
-          >
-  
-          <div class="form-actions">
-            <button class="btn">Sign Up</button>
-            <div class="extras">
-              <a>Back to Login</a>
-            </div>
-          </div>
-          <div class="guest-actions">
-            <button class="btn">Continue as Guest</button>
-          </div>
-        </form> -->
-      </section>
+  <div id="background">  
+    <div class="form">
+      <div class="title">Welcome</div>
+      <div class="subtitle">Please Login Below</div>
+      <div class="input-container ic1">
+        <input id="username" class="input" type="text" placeholder=" " v-model="user.username" />
+        <div class="cut"></div>
+        <label for="username" class="placeholder">Username</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="password" class="input" type="text" placeholder=" " v-model="user.password"/>
+        <div class="cut"></div>
+        <label for="password" class="placeholder">Password</label>
+      </div>
+      <button type="text" class="submit" v-on:click.prevent="login">Login</button>
     </div>
-
+  </div>  
 </template>
 
 <script>
@@ -141,80 +57,133 @@ export default {
 </script>
 
 <style scoped>
+body {
+  align-items: center;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
 
-  #login {
-       display: flex;
-       height: 100vh;
-       /* flex-direction: column; */
-       height: 35rem;
-       justify-content: center;
-       /* margin: 4rem auto; */
-       
-  }
-      #login {
-       padding-top: 0px;
-      }
-      #login {
-       background-color: rgba(144, 0, 190, .2);
-       border-radius: 5px;
-      }
-      #login {
-       padding: 4vh 1rem 1rem 1rem;
-      }
-      #content h1,
-      #login h1 {
-       margin-bottom: 2rem;
-       font-family: sans-serif;
-      }
-      #content h1 {
-       font-size: 3rem;
-      }
-      form {
-        padding-right: 20px;
-      }
-      form h1 {
-       margin-left: 0;
-      }
-      form label {
-       font-size: 1rem;
-       margin-bottom: 0.5rem;
-      }
-      form input {
-       width: 100%;
-       margin-bottom: 1rem;
-       padding: 10px;
-       border: 1px solid #e6ecf0;
-       border-radius: 3px;
-      }
-      form label,
-      form input {
-       display: block;
-      }
-      form button {
-       padding: 0.8rem 1rem;
-       color: #000;
-       border-radius: 3px;
-      }
-      .form-actions {
-       display: flex;
-      }
-      .form-actions .extras {
-       flex: 2;
-      }
-      .form-actions .extras {
-       text-align: right;
-       align-self: center;
-      }
-     
-       #content > *,
-       #login-signup form {
-       max-width: 80%;
-       margin: 0 auto;
-       }
-      a {
-       cursor: pointer;
-      }
-      .btn {
-        cursor: pointer;
-      }
+.form {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  width: 320px;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: #808097;
+}
+
+.input:focus ~ .placeholder {
+  color: #dc2f55;
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  outline: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
 </style>
