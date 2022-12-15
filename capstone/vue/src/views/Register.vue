@@ -86,9 +86,7 @@ export default {
 </script>
 
 <style scoped>
-
 #background {
-  background-color: #A96BCB;
   background-image: linear-gradient(#4A007b, #9000BE, #A96BCB)
 }
 
@@ -124,7 +122,7 @@ body {
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
-  color: #fff;
+  color: white;
   text-align: center;
 }
 
@@ -136,10 +134,10 @@ body {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: white;
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid white;
   outline: none;
   background: transparent;
 }
@@ -150,7 +148,7 @@ body {
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: white;
   pointer-events: none;
   transition: .5s;
 }
@@ -173,13 +171,13 @@ body {
   text-transform: uppercase;
   overflow: hidden;
   transition: .5s;
-  margin-top: 40px;
+  margin-top: 25px;
   letter-spacing: 4px
 }
 
 .login-box a:hover {
   background: #ED50FF;
-  color: #fff;
+  color: white;
   border-radius: 5px;
   box-shadow: 0 0 5px #ED50FF,
               0 0 25px #ED50FF,
@@ -270,93 +268,6 @@ body {
 .dropDown {
   color: white;
 }
-
-
-
-
-/* #login {
-  display: flex;
-  height: 100vh;
-  height: 35rem;
-  justify-content: center;
-      
-}
-
-#login {
-  padding-top: 0px;
-  background-color: rgba(144, 0, 190, .2);
-  border-radius: 5px;
-  padding: 5vh 1rem 1rem 1rem;
-}
-
-#login h1 {
-  margin-bottom: 2rem;
-  font-family: sans-serif;
-}
-
-form {
-  padding-right: 20px;
-}
-
-form h1 {
-  margin-left: 0;
-}
-
-form label {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-form input {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 10px;
-  border: 1px solid #e6ecf0;
-  border-radius: 3px;
-}
-
-form label,
-form input {
-  display: block;
-}
-
-form button {
-  padding: 0.8rem 1rem;
-  color: #000;
-  border-radius: 3px;
-}
-
-.form-actions {
-  display: flex;
-}
-
-.form-actions .extras {
-  flex: 2;
-}
-
-.form-actions .extras {
-  text-align: right;
-  align-self: center;
-}
-     
-#content > *,
-#login-signup form {
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-a {
-  cursor: pointer;
-}
-
-.btn {
-  cursor: pointer;
-}
-
-select{
-  margin: 10px;
-} */
-
 </style>
   
 

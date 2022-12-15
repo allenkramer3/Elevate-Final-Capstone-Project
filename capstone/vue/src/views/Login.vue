@@ -1,24 +1,29 @@
 <template>
-  <div id="background"> 
+  <div id="background">
     <div class="for-background">
       <br>
     </div> 
-    <div class="form">
-      <div class="title">Welcome</div>
-      <div class="subtitle">Please Login Below</div>
-      <div class="input-container ic1">
-        <input id="username" class="input" type="text" placeholder=" " v-model="user.username" />
-        <div class="cut"></div>
-        <label for="username" class="placeholder">Username</label>
+    <div class="login-box">
+    <h2>Login</h2>
+    <form>
+      <div class="user-box">
+        <input id="username" type="text" name="" required="" v-model="user.username">
+        <label for="username">Username</label>
       </div>
-      <div class="input-container ic2">
-        <input id="password" class="input" type="password" placeholder=" " v-model="user.password"/>
-        <div class="cut"></div>
-        <label for="password" class="placeholder">Password</label>
+      <div class="user-box">
+        <input id="password" type="password" name="" required="" v-model="user.password">
+        <label for="password">Password</label>
       </div>
-      <button type="text" class="submit" v-on:click.prevent="login">Login</button>
-    </div>
-  </div>  
+      <a href="#" v-on:click.prevent="login">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Login
+      </a>
+    </form>
+  </div>
+</div>
 </template>
 
 <script>
@@ -61,7 +66,7 @@ export default {
 
 <style scoped>
 #background {
-  background-color: rgb(235, 168, 229);
+  background-image: linear-gradient(#4A007b, #9000BE, #A96BCB)
 }
 
 .for-background {
@@ -69,133 +74,177 @@ export default {
   width: 100vw;
 }
 
-body {
-  align-items: center;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
-
-.form {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #15172b;
-  border-radius: 20px;
-  box-sizing: border-box;
-  height: 500px;
-  padding: 20px;
-  width: 320px;
-}
-
-.title {
-  color: #eee;
-  font-family: sans-serif;
-  font-size: 36px;
-  font-weight: 600;
-  margin-top: 30px;
-}
-
-.subtitle {
-  color: #eee;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-.input-container {
-  height: 50px;
-  position: relative;
-  width: 100%;
-}
-
-.ic1 {
-  margin-top: 40px;
-}
-
-.ic2 {
-  margin-top: 30px;
-}
-
-.input {
-  background-color: #303245;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  font-size: 18px;
+html {
   height: 100%;
-  outline: 0;
-  padding: 4px 20px 0;
-  width: 100%;
 }
 
-.cut {
-  background-color: #15172b;
-  border-radius: 10px;
-  height: 20px;
-  left: 20px;
-  position: absolute;
-  top: -20px;
-  transform: translateY(0);
-  transition: transform 200ms;
-  width: 76px;
-}
-
-.cut-short {
-  width: 50px;
-}
-
-.input:focus ~ .cut,
-.input:not(:placeholder-shown) ~ .cut {
-  transform: translateY(8px);
-}
-
-.placeholder {
-  color: #65657b;
+body {
+  margin:0;
+  padding:0;
   font-family: sans-serif;
-  left: 20px;
-  line-height: 14px;
-  pointer-events: none;
+  background: linear-gradient(black, black);
+}
+
+.login-box {
   position: absolute;
-  transform-origin: 0 50%;
-  transition: transform 200ms, color 200ms;
-  top: 20px;
-}
-
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-30px) translateX(10px) scale(0.75);
-}
-
-.input:not(:placeholder-shown) ~ .placeholder {
-  color: #808097;
-}
-
-.input:focus ~ .placeholder {
-  color: #dc2f55;
-}
-
-.submit {
-  background-color: #08d;
-  border-radius: 12px;
-  border: 0;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.75);
   box-sizing: border-box;
-  color: #eee;
-  cursor: pointer;
-  font-size: 18px;
-  height: 50px;
-  margin-top: 38px;
-  outline: 0;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: white;
   text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
   width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background: transparent;
 }
 
-.submit:active {
-  background-color: #06b;
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: white;
+  pointer-events: none;
+  transition: .5s;
 }
 
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #ED50FF;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ED50FF;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 25px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #ED50FF;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ED50FF,
+              0 0 25px #ED50FF,
+              0 0 50px #ED50FF,
+              0 0 100px #ED50FF;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ED50FF);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ED50FF);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #ED50FF);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #ED50FF);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+.dropDown {
+  color: white;
+}
 </style>
