@@ -11,7 +11,7 @@ import PlaylistService from '../services/PlaylistService';
 
 export default {
     name: 'music-player',
-    data(){
+    data() {
         return {
             hideButton: false
         }
@@ -26,18 +26,14 @@ export default {
         skipSong(){
             PlaylistService.skipSong()
         }
-        
     }
-}
+};
 </script>
 
 <style>
 .buttons{
     text-align:center;
-    
-    
 }
-
 
  #play, #pause, #fwd, #rew {
    width:80px;
@@ -50,8 +46,6 @@ export default {
    align-content: center;
    border-radius: 5px;
    cursor: pointer;
-   
-  
 }
 
 #play:before {
@@ -65,7 +59,6 @@ export default {
     content: "";
     top: 10px;
     left: 25px;
-    
 }
 
 #pause:before {
@@ -87,7 +80,6 @@ export default {
     top: 10px;
     right: 25px;
 }
-
 
 #fwd:before {
     width: 0;        	
@@ -140,5 +132,4 @@ export default {
     top: 10px;
     right: 35px;
 }
-
 </style>

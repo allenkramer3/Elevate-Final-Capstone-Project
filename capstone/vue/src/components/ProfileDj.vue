@@ -1,19 +1,19 @@
 <template>
-  <div>
-      <h1>My Profile</h1>
-      <div class="events">
-          <h2>My Events</h2>
-          <ul>
-              <li class="list-one" v-for="event in events" v-bind:key="event.eventID" v-on:click="routeToEvent(event.eventID)" >{{ event.eventName }}</li>
-          </ul>
-      </div>
-      <div class="playlists">
-          <h2>My Playlists</h2>
-          <ul>
-              <li class="list" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{ playlist.playlistName }}</li>
-          </ul>
-      </div>
-  </div>
+    <div>
+        <h1>My Profile</h1>
+        <div class="events">
+            <h2>My Events</h2>
+            <ul>
+                <li class="list-one" v-for="event in events" v-bind:key="event.eventID" v-on:click="routeToEvent(event.eventID)" >{{ event.eventName }}</li>
+            </ul>
+        </div>
+        <div class="playlists">
+            <h2>My Playlists</h2>
+            <ul>
+                <li class="list" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{ playlist.playlistName }}</li>
+            </ul>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -62,11 +62,10 @@ export default {
             this.$router.push(`/events/${eventID}`)
         }
     }
-}
+};
 </script>
 
 <style scoped>
-
 h1 {
     color: white;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
@@ -87,10 +86,7 @@ h1 {
     font-family: "Audiowide", sans-serif;
     padding-top: 10px;
     margin-left: 10px;
-
-    color: white;
     background: rgba(0,0,0,.75);
-
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
@@ -105,10 +101,7 @@ h1 {
     font-style: italic;
     font-family: "Audiowide", sans-serif;
     padding-top: 10px;
-
-    color: white;
     background: rgba(0,0,0,.75);
-
     border-radius: 5px;
     padding: 5px;
     margin: 10px;

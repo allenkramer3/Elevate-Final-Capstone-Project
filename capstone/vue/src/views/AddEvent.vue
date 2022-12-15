@@ -1,7 +1,7 @@
 <template>
   <div>
-      <h1>Create New Event</h1>
-      <event-form />
+       <h1>Create New Event</h1>
+       <event-form />
   </div>
 </template>
 
@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style scoped>
-
 h1 {
     text-align: center;
     color: white;
@@ -27,5 +26,4 @@ h1 {
     padding-top: 10px;
     text-align: center;
 }
-
 </style>

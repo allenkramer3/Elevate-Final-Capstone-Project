@@ -1,14 +1,16 @@
 <template>
   <div>
-      <authorize-page />
+    <authorize-page />
   </div>
 </template>
 
 <script>
 import AuthorizePage from '../components/AuthorizePage.vue'
-export default {
-  components: { AuthorizePage },
 
+export default {
+  components: { 
+    AuthorizePage 
+  }
 }
 </script>
 

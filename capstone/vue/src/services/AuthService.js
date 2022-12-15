@@ -3,15 +3,15 @@ import axios from 'axios';
 export default {
 
   login(user) {
-    return axios.post('/login', user)
+    return axios.post('/login', user);
   },
 
   register(user) {
-    return axios.post('/register', user)
+    return axios.post('/register', user);
   },
 
   getDjId() {
-    return axios.get('/dj/djid')
+    return axios.get('/dj/djid');
   }
 
 }

@@ -1,29 +1,28 @@
 <template>
-  <div class="event-card" >
-    <div class="loading" v-if="isLoading">
-        <img src="../assets/loading_motion.gif" />
-    </div>
-    <div v-else >
-        <h1 class="eventTitle">{{ events.eventName }}</h1>
-        <div class="eventInformation">
-        <p>Event Details:</p>
-        <p> {{ events.hostName }}</p>
-        <h3>{{events.eventInformation}}</h3>
-        <h3>{{events.eventGenre}}</h3>
-        <router-link v-bind:to="{ name: 'edit-event', params: {eventID: $route.params.eventId} }" class="btn edit-event">Edit Event</router-link>
-        <button class="btn delete-event" v-on:click="deleteEvent">Delete Event</button>
-        <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}</div>
+    <div class="event-card">
+        <div class="loading" v-if="isLoading">
+            <img src="../assets/loading_motion.gif" />
         </div>
-        <div>
-          <user-search />
-          <playlist />
-          <music-player /> 
+        <div v-else>
+            <h1 class="eventTitle">{{ events.eventName }}</h1>
+                <div class="eventInformation">
+                    <p>Event Details</p>
+                    <p> {{ events.hostName }}</p>
+                    <h3>{{ events.eventInformation }}</h3>
+                    <h3>{{ events.eventGenre }}</h3>
+                    <button class="edit-event">
+                        <router-link class="edit-link" v-bind:to="{name: 'edit-event', params: { eventID: $route.params.eventId }}">Edit Event</router-link>
+                    </button>
+                    <button class="btn delete-event" v-on:click="deleteEvent">Delete Event</button>
+                    <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}</div>
+                </div>
+            <div>
+                <user-search />
+                <playlist />
+                <music-player /> 
+            </div>
         </div>
-        
-
     </div>
-    
-  </div>
 </template>
 
 <script>
@@ -33,11 +32,12 @@ import UserSearch from './UserSearch.vue';
 import MusicPlayer from './MusicPlayer.vue';
 
 export default {
-  components: { Playlist, UserSearch , MusicPlayer},
     name: 'event-card',
-    // props: {
-    //     event: Object,
-    // },
+    components: { 
+        Playlist,
+        UserSearch, 
+        MusicPlayer
+    },
     data() {
         return {
             isLoading: false,
@@ -100,35 +100,31 @@ export default {
     background-color: rgba(144, 0, 190, .2);
     border-radius: 2px;
     padding: 10px 10px 10px 10px;
-    /* margin: 5px 5px 5px 5px; */
     color: white;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
     font-style: oblique;
+}
 
+.edit-event {
+    color: #fff;
+    background-color: #A96BCB;
+    border-color: #ac66d1;
+    margin-right: 10px;
+    cursor: pointer;
 }
-.btn.edit-event {
-  text-decoration: none;
-  color: white;
-  background-color: #508ca8;
-  border: solid black;
-  border-width: 1px;
-  padding: 5px 5px 5px 5px;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  border-radius: 3px;
-  font-size: 15px;
+
+.delete-event {
+    color: #fff;
+    background-color: #A96BCB;
+    border-color: #ac66d1;
+    cursor: pointer;
 }
-.btn.delete-event {
-  color: #fff;
-  background-color: #ef031a;
-  border: solid black;
-  border-width: 1px;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  padding: 5px 5px 5px 5px;
-  border-radius: 3px;
-  font-size: 15px;
+
+.edit-link {
+    text-decoration: none;
+    color: #fff;
 }
+
 .eventTitle{
     text-align: center;
     color: white;
@@ -136,8 +132,8 @@ export default {
     font-style: italic;
     font-family: "Audiowide", sans-serif;
     padding-top: 10px;
-
 }
+
 .eventInformation{
     background: rgba(0,0,0,.75);
     color: white;
@@ -147,9 +143,5 @@ export default {
     border: 2px solid white;
     padding: 10px;
     box-shadow: 6px 4px 8px white;
-    
 }
-
-
-
 </style>
