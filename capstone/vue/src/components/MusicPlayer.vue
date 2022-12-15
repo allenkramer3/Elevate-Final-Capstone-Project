@@ -49,6 +49,7 @@ export default {
    margin-right: 25px;
    align-content: center;
    border-radius: 5px;
+   cursor: pointer;
    
   
 }

@@ -6,7 +6,8 @@
               {{ result.name }}
               -
               {{ result.artists[0].name }}
-              <button v-on:click="addSong(result); addToPlaylist(result)" >Request Song</button> 
+              
+              <button class="request" v-on:click="addSong(result); addToPlaylist(result)" >Request Song</button> 
               <!-- <button v-on:click="addToPlaylist()"> Request Song</button> -->
           </li>
       </ul>
@@ -87,6 +88,20 @@ export default {
 }
 .searchBox{
     width: 20%;
+}
+.request{
+    color: white;
+    font-size: 75%;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    background: rgba(0,0,0,.75);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 3px 2px 4px;
+    width: 7%; 
+    cursor: pointer;
 }
 
 
