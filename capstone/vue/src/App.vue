@@ -18,8 +18,8 @@
       <button class="btn">
         <router-link class="btn-header" v-bind:to="{ name: 'dj'}">Dj</router-link>
       </button>
-      <button class="btn">
-      <router-link class="btn-header" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <button :class="{btn: $store.state.token != ''}" v-if="$store.state.token != ''">
+      <router-link class="btn-header" v-bind:to="{ name: 'logout' }" >Logout</router-link>
       </button>
     </div>
 
@@ -102,15 +102,12 @@ body{
   content: "";
   background: linear-gradient(
     45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
     #002bff,
+    #391E94,
     #7a00ff,
     #ff00c8,
-    #ff0000
+    #FF10F0,
+    purple
   );
   position: absolute;
   top: -2px;
