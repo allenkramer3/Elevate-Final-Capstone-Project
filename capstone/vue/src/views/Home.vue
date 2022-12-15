@@ -1,15 +1,14 @@
 <template>
   <div class="home">
-
     <h1>Welcome to Elevate</h1>
     <div class="btn-nav">
       <h2 class="text-center1">If you are an Elevate Host or DJ, please login</h2>
       <button id="nav1" class="home-nav" role="button">
-        <router-link class="nav" v-bind:to="{ name: 'login'}">Login</router-link>
+        <router-link class="nav" v-bind:to="{ name: 'login' }">Login</router-link>
       </button>
       <h2 class="text-center2">If you want to register as an Elevate Host or DJ, please register</h2>
       <button id="nav2" class="home-nav" role="button">
-        <router-link class="nav" v-bind:to="{ name: 'register'}">Register</router-link>
+        <router-link class="nav" v-bind:to="{ name: 'register' }">Register</router-link>
       </button>
       <h2 class="text-center3">Feel free to view any of our events by clicking on the dropdown of events</h2>
       <div class="form-group">
@@ -54,16 +53,12 @@ export default {
         },
         viewEventDetails() {
             this.$router.push(`/events/${this.routeID}`)
-        },
-        // routeToEvent() {
-        //   this.$router.push(`events/`)
-        // }
+        }
     }
 };
 </script>
 
 <style scoped>
-
 .home {
   background-image: linear-gradient(#000200, #4A007b, #9000BE, #A96BCB);
   height: 100vh;

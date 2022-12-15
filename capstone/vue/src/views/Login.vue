@@ -31,7 +31,6 @@ import authService from "../services/AuthService";
 
 export default {
   name: "login",
-  components: {},
   data() {
     return {
       user: {

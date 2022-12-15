@@ -4,7 +4,6 @@ import com.techelevator.model.Playlist;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +41,6 @@ public class JdbcPlaylistDao implements PlaylistDao{
             json.add(playlistData);
 
         }
-
         return json;
     }
 

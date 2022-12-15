@@ -7,11 +7,7 @@ import java.util.List;
 public class SearchResponseDTO {
 
     private String name;
-
     private String uri;
-
-   // private String url;
-
     private List<Artist> artists;
 
     public String getName() {
@@ -38,11 +34,4 @@ public class SearchResponseDTO {
         this.artists = artists;
     }
 
-//    public String getUrl() {
-//        return url;
-//    }
-//
-//    public void setUrl(String url) {
-//        this.url = url;
-//    }
 }

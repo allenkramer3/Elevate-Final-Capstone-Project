@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.NewSongDTO;
-import com.techelevator.model.SearchResponseDTO;
 import com.techelevator.model.Song;
 import com.techelevator.security.services.RestSpotifyService;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -69,7 +68,6 @@ public class JdbcSongDao implements SongDao{
 
             json.add(songAndArtist);
         }
-
         return json;
     }
 
@@ -78,9 +76,7 @@ public class JdbcSongDao implements SongDao{
         String sql = "INSERT INTO song (track_uri, song_name, artist_name, genre_id) " +
                     "VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, newSongDTO.getUri(), newSongDTO.getName(), newSongDTO.getArtists(), 3);
-       // restSpotifyService.addItemsToPlaylist(newSongDTO.getUri(),)
     }
-
 
     private Song mapRowToSong(SqlRowSet rowSet){
         Song song = new Song();
