@@ -4,26 +4,26 @@
       <br>
     </div> 
     <div class="login-box">
-    <h2>Register An Account</h2>
+    <h2 class="main-text">Register An Account</h2>
     <form>
       <div class="user-box">
         <input id="username" type="text" name="" required="" v-model="user.username">
-        <label for="username">Username</label>
+        <label class="box-text" for="username">Username</label>
       </div>
       <div class="user-box">
         <input id="password" type="password" name="" required="" v-model="user.password">
-        <label for="password">Password</label>
+        <label class="box-text" for="password">Password</label>
       </div>
       <div class="user-box">
         <input id="confirmPassword" type="password" name="" required="" v-model="user.confirmPassword">
-        <label for="confirmPassword">Confirm Password</label>
+        <label class="box-text" for="confirmPassword">Confirm Password</label>
       </div>
-      <label class="dropDown" for="role">Are you a DJ or a HOST</label>
-          <select name="role" id="role" v-model="user.role">
+      <label class="dropDown box-text" for="role">Are you a DJ or a HOST?</label>
+          <select class="btn-style" name="role" id="role" v-model="user.role">
             <option value="HOST">HOST</option>
             <option value="DJ">DJ</option>
           </select>
-      <a href="#" v-on:click="register">
+      <a href="#" v-on:click="register" class="box-text">
         <span></span>
         <span></span>
         <span></span>
@@ -104,6 +104,24 @@ body {
   padding:0;
   font-family: sans-serif;
   background: linear-gradient(black, black);
+}
+
+.main-text {
+  color: white;
+  text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+  font-style: italic;
+  font-family: "Audiowide", sans-serif;
+  padding-top: 10px;
+}
+
+.box-text {
+  color: white;
+  text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+  font-style: oblique;
+}
+
+.btn-style {
+  margin: 10px;
 }
 
 .login-box {
