@@ -12,20 +12,18 @@ export default {
     name: "authorize-page",
     methods: {
         getParams (){
-
             let urlParam = new URLSearchParams(window.location.search);
 
             const h3 = document.querySelector("#auth-code");
             h3.innerHtml = urlParam;
-
         }
     }
-}
+};
 </script>
 
 <style>
 .code{
-   color: white;
+    color: white;
     font-size: 75%;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
     background: rgba(0,0,0,.75);
@@ -42,8 +40,8 @@ export default {
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
-
 }
+
 .click{
     text-align: center;
     color: white;
@@ -53,5 +51,4 @@ export default {
     padding-top: 10px;
     text-align: center;
 }
-
 </style>

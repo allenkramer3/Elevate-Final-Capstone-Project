@@ -5,20 +5,19 @@ import axios from "axios";
 export default {
 
     addEvent(event) {
-        return axios.post('/event/create', event)
+        return axios.post('/event/create', event);
     },
 
     updateEvent(event) {
-        // return axios.put(`/events/${event.id}`, event)
-        return axios.put(`/event/update`, event)
+        return axios.put(`/event/update`, event);
     },
 
     getEvents(){
-        return axios.get('/event/list')
+        return axios.get('/event/list');
     },
 
     getEvent(eventID) {
-        return axios.get(`/event/${eventID}`)
+        return axios.get(`/event/${eventID}`);
     },
 
     deleteEvent(eventID) {
@@ -26,17 +25,17 @@ export default {
     },
 
     getHosts(){
-        return axios.get('/dj/hosts')
+        return axios.get('/dj/hosts');
     },
 
     getPlaylists(){
-        return axios.get('/playlist/list')
+        return axios.get('/playlist/list');
     },
 
     getDjEvents(djId) {
-        return axios.get(`/event/dj/${djId}`)
+        return axios.get(`/event/dj/${djId}`);
     }
-
+    
 }
 
 axios

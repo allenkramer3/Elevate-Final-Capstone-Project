@@ -1,18 +1,13 @@
 <template>
-  <div class="searchInput">
-      <input class="searchBox" type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="What song would you like to listen to?" />
-      <ul>
-          <li class="list" v-for="result in results" v-bind:key="result.id" >
-              {{ result.name }}
-              -
-              {{ result.artists[0].name }}
-              
-              <button class="request" v-on:click="addSong(result); addToPlaylist(result)" >Request Song</button> 
-              <!-- <button v-on:click="addToPlaylist()"> Request Song</button> -->
-          </li>
-      </ul>
-      <!-- <button class="btn btn-search">Search</button> -->
-  </div>
+    <div class="searchInput">
+        <input class="searchBox" type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="What song would you like to listen to?" />
+        <ul>
+            <li class="list" v-for="result in results" v-bind:key="result.id" >
+            {{ result.name }} - {{ result.artists[0].name }}
+            <button class="request" v-on:click="addSong(result); addToPlaylist(result)">Request Song</button> 
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -59,36 +54,29 @@ export default {
                  this.retrieveSongsList();
              }
          })
-         
-        
     },
      retrieveSongsList(){
             PlaylistService.getSongs(this.$route.params.eventId).then(response => {
                 this.$store.commit("SET_CURRENT_PLAYLIST", response.data);
             })
         }
-
-    },
-    computed: {
-        // songs(){
-        //     return this.$store.state.songs;
-        // }
     }
 };
 </script>
 
 <style>
-
 .searchInput{
     text-align: center;
-    
 }
+
 .list{
     list-style-type: none;
 }
+
 .searchBox{
     width: 20%;
 }
+
 .request{
     color: white;
     font-size: 75%;
@@ -103,6 +91,4 @@ export default {
     width: 7%; 
     cursor: pointer;
 }
-
-
 </style>

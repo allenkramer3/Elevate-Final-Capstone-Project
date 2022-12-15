@@ -8,9 +8,8 @@
       <div class="form-group">
           <label >Host Name:</label>
           <br>
-          <!-- <input id="hostName" type="text" class="form-control" v-model="event.hostName" autocomplete="off" /> -->
           <select v-model="event.hostID">
-              <option v-bind:value="host.hostID"  v-for="host in hosts" v-bind:key="host.hostID" >{{host.hostName}}</option>
+              <option v-bind:value="host.hostID" v-for="host in hosts" v-bind:key="host.hostID" >{{ host.hostName }}</option>
           </select>
       </div>
       <div class="form-group">
@@ -26,10 +25,10 @@
           <input id="event-pic" type="text" class="form-control" v-model="event.eventPicture" autocomplete="off" />
       </div>
       <div class="form-group">
-          <label >Assign Playlist: </label>
+          <label >Assign Playlist:</label>
           <br>
-          <select name="playlist-name" v-model="event.playlistUri" >
-              <option v-bind:value="playlist.playlistURI" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{playlist.playlistName}}</option>
+          <select name="playlist-name" v-model="event.playlistUri">
+              <option v-bind:value="playlist.playlistURI" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{ playlist.playlistName }}</option>
           </select>
       </div>
       <button class="btn btn-submit">Submit</button>
@@ -57,8 +56,6 @@ export default {
                 genres: '',
                 eventPicture: '',
                 playlistUri: '',
-
-                
             },
             errorMsg: '',
             hostAsString: '',
@@ -68,18 +65,15 @@ export default {
     methods: {
         createEvent() {
             const newEvent = {
-                // eventID: Number(this.$route.params.eventID),
                 eventName: this.event.eventName,
                 hostName: this.event.hostName
             };
 
             if (this.eventID === 0){
-                // add
                 EventService
                     .addEvent(this.event)
                     .then(response => {
                         if (response.status === 201) {
-                            // this.$router.push(`/events/${newEvent.eventID}`);
                             this.$router.push(`/events`);
                         }
                     })
@@ -87,7 +81,6 @@ export default {
                         this.handleErrorResponse(error, "adding");
                     });
             } else {
-                // update
                 newEvent.id = this.eventID;
                 EventService
                     .updateEvent(this.event)
@@ -100,8 +93,6 @@ export default {
                         this.handleErrorResponse(error, "updating");
                     });
             }
-
-            
         },
         cancelEvent() {
             if (this.eventID === 0){
@@ -109,8 +100,6 @@ export default {
             } else {
                 this.$router.push(`/events/${this.$route.params.eventId}`);
             }
-
-            
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
@@ -140,7 +129,6 @@ export default {
         }
     },
     created() {
-
         this.retrieveHosts();
         this.retrievePlaylists();
 
@@ -176,16 +164,12 @@ export default {
     padding: 10px;
     margin-bottom: 10px;
     background-color:rgb(233, 186, 233);
-
     color: white;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
     font-style: italic;
     font-family: "Audiowide", sans-serif;
     padding-top: 10px;
-
-    color: white;
     background: rgba(0,0,0,.75);
-
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
@@ -219,15 +203,17 @@ label {
 
 .btn-submit {
     color: #fff;
-    background-color: #0062cc;
-    border-color: #005cbf;
+    background-color: #A96BCB;
+    border-color: #ac66d1;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .btn-cancel {
     color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: #A96BCB;
+    border-color: #ac66d1;
+    cursor: pointer;
 }
 
 .status-message {

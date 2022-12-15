@@ -74,7 +74,7 @@ const router = new Router({
       name: "dj",
       component: Dj,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -82,7 +82,7 @@ const router = new Router({
       name: "add-event",
       component: AddEvent,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -90,7 +90,7 @@ const router = new Router({
       name: "edit-event",
       component: EditEvent,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -98,7 +98,7 @@ const router = new Router({
       name: "authorize",
       component: Authorize,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -114,11 +114,11 @@ const router = new Router({
       name: 'dj-profile',
       component: DjProfile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
