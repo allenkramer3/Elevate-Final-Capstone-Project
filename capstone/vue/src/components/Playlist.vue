@@ -53,9 +53,9 @@ export default {
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
-    border: 2px solid black;
+    border: 2px solid white;
     padding: 10px;
-    box-shadow: 6px 4px 8px black;
+    box-shadow: 6px 4px 8px white;
     font-family: "Audiowide";
     color: white;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
