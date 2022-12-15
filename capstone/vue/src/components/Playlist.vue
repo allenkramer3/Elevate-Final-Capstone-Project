@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Event Songs</h2>
+      <h2 class="eventSongs">Event Songs</h2>
       <div class="scroll">
         <div class="song" v-for="song in playlist" v-bind:key="song.songName" >
         <h3>{{song.songName}}</h3>
@@ -47,16 +47,27 @@ export default {
     
 }
 .song {
+    background: rgba(0,0,0,.75);
     border-style: solid;
-    border: 2px solid #9000BE;
+    border-color: black;
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
-    border: 2px solid;
+    border: 2px solid black;
     padding: 10px;
-    box-shadow: 6px 4px 8px;
+    box-shadow: 6px 4px 8px black;
     font-family: "Audiowide";
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
     
+}
+.eventSongs{
+     color: white;
+     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+     font-style: italic;
+     font-family: "Audiowide", sans-serif;
+     padding-top: 10px;
+
 }
 
 

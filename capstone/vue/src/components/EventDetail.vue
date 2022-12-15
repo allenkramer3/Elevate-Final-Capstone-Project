@@ -101,6 +101,10 @@ export default {
     border-radius: 10px;
     padding: 10px 10px 10px 10px;
     margin: 5px 5px 5px 5px;
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: oblique;
+
 }
 .btn.edit-event {
   text-decoration: none;
@@ -127,16 +131,23 @@ export default {
 }
 .eventTitle{
     text-align: center;
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: italic;
+    font-family: "Audiowide", sans-serif;
+    padding-top: 10px;
+
 }
 .eventInformation{
-    background-color: rgba(144, 0, 190, .2);
-    color: black;
+    background: rgba(0,0,0,.75);
+    color: white;
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
-    border: 2px solid;
+    border: 2px solid black;
     padding: 10px;
-    box-shadow: 6px 4px 8px;
+    box-shadow: 6px 4px 8px black;
+    
 }
 
 
