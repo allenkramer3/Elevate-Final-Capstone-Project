@@ -55,7 +55,7 @@ body{
 .main-body {
   grid-area: main-body;
    background-image: linear-gradient(#4A007b, #9000BE, #A96BCB);
-  height: 100vh; 
+  height: auto; 
 }
 
 .footer {
