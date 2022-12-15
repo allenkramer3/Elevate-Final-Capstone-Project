@@ -1,9 +1,9 @@
 <template>
-  <div >
+  <div class="event-card" >
     <div class="loading" v-if="isLoading">
         <img src="../assets/loading_motion.gif" />
     </div>
-    <div v-else class="event-card">
+    <div v-else >
         <h1 class="eventTitle">{{ events.eventName }}</h1>
         <div class="eventInformation">
         <p>Event Details:</p>
@@ -98,9 +98,9 @@ export default {
 .event-card {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgba(144, 0, 190, .2);
-    border-radius: 10px;
+    border-radius: 2px;
     padding: 10px 10px 10px 10px;
-    margin: 5px 5px 5px 5px;
+    /* margin: 5px 5px 5px 5px; */
     color: white;
     text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
     font-style: oblique;
