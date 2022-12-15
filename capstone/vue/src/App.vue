@@ -22,10 +22,10 @@
       <router-link class="btn-header" v-bind:to="{ name: 'logout' }" >Logout</router-link>
       </button>
     </div>
-
-    <div class="main-body">
-      <router-view />
-    </div>
+<!-- 
+    <div class="main-body"> -->
+      <router-view class="main-body"/>
+    <!-- </div> -->
 
     <div class="footer">
       <p> &copy; 2022 - Elevate by Zack, Alex, Allen, Jae and Krista</p>
@@ -55,7 +55,8 @@ body{
 .main-body {
   grid-area: main-body;
   background-image: linear-gradient(#4A007b, #9000BE, #A96BCB);
-  height: auto; 
+  height: 100vh;
+  width: 100vw; 
 }
 
 .footer {
