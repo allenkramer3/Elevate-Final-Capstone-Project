@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Playlist:</h2>
+      <h2>Event Songs</h2>
       <div class="scroll">
         <div class="song" v-for="song in playlist" v-bind:key="song.songName" >
         <h3>{{song.songName}}</h3>

@@ -5,7 +5,7 @@
     </div>
     <div v-else class="event-card">
         <h1>{{ events.eventName }}</h1>
-        <p>Hello</p>
+        <p>Event Details:</p>
         <p> {{ events.hostName }}</p>
         <h3>{{events.eventInformation}}</h3>
         <h3>{{events.eventGenre}}</h3>
