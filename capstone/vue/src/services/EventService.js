@@ -22,7 +22,7 @@ export default {
     },
 
     deleteEvent(eventID) {
-        return axios.delete(`/events/${eventID}`);
+        return axios.delete(`/event/delete/${eventID}`);
     },
 
     getHosts(){

@@ -62,11 +62,11 @@ export default {
                confirm("Are you sure you want to delete this event? This cannot be undone.")
            ) {
                EventService
-                .deleteEvent(this.event.eventID)
+                .deleteEvent(this.$route.params.eventId)
                 .then(response => {
-                    if (response.status === 200) {
+                    if (response.status === 204) {
                         alert("Event successfully deleted");
-                        this.$router.push(`events/${this.event.eventID}`);
+                        this.$router.push(`/events`);
                     }
                 })
                 .catch(error => {
