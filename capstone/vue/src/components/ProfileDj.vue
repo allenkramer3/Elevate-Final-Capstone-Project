@@ -93,6 +93,7 @@ h1 {
     border: 2px solid;
     padding: 10px;
     box-shadow: 6px 4px 8px;
+    cursor: pointer;
 }
 
 .playlists {
@@ -108,6 +109,7 @@ h1 {
     border: 2px solid;
     padding: 10px;
     box-shadow: 6px 4px 8px;
+    cursor: pointer;
 }
 
 .list, .list-one {
