@@ -8,7 +8,7 @@
       <div class="form-group">
           <label >Host Name:</label>
           <br>
-          <select v-model="event.hostID">
+          <select v-model="event.hostID" class="select-1">
               <option v-bind:value="host.hostID" v-for="host in hosts" v-bind:key="host.hostID" >{{ host.hostName }}</option>
           </select>
       </div>
@@ -27,7 +27,7 @@
       <div class="form-group">
           <label >Assign Playlist:</label>
           <br>
-          <select name="playlist-name" v-model="event.playlistUri">
+          <select name="playlist-name" v-model="event.playlistUri" class="select-2">
               <option v-bind:value="playlist.playlistURI" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{ playlist.playlistName }}</option>
           </select>
       </div>
@@ -233,4 +233,56 @@ label {
 .status-message.error {
     background-color: #f08080;
 }
+
+.form-control[type=text]{
+    width:90%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+    border-color:rgb(255, 149, 246);
+}
+  
+.form-control[type=text]:focus{
+    border-color:rgb(255, 149, 246);
+    box-shadow:0 0 8px 0 rgb(253, 190, 248);
+}
+
+.select-1{
+    width:auto;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:3px;
+    box-sizing:border-box;
+    transition:.3s;
+    border-color:rgb(255, 149, 246);
+}
+  
+.select-1:focus{
+    border-color:rgb(255, 149, 246);
+    box-shadow:0 0 8px 0 rgb(253, 190, 248);
+}
+
+.select-2{
+    width:auto;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:3px;
+    box-sizing:border-box;
+    transition:.3s;
+    border-color:rgb(255, 149, 246);
+}
+  
+.select-2:focus{
+    border-color:rgb(255, 149, 246);
+    box-shadow:0 0 8px 0 rgb(253, 190, 248);
+}
+
 </style>

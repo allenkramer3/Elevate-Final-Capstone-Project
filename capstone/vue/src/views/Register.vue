@@ -286,6 +286,24 @@ body {
 .dropDown {
   color: white;
 }
+
+select{
+    width:auto;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:2px;
+    box-sizing:border-box;
+    transition:.3s;
+    border-color:rgb(255, 149, 246);
+    background-color: rgb(255, 240, 255);
+}
+  
+select:focus{
+    border-color:rgb(255, 149, 246);
+    box-shadow:0 0 8px 0 rgb(253, 190, 248);
+}
 </style>
   
 

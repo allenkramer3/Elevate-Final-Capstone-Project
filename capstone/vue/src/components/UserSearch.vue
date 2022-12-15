@@ -1,5 +1,6 @@
 <template>
     <div class="searchInput">
+        <h2>Search A Song</h2>
         <input class="searchBox" type="text" v-model="searchText" v-on:submit.prevent="search" @input="search" placeholder="What song would you like to listen to?" />
         <ul>
             <li class="list" v-for="result in results" v-bind:key="result.id" >
@@ -91,4 +92,23 @@ export default {
     width: 7%; 
     cursor: pointer;
 }
+
+.searchBox[type=text]{
+    width:30%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+    border-color:rgb(255, 149, 246);
+    background-color: rgb(255, 245, 255);
+  }
+  
+  .searchBox[type=text]:focus{
+    border-color:rgb(255, 149, 246);
+    box-shadow:0 0 8px 0 rgb(253, 190, 248);
+  }
+
 </style>
