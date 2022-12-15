@@ -1,16 +1,16 @@
 <template>
   <div>
       <h1>My Profile</h1>
-      <div>
+      <div class="events">
           <h2>My Events</h2>
           <ul>
-              <li v-for="event in events" v-bind:key="event.eventID">{{ event.eventName }}</li>
+              <li class="list" v-for="event in events" v-bind:key="event.eventID">{{ event.eventName }}</li>
           </ul>
       </div>
-      <div>
+      <div class="playlists">
           <h2>My Playlists</h2>
           <ul>
-              <li v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{ playlist.playlistName }}</li>
+              <li class="list" v-for="playlist in playlists" v-bind:key="playlist.playlistURI">{{ playlist.playlistName }}</li>
           </ul>
       </div>
   </div>
@@ -62,6 +62,36 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+h1 {
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: italic;
+    font-family: "Audiowide", sans-serif;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.events {
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: italic;
+    font-family: "Audiowide", sans-serif;
+    padding-top: 10px;
+}
+
+.playlists {
+    color: white;
+    text-shadow: 0 0 20px #ff00d4, 0 0 5px #ff00b3;
+    font-style: italic;
+    font-family: "Audiowide", sans-serif;
+    padding-top: 10px;
+}
+
 
 </style>
